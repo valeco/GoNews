@@ -1,0 +1,6 @@
+﻿Form -> frmNombre
+Button -> btnNombre
+PictureBox -> pboxNombre
+TextBox -> txtNombre
+Label -> lbNombre
+DataTimePicker -> dtpNombre
