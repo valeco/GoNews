@@ -23,12 +23,12 @@ namespace CarteleriaDigital.GUI
         private void Prueba_Load(object sender, EventArgs e)
         {
             log = new EasyLog(Utilidades.RutaPrograma() + "appLog.txt");
+            //Utilidades.PlaceHolder(tboxPrueba, "Anda o no!");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            log.Write("asd" + DateTime.Now.Ticks.ToString());
-           
+            log.Write(Utilidades.InputBox<string>("Linea del Log","Nueva linea del log para agregar","Algun texto de error");           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,8 +38,18 @@ namespace CarteleriaDigital.GUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string l= Utilidades.InputBox<String>("Titulo", "Contenido", "0.8").ToString();
-            MessageBox.Show(new Uri(l).ToString());
+            CarteleriaDigital.LogicaAccesoDatos.UnidadDeTrabajo uow = new CarteleriaDigital.LogicaAccesoDatos.UnidadDeTrabajo();
+            CarteleriaDigital.LogicaAccesoDatos.Modelo.Usuario user = new CarteleriaDigital.LogicaAccesoDatos.Modelo.Usuario
+            {
+                NombreCompleto = "Luciano Thoma",
+                NombreUsuario = "luchothoma",
+                Email = "luchothoma@gmail.com",
+                Contraseña = CarteleriaDigital.Extras.Utilidades.md5("luchothoma"),
+                ListaBanner = new List<CarteleriaDigital.LogicaAccesoDatos.Modelo.Banner>(),
+                ListaCampaña = new List<CarteleriaDigital.LogicaAccesoDatos.Modelo.Campaña>()
+            };
+            uow.RepositorioUsuario.Insertar(user);
+            uow.Guardar();
         }
     }
 }

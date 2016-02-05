@@ -73,12 +73,6 @@
   <ItemGroup>
     <Compile Include="Controladores\ControladorBannerRSS.cs" />
     <Compile Include="Controladores\ControladorUsuario.cs" />
-    <Compile Include="GUI\Principal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Principal.designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
-    </Compile>
     <Compile Include="LogicaAccesoDatos\CarteleriaContext.cs" />
     <Compile Include="Controladores\ControladorBanner.cs" />
     <Compile Include="Controladores\ControladorCampaña.cs" />
@@ -114,9 +108,6 @@
     <Compile Include="Extras\Utilidades.cs" />
     <EmbeddedResource Include="GUI\GaleriaImagenes.resx">
       <DependentUpon>GaleriaImagenes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Prueba.resx">
       <DependentUpon>Prueba.cs</DependentUpon>

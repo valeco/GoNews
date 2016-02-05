@@ -12,6 +12,12 @@ namespace CarteleriaDigital.Controladores
     {
         private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
 
+        // ¡REVISAR!
+        public IQueryable<Banner> Queryable
+        {
+            get { return iUnidadDeTrabajo.RepositorioBanner.Queryable; }
+        }
+
         /// <summary>
         ///     Inserta un banner en el repositorio.
         /// </summary>

@@ -200,7 +200,7 @@ namespace CarteleriaDigital.Extras
         /// <returns>Resultado del dialogo</returns>
         public static DialogResult MensajeError( Form pFrmResponsable, string pTitulo, string pDescripcion, bool pOkOnly  = true)
         {
-            return MessageBox.Show(pFrmResponsable, pTitulo, pDescripcion, (pOkOnly? MessageBoxButtons.OK: MessageBoxButtons.OKCancel),MessageBoxIcon.Error);
+            return MessageBox.Show(pFrmResponsable, pDescripcion, pTitulo, (pOkOnly? MessageBoxButtons.OK: MessageBoxButtons.OKCancel),MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace CarteleriaDigital.Extras
         /// <returns>Resultado del dialogo</returns>
         public static DialogResult MensajeAdvertencia(Form pFrmResponsable, string pTitulo, string pDescripcion, bool pOkOnly = true)
         {
-            return MessageBox.Show(pFrmResponsable, pTitulo, pDescripcion, (pOkOnly ? MessageBoxButtons.OK : MessageBoxButtons.OKCancel), MessageBoxIcon.Warning);
+            return MessageBox.Show(pFrmResponsable, pDescripcion, pTitulo, (pOkOnly ? MessageBoxButtons.OK : MessageBoxButtons.OKCancel), MessageBoxIcon.Warning);
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace CarteleriaDigital.Extras
         /// <returns>Resultado del dialogo</returns>
         public static DialogResult MensajeExito(Form pFrmResponsable, string pTitulo, string pDescripcion, bool pOkOnly = true)
         {
-            return MessageBox.Show(pFrmResponsable, pTitulo, pDescripcion, (pOkOnly ? MessageBoxButtons.OK : MessageBoxButtons.OKCancel), MessageBoxIcon.Warning);
+            return MessageBox.Show(pFrmResponsable, pDescripcion, pTitulo, (pOkOnly ? MessageBoxButtons.OK : MessageBoxButtons.OKCancel), MessageBoxIcon.Warning);
         }
 
         //----------------------------------Place Holder INICIO--------------------------------------
@@ -250,7 +250,7 @@ namespace CarteleriaDigital.Extras
         /// </summary>
         /// <param name="pCadena">Cadena a encriptar</param>
         /// <returns></returns>
-        public static string md5(string pCadena)
+        public static string MD5(string pCadena)
         {
             //Declaraciones
             System.Security.Cryptography.MD5 md5;
@@ -265,6 +265,43 @@ namespace CarteleriaDigital.Extras
             //return BitConverter.ToString(encodedBytes);      //esto, devuelve el hash con "-" cada 2 char
             return System.Text.RegularExpressions.Regex.Replace(BitConverter.ToString(encodedBytes).ToLower(), @"-", "");
             //devuelve el hash continuo y en minuscula. (igual que en php)
+        }
+
+        /// <summary>
+        /// Permite enviar un correo eletronico y verificar si realmente se envio
+        /// </summary>
+        /// <param name="pDestinatario">Email destinatario</param>
+        /// <param name="pAsunto">Asunto del correo</param>
+        /// <param name="pMensaje">Contenido del correo</param>
+        /// <returns></returns>
+        public static bool EnviarCorreo(System.Net.Mail.MailAddress pDestinatario, string pAsunto, string pMensaje, bool htmlMesaje = false)
+        {
+            try
+            {
+                //Objeto que corresponde al correo
+                System.Net.Mail.MailMessage mCorreo = new System.Net.Mail.MailMessage(  "gonewsnoreply@gmail.com", pDestinatario.Address,
+                                                                                        pAsunto, pMensaje);
+                mCorreo.SubjectEncoding = System.Text.Encoding.UTF8;
+                mCorreo.BodyEncoding = System.Text.Encoding.UTF8;
+                mCorreo.IsBodyHtml = htmlMesaje;         
+                mCorreo.Priority = System.Net.Mail.MailPriority.Normal;
+
+                //Objeto de autentificación
+                System.Net.NetworkCredential mCredenciales = new System.Net.NetworkCredential("gonewsnoreply@gmail.com", "utnfrcu2015");
+
+                //Configuracion del servidor smtp
+                System.Net.Mail.SmtpClient mCliente = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);//"smtp-mail.outlook.com",587
+                mCliente.UseDefaultCredentials = false;
+                mCliente.EnableSsl = true;
+                mCliente.Credentials = mCredenciales;
+                mCliente.Send(mCorreo);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

@@ -24,11 +24,33 @@ namespace CarteleriaDigital.Controladores
             iUnidadDeTrabajo.Guardar();
         }
 
+        /// <summary>
+        /// Permite loguear el usurio
+        /// </summary>
+        /// <param name="pNombreUsuario">nombre de usuario</param>
+        /// <param name="pContraseña"></param>
+        /// <returns></returns>
         public bool Logear(String pNombreUsuario, String pContraseña)
         {
             var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => ((u.NombreUsuario == pNombreUsuario) && (u.Contraseña == pContraseña)));
             iUsuario = mConsulta.FirstOrDefault<Usuario>();
             return mConsulta.Count() == 1;
+        }
+
+        /// <summary>
+        /// Retorna el objeto Usuario logueado actualmente
+        /// </summary>
+        public Usuario UsuarioLogueado
+        {
+            get { return iUsuario; }
+        }
+
+        /// <summary>
+        /// Cierra la session del usuario logueado actualmente
+        /// </summary>
+        public void LogOut()
+        {
+            iUsuario = null;
         }
     }
 }
