@@ -28,7 +28,7 @@ namespace CarteleriaDigital.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            log.Write(Utilidades.InputBox<string>("Linea del Log","Nueva linea del log para agregar","Algun texto de error");           
+            log.Write(Utilidades.InputBox<string>("Linea del Log","Nueva linea del log para agregar","Algun texto de error"));           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace CarteleriaDigital.GUI
                 NombreCompleto = "Luciano Thoma",
                 NombreUsuario = "luchothoma",
                 Email = "luchothoma@gmail.com",
-                Contraseña = CarteleriaDigital.Extras.Utilidades.md5("luchothoma"),
+                Contraseña = CarteleriaDigital.Extras.Utilidades.MD5("luchothoma"),
                 ListaBanner = new List<CarteleriaDigital.LogicaAccesoDatos.Modelo.Banner>(),
                 ListaCampaña = new List<CarteleriaDigital.LogicaAccesoDatos.Modelo.Campaña>()
             };

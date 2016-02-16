@@ -27,4 +27,3 @@ C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\Carteleria
 C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.xml
 C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.Principal.resources

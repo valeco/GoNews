@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarteleriaDigital.RSS;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 {
     public class BannerRSS: IBanner
     {
-        int iContador;
+        int iContador=0;
         List<RssItem> iListaItems = null;
 
         public int BannerRSSId { get; set; }
         public string Descripcion { get; set; }
         private string URLtexto { get; set; }
 
+        [NotMapped]
         public Uri URL
         {
             get { return (URLtexto == String.Empty) ? null : new Uri(URLtexto); }
