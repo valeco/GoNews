@@ -67,5 +67,39 @@ namespace CarteleriaDigital.Controladores
         {
             return iUnidadDeTrabajo.RepositorioBanner.Queryable.ToList();
         }
+
+        /// <summary>
+        ///  Obtiene la existencia de banners que se superpongan en fecha y horario al indicado
+        /// </summary>
+        /// <param name="pBanner">Banner nuevo</param>
+        /// <returns>Existencia o no de seperposicion (bool)</returns>
+        public bool ExiteBannerEnHorario(Banner pBanner)
+        {
+            DateTime mFIni = pBanner.FechaInicio();
+            DateTime mFFin = pBanner.FechaFin();
+            TimeSpan mHIni = pBanner.HoraInicio();
+            TimeSpan mHFin = pBanner.HoraFin();
+
+            var mConsulta = iUnidadDeTrabajo.RepositorioBanner.Queryable.Where(b => (
+                (
+                    (mFIni >= b.FechaInicio() && mFFin <= b.FechaFin()) || // Intervalo dentro del otro (includio)
+                    (mFIni < b.FechaInicio() && mFFin <= b.FechaFin()) || // Intervalo que arranca antes y termina dentro
+                    (mFIni > b.FechaInicio() && mFIni <= b.FechaFin() && mFFin > b.FechaFin()) || // Intervalo que arranque dentro y termine por fuera
+                    (mFIni < b.FechaInicio() && mFFin > b.FechaFin()) // Intervalo que contenga al otro
+                )
+                    &&
+                (
+                    (mHIni >= b.HoraInicio() && mHFin <= b.HoraFin()) || // Intervalo dentro del otro (includio)
+                    (mHIni < b.HoraInicio() && mHFin <= b.HoraFin()) || // Intervalo que arranca antes y termina dentro
+                    (mHIni > b.HoraInicio() && mHIni <= b.HoraFin() && mHFin > b.HoraFin()) || // Intervalo que arranque dentro y termine por fuera
+                    (mHIni < b.HoraInicio() && mHFin > b.HoraFin()) // Intervalo que contenga al otro 
+                )
+                    &&
+                (b.Activo== true) //HAY QUE PREGUNTARLO? REVISAR puede que si el banner existe pero esta desactivado no haya drama en que se
+                                   //genere uno en el mismo horario, el drama que si se activa hay que considerar solapamiento al activar
+            ));
+
+            return mConsulta.Count() > 0;
+        }
     }
 }

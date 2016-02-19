@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 {
-    public enum TipoBanner { }
+    public enum TipoBanner { RSS , TXT }
 
-    public class Banner
+    public class Banner: Publicidad
     {
         public int BannerId { get; set; }
         private TipoBanner DeTipo { get; set; }

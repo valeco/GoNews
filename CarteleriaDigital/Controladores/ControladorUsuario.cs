@@ -52,5 +52,27 @@ namespace CarteleriaDigital.Controladores
         {
             iUsuario = null;
         }
+
+        /// <summary>
+        /// Obtiene si existe o no un usuario con este correo
+        /// </summary>
+        /// <param name="pCorreo">Correo que se desea verificar</param>
+        /// <returns></returns>
+        public bool ExisteCorreoUsuario(System.Net.Mail.MailAddress pCorreo)
+        {
+            var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => (u.Email== pCorreo.Address ));
+            return mConsulta.Count() == 1;
+        }
+
+        /// <summary>
+        /// Obtiene si existe o no un usuario con este nombre de usuario
+        /// </summary>
+        /// <param name="pCorreo">Correo que se desea verificar</param>
+        /// <returns></returns>
+        public bool ExisteNombreUsuario(string pNombre)
+        {
+            var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => (u.NombreUsuario == pNombre));
+            return mConsulta.Count() == 1;
+        }
     }
 }
