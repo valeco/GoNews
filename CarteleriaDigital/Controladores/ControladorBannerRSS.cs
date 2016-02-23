@@ -13,12 +13,30 @@ namespace CarteleriaDigital.Controladores
         private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
 
         /// <summary>
+        /// Devuelve objeto de consulta
+        /// </summary>
+        public IQueryable<BannerRSS> Queryable
+        {
+            get { return iUnidadDeTrabajo.RepositorioBannerRSS.Queryable; }
+        }
+
+        /// <summary>
         ///     Inserta un banner RSS en el repositorio.
         /// </summary>
         /// <param name="pBanner">Banner RSS a insertar.</param>
         public void Insertar(BannerRSS pBannerRSS)
         {
             iUnidadDeTrabajo.RepositorioBannerRSS.Insertar(pBannerRSS);
+            iUnidadDeTrabajo.Guardar();
+        }
+
+        /// <summary>
+        ///     Modificar un banner RSS en el repositorio.
+        /// </summary>
+        /// <param name="pBanner">Banner RSS a insertar.</param>
+        public void Modificar(BannerRSS pBannerRSS)
+        {
+            iUnidadDeTrabajo.RepositorioBannerRSS.Modificar(pBannerRSS);
             iUnidadDeTrabajo.Guardar();
         }
 

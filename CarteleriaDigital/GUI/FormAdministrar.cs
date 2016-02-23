@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarteleriaDigital.Extras;
 
 namespace CarteleriaDigital.GUI
 {
     public partial class FormAdministrar : Form
     {
-        public FormAdministrar()
+        EasyLog iLogger;
+
+        public FormAdministrar( EasyLog pLogger )
         {
             InitializeComponent();
+            this.iLogger = pLogger;
+            iLogger.Info("Inicializando form Administrar");
         }
 
         private void pboxMinimizar_Click(object sender, EventArgs e)
@@ -92,7 +97,8 @@ namespace CarteleriaDigital.GUI
 
         private void btnGestionar_Click(object sender, EventArgs e)
         {
-            var mForm = new FormGestionarRSS();
+            iLogger.Info("Abriendo form Gestionar RSS");
+            var mForm = new FormGestionarRSS( this.iLogger );
 
             mForm.ShowDialog();
         }

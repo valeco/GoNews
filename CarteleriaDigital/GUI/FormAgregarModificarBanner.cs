@@ -62,5 +62,10 @@ namespace CarteleriaDigital.GUI
             Utilidades.AllTextBoxPlaceHolder(this);
             radioTextoFijo.Checked = true;
         }
+
+        private void tbarIntervalo_Scroll(object sender, EventArgs e)
+        {
+            lbValorIntervalo.Text = tbarIntervalo.Value.ToString() + " seg.";
+        }
     }
 }

@@ -138,9 +138,14 @@
             // 
             // dgridFuentesRSS
             // 
+            this.dgridFuentesRSS.AllowUserToAddRows = false;
+            this.dgridFuentesRSS.AllowUserToDeleteRows = false;
+            this.dgridFuentesRSS.AllowUserToOrderColumns = true;
             this.dgridFuentesRSS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgridFuentesRSS.Location = new System.Drawing.Point(13, 45);
+            this.dgridFuentesRSS.MultiSelect = false;
             this.dgridFuentesRSS.Name = "dgridFuentesRSS";
+            this.dgridFuentesRSS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgridFuentesRSS.Size = new System.Drawing.Size(418, 133);
             this.dgridFuentesRSS.TabIndex = 1;
             // 
@@ -154,6 +159,7 @@
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "BUSCAR";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -220,7 +226,7 @@
             this.btnAceptar.TabIndex = 26;
             this.btnAceptar.Text = "ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // lbAgregarModificar
             // 

@@ -8,17 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarteleriaDigital.Extras;
+using CarteleriaDigital.Controladores;
+using CarteleriaDigital.LogicaAccesoDatos.Modelo;
 
 namespace CarteleriaDigital.GUI
 {
     public partial class FormGestionarRSS : Form
     {
-        public FormGestionarRSS()
+        EasyLog iLogger;
+        ControladorBannerRSS iCtrlRSS = new ControladorBannerRSS();
+        BannerRSS iBRss;
+
+        public FormGestionarRSS( EasyLog pLogger)
         {
             InitializeComponent();
+            this.iLogger = pLogger;
+            iLogger.Info("Inicializando form GertionRSS");
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void FormGestionarRSS_Load(object sender, EventArgs e)
+        {
+            Utilidades.AllTextBoxPlaceHolder(this);
+            Toggle(); // Para ocultar el panel de agregar/modificar fuentes RSS.
+            dgridFuentesRSS.DataSource = iCtrlRSS.ObtenerTodos();
+            iLogger.Info("Load finalizado de form Gestionar RSS");
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
             Toggle();
         }
@@ -39,7 +55,7 @@ namespace CarteleriaDigital.GUI
         }
 
         // REVISAR: AGREGAR EL PARAMETRO DE LA FUENTE RSS
-        private void Toggle(String pTitulo = "")
+        private void Toggle(String pTitulo = "", BannerRSS pBRss)
         {
             lbAgregarModificar.Text = pTitulo + " fuente RSS";
 
@@ -50,6 +66,11 @@ namespace CarteleriaDigital.GUI
                 btnAgregarRSS.Enabled = false;
                 btnModificarRSS.Enabled = false;
                 btnEliminarRSS.Enabled = false;
+                this.iBRss = pBRss;
+                if(pBRss != null)
+                {
+
+                }
             }
             else
             {
@@ -63,20 +84,46 @@ namespace CarteleriaDigital.GUI
             }
         }
 
-        private void FormGestionarRSS_Load(object sender, EventArgs e)
-        {
-            Utilidades.AllTextBoxPlaceHolder(this);
-            Toggle(); // Para ocultar el panel de agregar/modificar fuentes RSS.
-        }
-
         private void btnAgregarRSS_Click(object sender, EventArgs e)
         {
+            iLogger.Info("Inicia insercion RSS");
             Toggle("Agregar");
         }
 
         private void btnModificarRSS_Click(object sender, EventArgs e)
         {
-            Toggle("Modificar");
+            if (dgridFuentesRSS.SelectedRows.Count != 0)
+            {
+                iLogger.Info("Inicia modificacion RSS");
+                Toggle("Modificar",(BannerRSS)dgridFuentesRSS.SelectedRows[0].DataBoundItem);
+                //dgridFuentesRSS.SelectedRows[0].DataBoundItem;
+            }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                iLogger.Info("Busqueda de RSS iniciada");
+                string mParametro = txtBuscar.Text;
+                List<BannerRSS> mConsulta;
+                if (mParametro != "")
+                {
+                    mConsulta = iCtrlRSS.Queryable.Where(brss => (brss.Descripcion.Contains(mParametro) || brss.URL.AbsoluteUri.Contains(mParametro))).ToList<BannerRSS>();
+                }
+                else
+                {
+                    mConsulta = iCtrlRSS.ObtenerTodos();
+                }
+                iLogger.Debug("Fuentes RSS filtradas " + mConsulta.Count().ToString());
+                dgridFuentesRSS.DataSource = mConsulta;
+            }
+            catch (Exception ex)
+            {
+                iLogger.Error(ex.Source + ": " + ex.Message);
+            }
+           
+        }
+
     }
 }

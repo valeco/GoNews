@@ -104,7 +104,7 @@ namespace CarteleriaDigital.Extras
         /// Generar linea al Log de tipo Info
         /// </summary>
         /// <param name="pCadena">Cadena que se quiere persistir</param>
-        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior luego por el usuario con .Save()</param>
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior con el comando con .Save() por el usuario </param>
         public void Info (string pCadena, bool pPersistirAutomaticamente = true)
         {
             if(pPersistirAutomaticamente)

@@ -13,6 +13,8 @@ namespace CarteleriaDigital.GUI
 {
     public partial class FormPrincipal : Form
     {
+        EasyLog iLogger = new EasyLog("appLog.txt", true); //Modo Debug activo
+
         public FormPrincipal()
         {
             InitializeComponent();
@@ -63,7 +65,8 @@ namespace CarteleriaDigital.GUI
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var mForm = new FormAdministrar();
+            iLogger.Info("Abriendo form Administrar");
+            var mForm = new FormAdministrar( this.iLogger );
 
             this.pboxLogin_Click(null, null);
 

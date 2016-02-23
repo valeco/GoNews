@@ -22,9 +22,9 @@ namespace CarteleriaDigital.Controladores
         {
             Campaña mCampañaAuxiliar = new Campaña { FechaHoraInicio = pFechaHora,
                 FechaHoraFin = pFechaHora.AddMinutes(1),
-                Intervalo = 60000,
+                Intervalo = 0,
                 Nombre = "GO NEWS",
-                ListaImagenes = new List<Imagen>(new Imagen[] { new Imagen(0, Utilidades.RutaPrograma() + "Imagenes\\CampañaPorDefecto.jpg") })
+                ListaImagenes = new List<Imagen>(new Imagen[] { new Imagen(0, Utilidades.RutaPrograma() + "Imagenes\\_campaña_gonews.jpg") })
                 //IMAGEN POR DEFECTO PARA PUBLICITAR EL SERVICIO    
             };
             DateTime mDia = mCampañaAuxiliar.FechaInicio();
@@ -50,8 +50,8 @@ namespace CarteleriaDigital.Controladores
         {
             Banner mBannerAuxiliar = new Banner(new BannerTXT(), TipoBanner.TXT) { FechaHoraInicio = pFechaHora,
                 FechaHoraFin = pFechaHora.AddMinutes(1),
-                Intervalo = 60000,
-                Nombre = "GO NEWS",
+                Intervalo = 0,
+                Nombre = "GO NEWS Campaña Default",
             };
             DateTime mDia = mBannerAuxiliar.FechaInicio();
             TimeSpan mHora = mBannerAuxiliar.HoraInicio();

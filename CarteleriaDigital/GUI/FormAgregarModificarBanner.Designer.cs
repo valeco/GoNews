@@ -43,11 +43,17 @@
             this.comboFuenteRSS = new System.Windows.Forms.ComboBox();
             this.lbFuenteRSS = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.panelIntervalo = new System.Windows.Forms.Panel();
+            this.lbValorIntervalo = new System.Windows.Forms.Label();
+            this.tbarIntervalo = new System.Windows.Forms.TrackBar();
+            this.lbIntervalo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
             this.panelTipo.SuspendLayout();
             this.panelTextoFijo.SuspendLayout();
             this.panelFuenteRSS.SuspendLayout();
+            this.panelIntervalo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTitulo
@@ -65,7 +71,7 @@
             // 
             this.pboxMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pboxMinimizar.Image = global::CarteleriaDigital.Properties.Resources._pboxMinimizar;
-            this.pboxMinimizar.Location = new System.Drawing.Point(221, 12);
+            this.pboxMinimizar.Location = new System.Drawing.Point(481, 12);
             this.pboxMinimizar.Name = "pboxMinimizar";
             this.pboxMinimizar.Size = new System.Drawing.Size(20, 20);
             this.pboxMinimizar.TabIndex = 20;
@@ -76,7 +82,7 @@
             // 
             this.pboxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pboxCerrar.Image = global::CarteleriaDigital.Properties.Resources._pboxCerrar;
-            this.pboxCerrar.Location = new System.Drawing.Point(246, 12);
+            this.pboxCerrar.Location = new System.Drawing.Point(506, 12);
             this.pboxCerrar.Name = "pboxCerrar";
             this.pboxCerrar.Size = new System.Drawing.Size(20, 20);
             this.pboxCerrar.TabIndex = 19;
@@ -149,9 +155,9 @@
             this.panelTextoFijo.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelTextoFijo.Controls.Add(this.txtTextoFijo);
             this.panelTextoFijo.Controls.Add(this.lbTextoFijo);
-            this.panelTextoFijo.Location = new System.Drawing.Point(12, 151);
+            this.panelTextoFijo.Location = new System.Drawing.Point(272, 76);
             this.panelTextoFijo.Name = "panelTextoFijo";
-            this.panelTextoFijo.Size = new System.Drawing.Size(254, 136);
+            this.panelTextoFijo.Size = new System.Drawing.Size(254, 242);
             this.panelTextoFijo.TabIndex = 3;
             // 
             // txtTextoFijo
@@ -162,7 +168,7 @@
             this.txtTextoFijo.Multiline = true;
             this.txtTextoFijo.Name = "txtTextoFijo";
             this.txtTextoFijo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTextoFijo.Size = new System.Drawing.Size(227, 87);
+            this.txtTextoFijo.Size = new System.Drawing.Size(227, 193);
             this.txtTextoFijo.TabIndex = 4;
             this.txtTextoFijo.Text = "Escribe aquí el texto que deseas mostrar. Puedes ingresar saltos de líneas, pero " +
     "en pantalla se verá el texto en una sola línea.";
@@ -183,7 +189,7 @@
             this.panelFuenteRSS.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelFuenteRSS.Controls.Add(this.comboFuenteRSS);
             this.panelFuenteRSS.Controls.Add(this.lbFuenteRSS);
-            this.panelFuenteRSS.Location = new System.Drawing.Point(12, 293);
+            this.panelFuenteRSS.Location = new System.Drawing.Point(12, 245);
             this.panelFuenteRSS.Name = "panelFuenteRSS";
             this.panelFuenteRSS.Size = new System.Drawing.Size(254, 73);
             this.panelFuenteRSS.TabIndex = 4;
@@ -214,19 +220,67 @@
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.Location = new System.Drawing.Point(166, 372);
+            this.btnAgregar.Location = new System.Drawing.Point(426, 324);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(100, 30);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "AGREGAR";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
+            // panelIntervalo
+            // 
+            this.panelIntervalo.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelIntervalo.Controls.Add(this.lbValorIntervalo);
+            this.panelIntervalo.Controls.Add(this.tbarIntervalo);
+            this.panelIntervalo.Controls.Add(this.lbIntervalo);
+            this.panelIntervalo.Location = new System.Drawing.Point(12, 151);
+            this.panelIntervalo.Name = "panelIntervalo";
+            this.panelIntervalo.Size = new System.Drawing.Size(254, 88);
+            this.panelIntervalo.TabIndex = 21;
+            // 
+            // lbValorIntervalo
+            // 
+            this.lbValorIntervalo.AutoSize = true;
+            this.lbValorIntervalo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbValorIntervalo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbValorIntervalo.Location = new System.Drawing.Point(152, 16);
+            this.lbValorIntervalo.Name = "lbValorIntervalo";
+            this.lbValorIntervalo.Size = new System.Drawing.Size(77, 26);
+            this.lbValorIntervalo.TabIndex = 22;
+            this.lbValorIntervalo.Text = "5 seg.";
+            this.lbValorIntervalo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tbarIntervalo
+            // 
+            this.tbarIntervalo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbarIntervalo.Location = new System.Drawing.Point(13, 50);
+            this.tbarIntervalo.Maximum = 20;
+            this.tbarIntervalo.Minimum = 1;
+            this.tbarIntervalo.Name = "tbarIntervalo";
+            this.tbarIntervalo.Size = new System.Drawing.Size(227, 45);
+            this.tbarIntervalo.TabIndex = 2;
+            this.tbarIntervalo.Value = 5;
+            this.tbarIntervalo.Scroll += new System.EventHandler(this.tbarIntervalo_Scroll);
+            // 
+            // lbIntervalo
+            // 
+            this.lbIntervalo.AutoSize = true;
+            this.lbIntervalo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIntervalo.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.lbIntervalo.Location = new System.Drawing.Point(10, 12);
+            this.lbIntervalo.Name = "lbIntervalo";
+            this.lbIntervalo.Size = new System.Drawing.Size(138, 32);
+            this.lbIntervalo.TabIndex = 21;
+            this.lbIntervalo.Text = "Intervalo de transición\r\nentre textos:";
+            // 
             // FormAgregarModificarBanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(278, 413);
+            this.ClientSize = new System.Drawing.Size(538, 365);
+            this.Controls.Add(this.panelIntervalo);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.panelFuenteRSS);
             this.Controls.Add(this.panelTextoFijo);
@@ -248,6 +302,9 @@
             this.panelTextoFijo.PerformLayout();
             this.panelFuenteRSS.ResumeLayout(false);
             this.panelFuenteRSS.PerformLayout();
+            this.panelIntervalo.ResumeLayout(false);
+            this.panelIntervalo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +327,9 @@
         private System.Windows.Forms.Label lbFuenteRSS;
         private System.Windows.Forms.ComboBox comboFuenteRSS;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Panel panelIntervalo;
+        private System.Windows.Forms.Label lbValorIntervalo;
+        private System.Windows.Forms.TrackBar tbarIntervalo;
+        private System.Windows.Forms.Label lbIntervalo;
     }
 }

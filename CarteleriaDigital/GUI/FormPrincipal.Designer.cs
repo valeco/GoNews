@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
-            this.pboxSlide = new System.Windows.Forms.PictureBox();
             this.lbMarquesina = new System.Windows.Forms.Label();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.lbOlvideContraseña = new System.Windows.Forms.LinkLabel();
@@ -37,30 +35,16 @@
             this.btnEntrar = new System.Windows.Forms.Button();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.pboxCerrar = new System.Windows.Forms.PictureBox();
-            this.pboxLogin = new System.Windows.Forms.PictureBox();
             this.pboxMinimizar = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).BeginInit();
+            this.pboxLogin = new System.Windows.Forms.PictureBox();
+            this.pboxCerrar = new System.Windows.Forms.PictureBox();
+            this.pboxSlide = new System.Windows.Forms.PictureBox();
             this.panelLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pboxSlide
-            // 
-            this.pboxSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pboxSlide.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pboxSlide.Image = ((System.Drawing.Image)(resources.GetObject("pboxSlide.Image")));
-            this.pboxSlide.Location = new System.Drawing.Point(0, 0);
-            this.pboxSlide.Margin = new System.Windows.Forms.Padding(0);
-            this.pboxSlide.Name = "pboxSlide";
-            this.pboxSlide.Size = new System.Drawing.Size(500, 260);
-            this.pboxSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboxSlide.TabIndex = 0;
-            this.pboxSlide.TabStop = false;
             // 
             // lbMarquesina
             // 
@@ -138,16 +122,16 @@
             this.txtUsuario.TabIndex = 2;
             this.txtUsuario.Text = "Usuario";
             // 
-            // pboxCerrar
+            // pboxMinimizar
             // 
-            this.pboxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pboxCerrar.Image = global::CarteleriaDigital.Properties.Resources._pboxCerrar;
-            this.pboxCerrar.Location = new System.Drawing.Point(475, 5);
-            this.pboxCerrar.Name = "pboxCerrar";
-            this.pboxCerrar.Size = new System.Drawing.Size(20, 20);
-            this.pboxCerrar.TabIndex = 5;
-            this.pboxCerrar.TabStop = false;
-            this.pboxCerrar.Click += new System.EventHandler(this.pboxCerrar_Click);
+            this.pboxMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pboxMinimizar.Image = global::CarteleriaDigital.Properties.Resources._pboxMinimizar;
+            this.pboxMinimizar.Location = new System.Drawing.Point(450, 5);
+            this.pboxMinimizar.Name = "pboxMinimizar";
+            this.pboxMinimizar.Size = new System.Drawing.Size(20, 20);
+            this.pboxMinimizar.TabIndex = 7;
+            this.pboxMinimizar.TabStop = false;
+            this.pboxMinimizar.Click += new System.EventHandler(this.pboxMinimizar_Click);
             // 
             // pboxLogin
             // 
@@ -161,16 +145,31 @@
             this.pboxLogin.TabStop = false;
             this.pboxLogin.Click += new System.EventHandler(this.pboxLogin_Click);
             // 
-            // pboxMinimizar
+            // pboxCerrar
             // 
-            this.pboxMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pboxMinimizar.Image = global::CarteleriaDigital.Properties.Resources._pboxMinimizar;
-            this.pboxMinimizar.Location = new System.Drawing.Point(450, 5);
-            this.pboxMinimizar.Name = "pboxMinimizar";
-            this.pboxMinimizar.Size = new System.Drawing.Size(20, 20);
-            this.pboxMinimizar.TabIndex = 7;
-            this.pboxMinimizar.TabStop = false;
-            this.pboxMinimizar.Click += new System.EventHandler(this.pboxMinimizar_Click);
+            this.pboxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pboxCerrar.Image = global::CarteleriaDigital.Properties.Resources._pboxCerrar;
+            this.pboxCerrar.Location = new System.Drawing.Point(475, 5);
+            this.pboxCerrar.Name = "pboxCerrar";
+            this.pboxCerrar.Size = new System.Drawing.Size(20, 20);
+            this.pboxCerrar.TabIndex = 5;
+            this.pboxCerrar.TabStop = false;
+            this.pboxCerrar.Click += new System.EventHandler(this.pboxCerrar_Click);
+            // 
+            // pboxSlide
+            // 
+            this.pboxSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pboxSlide.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.pboxSlide.Image = global::CarteleriaDigital.Properties.Resources._campaña_gonews;
+            this.pboxSlide.Location = new System.Drawing.Point(0, 0);
+            this.pboxSlide.Margin = new System.Windows.Forms.Padding(0);
+            this.pboxSlide.Name = "pboxSlide";
+            this.pboxSlide.Size = new System.Drawing.Size(500, 260);
+            this.pboxSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxSlide.TabIndex = 0;
+            this.pboxSlide.TabStop = false;
             // 
             // FormPrincipal
             // 
@@ -190,12 +189,12 @@
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).EndInit();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
