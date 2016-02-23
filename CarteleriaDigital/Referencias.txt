@@ -13,6 +13,4 @@ Radio Button -> radioNombre
 DataGridView -> dgridNombre
 
 -To Do-
-HECHO.Campaña y Banner DEFAULT generada on the fly
-HECHO .Funcion en ControladorCampaña que devuelva si ya existe una Campañas que se superponga en esos dias/horarios
-HECHO .Funcion en ControladorBanner que devuelva si ya existe una Banner que se superponga en esos dias/horarios
+

@@ -145,12 +145,6 @@
       <DependentUpon>GaleriaImagenes.cs</DependentUpon>
     </Compile>
     <Compile Include="Excepciones\NotInternetAvailable.cs" />
-    <Compile Include="GUI\Prueba.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Prueba.Designer.cs">
-      <DependentUpon>Prueba.cs</DependentUpon>
-    </Compile>
     <Compile Include="LogicaAccesoDatos\Modelo\Banner.cs" />
     <Compile Include="LogicaAccesoDatos\Modelo\BannerRSS.cs" />
     <Compile Include="LogicaAccesoDatos\Modelo\BannerTXT.cs" />
@@ -198,9 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\GaleriaImagenes.resx">
       <DependentUpon>GaleriaImagenes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Prueba.resx">
-      <DependentUpon>Prueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

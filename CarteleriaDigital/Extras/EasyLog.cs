@@ -7,9 +7,12 @@ using Microsoft.VisualBasic.FileIO;//Para el StreamReader
 using System.IO;//Excepciones del filesystem
 
 namespace CarteleriaDigital.Extras
-{
-    class EasyLog
+{    
+    public class EasyLog
     {
+        private enum TipoEscritura { INFO, ERROR, Debug }
+
+        bool iDebugMode;
         string iRutaArchivo = String.Empty;
         List<string> iLineas= new List<string>();
 
@@ -17,7 +20,8 @@ namespace CarteleriaDigital.Extras
         /// Genera una instancia de EasyLog
         /// </summary>
         /// <param name="pRutaArchivo">Ruta del archivo donde escribir</param>
-        public EasyLog( string pRutaArchivo )
+        /// <param name="pDebugMode">Activar o desactivar la escritura en modo Debug</param>
+        public EasyLog( string pRutaArchivo, Boolean pDebugMode = true)
         {
             if (String.IsNullOrWhiteSpace(pRutaArchivo))//vacia, nula o unicamente consta del espacio en blanco
                 throw new ArgumentNullException("iRutaArchivo", "La ruta del archivo no debe de ser vacia.");
@@ -29,27 +33,38 @@ namespace CarteleriaDigital.Extras
             if (!FileSystem.DirectoryExists(mRutaDirectorio))
                 throw new DirectoryNotFoundException("La ruta de arhcivo(" + mRutaDirectorio + ") proporcionada no existe");
 
-
+            iDebugMode = pDebugMode;
             iRutaArchivo = pRutaArchivo;
         }
-        
+
+        /// <summary>
+        /// Activar o desactivar la escritura al Log en modo Debug
+        /// </summary>
+        public bool DebugMode
+        {
+            get { return iDebugMode; }
+            set { iDebugMode = value; }
+        }
+
         /// <summary>
         /// Genera linea con el formato para almacenar
         /// </summary>
         /// <param name="pLinea">Linea a formatear</param>
-        /// <returns></returns>
-        private string GenerarLinea (string pLinea)
+        /// <param name="pEscritura">Modo de escritura</param>
+        /// <returns>Cadena con el formato esperado</returns>
+        private string GenerarLinea (string pLinea, TipoEscritura pEscritura)
         {
-            return "[" + DateTime.Now.ToString() + " (" + Environment.MachineName + ")] " + pLinea;
+            return pEscritura.ToString() + ":[" + DateTime.Now.ToString() + " (" + Environment.MachineName + ")] " + pLinea;
         }
 
         /// <summary>
         /// Alamacenar una linea para su posterior persistencia
         /// </summary>
         /// <param name="pLinea">Mensaje a almacenar</param>
-        public void Write(string pLinea)
+        /// <param name="pEscritura">Modo de escritura</param>
+        private void Write(string pLinea, TipoEscritura pEscritura = TipoEscritura.INFO)
         {
-            iLineas.Add( this.GenerarLinea(pLinea) );
+            iLineas.Add( this.GenerarLinea(pLinea, pEscritura) );
         }
 
         /// <summary>
@@ -67,22 +82,61 @@ namespace CarteleriaDigital.Extras
         }
 
         /// <summary>
-        /// Persistir en disco todas las lineas almacenadas
+        /// Persistir en disco unicamente la linea indicada
+        /// </summary>        
+        /// <param name="pLinea">Mensaje a almacenar</param>
+        /// <param name="pEscritura">Modo de escritura</param>
+        private void WriteAndSave(string pLinea, TipoEscritura pEscritura = TipoEscritura.INFO)
+        {
+            this.Save( new List<string> {this.GenerarLinea(pLinea, pEscritura)} );
+        }
+
+        /// <summary>
+        /// Persistir en disco todas las lineas aun no almacenadas en disco.(Las que aplican sin persistencia automatica)
         /// </summary>
         public void Save()
         {
-            this.Save(iLineas);
+            this.Save(this.iLineas);
             iLineas.Clear();
         }
 
         /// <summary>
-        /// Persistir en disco unicamente la linea indicada
+        /// Generar linea al Log de tipo Info
         /// </summary>
-        public void WriteAndSave(string pLinea)
+        /// <param name="pCadena">Cadena que se quiere persistir</param>
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior luego por el usuario con .Save()</param>
+        public void Info (string pCadena, bool pPersistirAutomaticamente = true)
         {
-            List<string> pLista = new List<string>();
-            pLista.Add( this.GenerarLinea(pLinea) );
-            this.Save( pLista );
+            if(pPersistirAutomaticamente)
+            { this.WriteAndSave(pCadena); }//Por defecto se guarda como tipo INFO
+            else
+            { this.Write(pCadena); }//Por defecto se guarda como tipo INFO
+        }
+
+        /// <summary>
+        /// Generar linea al Log de tipo Error
+        /// </summary>
+        /// <param name="pCadena">Cadena que se quiere persistir</param>
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior luego por el usuario con .Save()</param>
+        public void Error(string pCadena, bool pPersistirAutomaticamente = true)
+        {
+            if (pPersistirAutomaticamente)
+            { this.WriteAndSave(pCadena, TipoEscritura.ERROR); }
+            else
+            { this.Write(pCadena); }
+        }
+
+        /// <summary>
+        /// Generar linea al Log de tipo Debug, si el Log esta en ModoDebug -> False no se genera.
+        /// </summary>
+        /// <param name="pCadena">Cadena que se quiere persistir</param>
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior luego por el usuario con .Save()</param>
+        public void Debug(string pCadena, bool pPersistirAutomaticamente = true)
+        {
+            if (pPersistirAutomaticamente)
+            { this.WriteAndSave(pCadena, TipoEscritura.Debug); }
+            else
+            { this.Write(pCadena, TipoEscritura.Debug); }
         }
     }
 }
