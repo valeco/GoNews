@@ -31,9 +31,9 @@ namespace CarteleriaDigital.Controladores
             TimeSpan mHora = mCampañaAuxiliar.HoraInicio();
 
             var mConsulta = iControladorCampaña.Queryable.Where(c =>( 
-                (c.FechaInicio() >= mDia && c.FechaFin() <= mDia)
-                &&
-                (c.HoraInicio() >= mHora && c.HoraFin() <= mHora)
+                (mDia >= c.FechaInicio() && mDia <= c.FechaFin())
+                &&                                                
+                (mHora >= c.HoraInicio() && mHora <= c.HoraFin())
                 &&
                 (c.Activo==true)
             ));
@@ -56,12 +56,12 @@ namespace CarteleriaDigital.Controladores
             DateTime mDia = mBannerAuxiliar.FechaInicio();
             TimeSpan mHora = mBannerAuxiliar.HoraInicio();
 
-            var mConsulta = iControladorBanner.Queryable.Where(c => (
-                (c.FechaInicio() >= mDia && c.FechaFin() <= mDia)
+            var mConsulta = iControladorBanner.Queryable.Where(b => (
+                (mDia >= b.FechaInicio() && mDia <= b.FechaFin())
                 &&
-                (c.HoraInicio() >= mHora && c.HoraFin() <= mHora)
+                (mHora >= b.HoraInicio() && mHora <= b.HoraFin())
                 &&
-                (c.Activo == true)
+                (b.Activo == true)
             ));
 
             return mConsulta.Count() == 1 ? mConsulta.First(): mBannerAuxiliar;

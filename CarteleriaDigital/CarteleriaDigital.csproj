@@ -73,6 +73,66 @@
   <ItemGroup>
     <Compile Include="Controladores\ControladorBannerRSS.cs" />
     <Compile Include="Controladores\ControladorUsuario.cs" />
+    <Compile Include="GUI\FormAdministrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormAdministrar.Designer.cs">
+      <DependentUpon>FormAdministrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormAgregarModificarBanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormAgregarModificarBanner.Designer.cs">
+      <DependentUpon>FormAgregarModificarBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormAgregarModificarCampaña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormAgregarModificarCampaña.Designer.cs">
+      <DependentUpon>FormAgregarModificarCampaña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormBuscar.Designer.cs">
+      <DependentUpon>FormBuscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormEditarUsuario.Designer.cs">
+      <DependentUpon>FormEditarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormGestionarRSS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormGestionarRSS.Designer.cs">
+      <DependentUpon>FormGestionarRSS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormOlvideContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormOlvideContraseña.Designer.cs">
+      <DependentUpon>FormOlvideContraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormRegistro.Designer.cs">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormSolicitarID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormSolicitarID.Designer.cs">
+      <DependentUpon>FormSolicitarID.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogicaAccesoDatos\CarteleriaContext.cs" />
     <Compile Include="Controladores\ControladorBanner.cs" />
     <Compile Include="Controladores\ControladorCampaña.cs" />
@@ -106,6 +166,36 @@
     <Compile Include="RSS\RSSItem.cs" />
     <Compile Include="LogicaAccesoDatos\UnidadDeTrabajo.cs" />
     <Compile Include="Extras\Utilidades.cs" />
+    <EmbeddedResource Include="GUI\FormAdministrar.resx">
+      <DependentUpon>FormAdministrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormAgregarModificarBanner.resx">
+      <DependentUpon>FormAgregarModificarBanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormAgregarModificarCampaña.resx">
+      <DependentUpon>FormAgregarModificarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormBuscar.resx">
+      <DependentUpon>FormBuscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormEditarUsuario.resx">
+      <DependentUpon>FormEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormGestionarRSS.resx">
+      <DependentUpon>FormGestionarRSS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormOlvideContraseña.resx">
+      <DependentUpon>FormOlvideContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormRegistro.resx">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormSolicitarID.resx">
+      <DependentUpon>FormSolicitarID.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\GaleriaImagenes.resx">
       <DependentUpon>GaleriaImagenes.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Referencias.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Imagenes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-﻿namespace ComponenteNuevo
+﻿namespace CarteleriaDigital.GUI
 {
     partial class GaleriaImagenes
     {

@@ -243,6 +243,36 @@ namespace CarteleriaDigital.Extras
         {
             Utilidades.SendMessage(pTBox.Handle, EM_SETCUEBANNER, 0, pCadena);
         }
+
+        /// <summary>
+        /// Permite colocarle a todos los textbox de un form su texto como placeholder y vaciarlos
+        /// </summary>
+        /// <param name="pForm">Formulario a aplicar</param>
+        public static void AllTextBoxPlaceHolder(Form pForm)
+        {
+            foreach (Control ctrl in pForm.Controls)
+            {
+                if (ctrl is Panel)
+                {
+                    foreach (Control subCtrl in ((Panel)ctrl).Controls)
+                    {
+                        if (subCtrl is TextBox)
+                        {
+                            Utilidades.PlaceHolder((TextBox)subCtrl, subCtrl.Text);
+                            subCtrl.Text = "";
+                        }
+                    }
+                }
+                else
+                {
+                    if (ctrl is TextBox)
+                    {
+                        Utilidades.PlaceHolder((TextBox)ctrl, ctrl.Text);
+                        ctrl.Text = "";
+                    }
+                }
+            }
+        }
         //----------------------------------Place Holder FIN--------------------------------------
 
         /// <summary>
@@ -300,6 +330,7 @@ namespace CarteleriaDigital.Extras
             }
             catch (Exception ex)
             {
+
                 return false;
             }
         }

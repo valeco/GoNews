@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
 //Basado en el Control de Usuarios --> http://www.authorcode.com/image-gallery-in-your-windows-applciation-in-c/
-namespace ComponenteNuevo
+namespace CarteleriaDigital.GUI
 {
     public partial class GaleriaImagenes : UserControl
     {
@@ -240,5 +241,6 @@ namespace ComponenteNuevo
                 goto Again;
             }
         }
+
     }
 }
