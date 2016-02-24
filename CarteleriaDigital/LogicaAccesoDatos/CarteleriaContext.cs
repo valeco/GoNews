@@ -16,5 +16,11 @@ namespace CarteleriaDigital.LogicaAccesoDatos
         public DbSet<BannerTXT> BannersTXTs { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Imagen> Imagens { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add( new BannerRSS.BannerRSSConfiguration() );
+            modelBuilder.Configurations.Add( new Usuario.UsuarioConfiguration() );
+        }
     }
 }

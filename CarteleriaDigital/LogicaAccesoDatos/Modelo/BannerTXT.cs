@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 {
-    public class BannerTXT :IBanner
+    public class BannerTXT : IBanner
     {
         public int BannerTXTId { get; set; }
         public string Texto { get; set; }

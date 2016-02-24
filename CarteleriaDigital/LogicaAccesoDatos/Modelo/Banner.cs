@@ -8,11 +8,11 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 {
     public enum TipoBanner { RSS , TXT }
 
-    public class Banner: Publicidad
+    public class Banner : Publicidad
     {
         public int BannerId { get; set; }
-        private TipoBanner DeTipo { get; set; }
-        private IBanner BannerObjeto { get; set; }
+        private TipoBanner iTipo { get; set; }
+        private IBanner iFuente { get; set; }
 
         /// <summary>
         /// Genera una instancia de Banner
@@ -21,8 +21,8 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <param name="pTipo">Tipo del Banner</param>
         public Banner(IBanner pBanner, TipoBanner pTipo)
         {
-            this.DeTipo = pTipo;
-            this.BannerObjeto = pBanner;
+            this.iTipo = pTipo;
+            this.iFuente = pBanner;
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <param name="pTipo">Tipo del Banner</param>
         public void CambiarTipo(IBanner pBanner, TipoBanner pTipo)
         {
-            this.DeTipo = pTipo;
-            this.BannerObjeto = pBanner;
+            this.iTipo = pTipo;
+            this.iFuente = pBanner;
         }
 
         /// <summary>
@@ -42,13 +42,18 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <returns></returns>
         public string ProximoTexto()
         {
-            return this.BannerObjeto.Proximo();
+            return this.Fuente.Proximo();
         }
 
         /// <summary>
         /// Retorna el tipo del que es el banner
         /// </summary>
         /// <returns>Enumerado TipoBanner</returns>
-        public TipoBanner Tipo { get { return this.DeTipo; } }
+        public TipoBanner Tipo { get { return this.iTipo; } }
+
+        /// <summary>
+        /// Retorna la fuente del banner, es decir, el BannerTXT o el BannerRSS correspondiente.
+        /// </summary>
+        public IBanner Fuente { get { return this.iFuente; } }
     }
 }

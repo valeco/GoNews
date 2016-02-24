@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CarteleriaDigital.RSS;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 
 namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 {
@@ -20,8 +21,18 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         [NotMapped]
         public Uri URL
         {
-            get { return (URLtexto == String.Empty) ? null : new Uri(URLtexto); }
+            get { return (URLtexto == null) ? null : new Uri(URLtexto); }
             set { URLtexto = value.ToString(); }
+        }
+
+        //http://blog.oneunicorn.com/2012/03/26/code-first-data-annotations-on-non-public-properties/
+        //Es necesario para poder mapear una propiedad private
+        public class BannerRSSConfiguration : EntityTypeConfiguration<BannerRSS>
+        {
+            public BannerRSSConfiguration()
+            {
+                Property(brss => brss.URLtexto);
+            }
         }
 
         /// <summary>
@@ -46,6 +57,15 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
                                                             this.iListaItems.ElementAt(iContador);
 
             return "[" + mItem.Fecha + "] " + mItem.Titulo + ": " + mItem.Descripcion;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Descripcion;
         }
     }
 }
