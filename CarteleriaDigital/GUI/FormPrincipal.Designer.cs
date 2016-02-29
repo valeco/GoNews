@@ -110,6 +110,7 @@
             // 
             this.txtContraseña.Location = new System.Drawing.Point(10, 38);
             this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '•';
             this.txtContraseña.Size = new System.Drawing.Size(100, 20);
             this.txtContraseña.TabIndex = 3;
             this.txtContraseña.Text = "Contraseña";
@@ -188,6 +189,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnRecuperar = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lbTitulo = new System.Windows.Forms.Label();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
@@ -40,15 +40,16 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnRegistrar
+            // btnRecuperar
             // 
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.Location = new System.Drawing.Point(148, 134);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(110, 30);
-            this.btnRegistrar.TabIndex = 21;
-            this.btnRegistrar.Text = "RECUPERAR";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRecuperar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecuperar.Location = new System.Drawing.Point(148, 134);
+            this.btnRecuperar.Name = "btnRecuperar";
+            this.btnRecuperar.Size = new System.Drawing.Size(110, 30);
+            this.btnRecuperar.TabIndex = 21;
+            this.btnRecuperar.Text = "RECUPERAR";
+            this.btnRecuperar.UseVisualStyleBackColor = true;
+            this.btnRecuperar.Click += new System.EventHandler(this.btnRecuperar_Click);
             // 
             // txtEmail
             // 
@@ -119,7 +120,7 @@
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(272, 176);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnRegistrar);
+            this.Controls.Add(this.btnRecuperar);
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.pboxMinimizar);
             this.Controls.Add(this.pboxCerrar);
@@ -128,6 +129,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recuperar contraseña";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormOlvideContraseña_FormClosing);
             this.Load += new System.EventHandler(this.FormOlvideContraseña_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
@@ -140,7 +142,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Button btnRecuperar;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.TextBox txtNombreUsuario;

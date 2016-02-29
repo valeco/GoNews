@@ -361,6 +361,7 @@
             this.Name = "FormAdministrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAdministrar_FormClosing);
             this.Load += new System.EventHandler(this.FormAdministrar_Load);
             this.panelCampaña.ResumeLayout(false);
             this.panelCampaña.PerformLayout();

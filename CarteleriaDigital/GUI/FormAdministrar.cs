@@ -8,18 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarteleriaDigital.Extras;
+using CarteleriaDigital.Controladores;
+using CarteleriaDigital.LogicaAccesoDatos.Modelo;
 
 namespace CarteleriaDigital.GUI
 {
     public partial class FormAdministrar : Form
     {
         EasyLog iLogger;
+        ControladorUsuario iCtrlUser;
 
         public FormAdministrar( EasyLog pLogger )
         {
             InitializeComponent();
             this.iLogger = pLogger;
+            this.iCtrlUser = ControladorUsuario.Instancia;
             iLogger.Info("Inicializando form Administrar");
+        }
+
+        private void FormAdministrar_Load(object sender, EventArgs e)
+        {
+            lbNombreCompleto.Text = iCtrlUser.UsuarioLogueado.NombreCompleto;
+            lbEmail.Text = iCtrlUser.UsuarioLogueado.Email.Address;
+            iLogger.Info("Load finalizado form Administrar");
         }
 
         private void pboxMinimizar_Click(object sender, EventArgs e)
@@ -48,14 +59,17 @@ namespace CarteleriaDigital.GUI
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-            var mForm = new FormEditarUsuario();
+            iLogger.Info("Abriendo form Editar User");
+            var mForm = new FormEditarUsuario(iLogger);
 
             mForm.ShowDialog();
+            lbNombreCompleto.Text = iCtrlUser.UsuarioLogueado.NombreCompleto;
+            lbEmail.Text = iCtrlUser.UsuarioLogueado.Email.Address;
         }
 
         private void btnAgregarBanner_Click(object sender, EventArgs e)
         {
-            var mForm = new FormAgregarModificarBanner();
+            var mForm = new FormAgregarModificarBanner(this.iLogger, null);
 
             mForm.ShowDialog();
         }
@@ -103,9 +117,11 @@ namespace CarteleriaDigital.GUI
             mForm.ShowDialog();
         }
 
-        private void FormAdministrar_Load(object sender, EventArgs e)
+        private void FormAdministrar_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            iCtrlUser.LogOut();
+            iLogger.Info("Cerrando form Administrar");
+            iLogger.Save();
         }
     }
 }

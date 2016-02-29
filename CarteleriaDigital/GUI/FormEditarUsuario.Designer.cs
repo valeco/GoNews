@@ -33,13 +33,13 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
-            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnCambiar = new System.Windows.Forms.Button();
             this.lbTitulo = new System.Windows.Forms.Label();
             this.pboxMinimizar = new System.Windows.Forms.PictureBox();
             this.pboxCerrar = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbCambiarContraseña = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNuevaContraseñaRepetir = new System.Windows.Forms.TextBox();
             this.txtNuevaContraseña = new System.Windows.Forms.TextBox();
             this.panelDatosUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
@@ -77,7 +77,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(183, 26);
             this.txtEmail.TabIndex = 16;
-            this.txtEmail.Text = "rubenrada@gmail.com";
+            this.txtEmail.Text = "nombre@correo.com";
             // 
             // txtNombreCompleto
             // 
@@ -87,7 +87,7 @@
             this.txtNombreCompleto.Name = "txtNombreCompleto";
             this.txtNombreCompleto.Size = new System.Drawing.Size(183, 26);
             this.txtNombreCompleto.TabIndex = 10;
-            this.txtNombreCompleto.Text = "Ruben Rada";
+            this.txtNombreCompleto.Text = "Nombre Completo";
             // 
             // txtNombreUsuario
             // 
@@ -96,18 +96,19 @@
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(183, 26);
             this.txtNombreUsuario.TabIndex = 12;
-            this.txtNombreUsuario.Text = "rubenrada";
+            this.txtNombreUsuario.Text = "Nombre Usuario";
             // 
-            // btnRegistrar
+            // btnCambiar
             // 
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRegistrar.Location = new System.Drawing.Point(122, 308);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(100, 30);
-            this.btnRegistrar.TabIndex = 22;
-            this.btnRegistrar.Text = "ACEPTAR";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnCambiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCambiar.Location = new System.Drawing.Point(122, 308);
+            this.btnCambiar.Name = "btnCambiar";
+            this.btnCambiar.Size = new System.Drawing.Size(100, 30);
+            this.btnCambiar.TabIndex = 22;
+            this.btnCambiar.Text = "ACEPTAR";
+            this.btnCambiar.UseVisualStyleBackColor = true;
+            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
             // 
             // lbTitulo
             // 
@@ -146,7 +147,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panel1.Controls.Add(this.lbCambiarContraseña);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtNuevaContraseñaRepetir);
             this.panel1.Controls.Add(this.txtNuevaContraseña);
             this.panel1.Location = new System.Drawing.Point(12, 192);
             this.panel1.Name = "panel1";
@@ -164,20 +165,22 @@
             this.lbCambiarContraseña.TabIndex = 23;
             this.lbCambiarContraseña.Text = "Cambiar contraseña:";
             // 
-            // textBox4
+            // txtNuevaContraseñaRepetir
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(13, 70);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(183, 26);
-            this.textBox4.TabIndex = 14;
-            this.textBox4.Text = "Reescribir nueva contraseña";
+            this.txtNuevaContraseñaRepetir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNuevaContraseñaRepetir.Location = new System.Drawing.Point(13, 70);
+            this.txtNuevaContraseñaRepetir.Name = "txtNuevaContraseñaRepetir";
+            this.txtNuevaContraseñaRepetir.PasswordChar = '•';
+            this.txtNuevaContraseñaRepetir.Size = new System.Drawing.Size(183, 26);
+            this.txtNuevaContraseñaRepetir.TabIndex = 14;
+            this.txtNuevaContraseñaRepetir.Text = "Repetir Nueva contraseña";
             // 
             // txtNuevaContraseña
             // 
             this.txtNuevaContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNuevaContraseña.Location = new System.Drawing.Point(13, 38);
             this.txtNuevaContraseña.Name = "txtNuevaContraseña";
+            this.txtNuevaContraseña.PasswordChar = '•';
             this.txtNuevaContraseña.Size = new System.Drawing.Size(183, 26);
             this.txtNuevaContraseña.TabIndex = 13;
             this.txtNuevaContraseña.Text = "Nueva contraseña";
@@ -190,13 +193,14 @@
             this.ClientSize = new System.Drawing.Size(234, 348);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelDatosUsuario);
-            this.Controls.Add(this.btnRegistrar);
+            this.Controls.Add(this.btnCambiar);
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.pboxMinimizar);
             this.Controls.Add(this.pboxCerrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEditarUsuario";
             this.Text = "Editar usuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEditarUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FormEditarUsuario_Load);
             this.panelDatosUsuario.ResumeLayout(false);
             this.panelDatosUsuario.PerformLayout();
@@ -215,12 +219,12 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtNombreCompleto;
         private System.Windows.Forms.TextBox txtNombreUsuario;
-        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Button btnCambiar;
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.PictureBox pboxMinimizar;
         private System.Windows.Forms.PictureBox pboxCerrar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNuevaContraseñaRepetir;
         private System.Windows.Forms.TextBox txtNuevaContraseña;
         private System.Windows.Forms.Label lbCambiarContraseña;
         private System.Windows.Forms.Label lbDatosUsuario;

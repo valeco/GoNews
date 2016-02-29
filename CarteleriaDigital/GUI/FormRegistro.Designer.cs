@@ -78,6 +78,7 @@
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.Location = new System.Drawing.Point(13, 77);
             this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '•';
             this.txtContraseña.Size = new System.Drawing.Size(183, 26);
             this.txtContraseña.TabIndex = 13;
             this.txtContraseña.Text = "Contraseña";
@@ -87,9 +88,10 @@
             this.txtRepetirContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRepetirContraseña.Location = new System.Drawing.Point(13, 109);
             this.txtRepetirContraseña.Name = "txtRepetirContraseña";
+            this.txtRepetirContraseña.PasswordChar = '•';
             this.txtRepetirContraseña.Size = new System.Drawing.Size(183, 26);
             this.txtRepetirContraseña.TabIndex = 14;
-            this.txtRepetirContraseña.Text = "Reescribir contraseña";
+            this.txtRepetirContraseña.Text = "Repetir contraseña";
             // 
             // txtEmail
             // 
@@ -163,6 +165,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRegistro_FormClosing);
             this.Load += new System.EventHandler(this.FormRegistro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
