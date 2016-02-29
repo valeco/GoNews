@@ -226,7 +226,7 @@ namespace CarteleriaDigital.Extras
         /// <returns>Resultado del dialogo</returns>
         public static DialogResult MensajeExito(Form pFrmResponsable, string pTitulo, string pDescripcion, bool pOkOnly = true)
         {
-            return MessageBox.Show(pFrmResponsable, pDescripcion, pTitulo, (pOkOnly ? MessageBoxButtons.OK : MessageBoxButtons.OKCancel), MessageBoxIcon.Warning);
+            return MessageBox.Show(pFrmResponsable, pDescripcion, pTitulo, (pOkOnly ? MessageBoxButtons.OK : MessageBoxButtons.OKCancel), MessageBoxIcon.Information);
         }
 
         //----------------------------------Place Holder INICIO--------------------------------------
