@@ -108,6 +108,7 @@
             this.btnEliminarRSS.TabIndex = 20;
             this.ttipBotones.SetToolTip(this.btnEliminarRSS, "Eliminar fuente RSS");
             this.btnEliminarRSS.UseVisualStyleBackColor = true;
+            this.btnEliminarRSS.Click += new System.EventHandler(this.btnEliminarRSS_Click);
             // 
             // btnAgregarRSS
             // 
@@ -141,10 +142,13 @@
             this.dgridFuentesRSS.AllowUserToAddRows = false;
             this.dgridFuentesRSS.AllowUserToDeleteRows = false;
             this.dgridFuentesRSS.AllowUserToOrderColumns = true;
+            this.dgridFuentesRSS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgridFuentesRSS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgridFuentesRSS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgridFuentesRSS.Location = new System.Drawing.Point(13, 45);
             this.dgridFuentesRSS.MultiSelect = false;
             this.dgridFuentesRSS.Name = "dgridFuentesRSS";
+            this.dgridFuentesRSS.ReadOnly = true;
             this.dgridFuentesRSS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgridFuentesRSS.Size = new System.Drawing.Size(418, 133);
             this.dgridFuentesRSS.TabIndex = 1;
@@ -253,6 +257,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormGestionarRSS";
             this.Text = "FormAdministrarRSS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGestionarRSS_FormClosing);
             this.Load += new System.EventHandler(this.FormGestionarRSS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();

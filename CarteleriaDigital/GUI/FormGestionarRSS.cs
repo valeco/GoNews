@@ -11,6 +11,8 @@ using CarteleriaDigital.Extras;
 using CarteleriaDigital.Controladores;
 using CarteleriaDigital.LogicaAccesoDatos.Modelo;
 
+using System.ComponentModel.DataAnnotations;
+
 namespace CarteleriaDigital.GUI
 {
     public partial class FormGestionarRSS : Form
@@ -18,25 +20,105 @@ namespace CarteleriaDigital.GUI
         EasyLog iLogger;
         ControladorBannerRSS iCtrlRSS = new ControladorBannerRSS();
         BannerRSS iBRss;
+        bool iEventoAgregar;
 
         public FormGestionarRSS( EasyLog pLogger)
         {
             InitializeComponent();
             this.iLogger = pLogger;
-            iLogger.Info("Inicializando form GertionRSS");
+            iLogger.Info("Inicializando form Gertion RSS");
         }
 
         private void FormGestionarRSS_Load(object sender, EventArgs e)
         {
             Utilidades.AllTextBoxPlaceHolder(this);
             Toggle(); // Para ocultar el panel de agregar/modificar fuentes RSS.
+
+            //Configurando grilla
+            dgridFuentesRSS.RowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dgridFuentesRSS.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+            dgridFuentesRSS.Columns["URLtexto"].Visible = false;
+
             dgridFuentesRSS.DataSource = iCtrlRSS.ObtenerTodos();
+
             iLogger.Info("Load finalizado de form Gestionar RSS");
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Toggle();
+            Uri mUrl;
+            bool mUrlValido = Uri.TryCreate(txtURL.Text, UriKind.Absolute, out mUrl);
+
+            if (txtDescripcion.Text == "")
+            {
+                Utilidades.MensajeError(this, "ATENCION", "La descripcion no debe estar vacia");
+                txtDescripcion.Focus();
+            }
+            else if (txtURL.Text == "")
+            {
+                Utilidades.MensajeError(this, "ATENCION", "El URL no debe estar vacio");
+                txtURL.Focus();
+            }
+            else if (!mUrlValido)
+            {
+                Utilidades.MensajeError(this, "ATENCION", "El URL debe tener un formato valido");
+                txtURL.Focus();
+            }
+            else if ( (iEventoAgregar && iCtrlRSS.ExisteUrl(mUrl)) || (!iEventoAgregar && iBRss.URL != mUrl && iCtrlRSS.ExisteUrl(mUrl)) )
+            {
+                Utilidades.MensajeError(this, "ATENCION", "El URL indicado ya esta siendo usado");
+                string mBusquedaAnterior = txtBuscar.Text;
+                txtBuscar.Text = mUrl.AbsoluteUri;
+                btnBuscar_Click(null, null);
+                txtBuscar.Text = mBusquedaAnterior;
+            }
+            else
+            {
+                try
+                {
+                    if (RSS.RSS.Feed(mUrl).Count() == 0)
+                    {
+                        Utilidades.MensajeError(this, "ATENCION", "El el url indicado NO devuelve informacion");
+                        txtURL.Focus();
+                    }
+                    else
+                    {
+                        iLogger.Info("Comienza " + (iEventoAgregar ? "insercion" : "modificacion") + " RSS");
+                        iBRss.Descripcion = txtDescripcion.Text;
+                        iBRss.URL = mUrl;
+                        if (iEventoAgregar)//Agregar RSS
+                            iCtrlRSS.Insertar(iBRss);
+                        else//Modificar RSS
+                            iCtrlRSS.Modificar(iBRss);
+                        btnBuscar_Click(null, null);
+                        Toggle();//Ocultamos panel
+                        iLogger.Info("Finaliza " + (iEventoAgregar ? "insercion" : "modificacion") + " RSS");
+                    }
+                }
+                catch (NotInternetAvailable ex)
+                {
+                    iLogger.Debug(mUrl.AbsolutePath + " " + ex.Message);
+                    Utilidades.MensajeAdvertencia(this, "ATENCION", "No es posible verificar que el url indicado devuelve informacion,\nal NO tener acceso a Internet.");
+                }
+                catch (System.Xml.XmlException exXML)
+                {
+                    iLogger.Debug(mUrl.AbsolutePath + " " + exXML.Message);
+                    Utilidades.MensajeAdvertencia(this, "ATENCION", "El url brindado no devuelve informacion en el formato esperado (XML).");
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Source == "System" && ex.Message == "The remote server returned an error: (404) Not Found.")
+                    {
+                        iLogger.Debug(mUrl.AbsolutePath + " " + ex.Message);
+                        Utilidades.MensajeAdvertencia(this, "ATENCION", "El url brindado no existe.");
+                    }
+                    else
+                    {
+                        iLogger.Error(ex.Source + ": " + ex.Message);
+                        Utilidades.MensajeError(this, "ERROR", "Sucedió algo inesperado, reintente luego la acción.");
+                    }
+                }
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,23 +136,25 @@ namespace CarteleriaDigital.GUI
             Close();
         }
 
-        // REVISAR: AGREGAR EL PARAMETRO DE LA FUENTE RSS
-        private void Toggle(String pTitulo = "", BannerRSS pBRss)
-        {
-            lbAgregarModificar.Text = pTitulo + " fuente RSS";
-
+        /// <summary>
+        /// Muestra/Oculta panel de insercion-modificacion de BannerRSS
+        /// </summary>
+        /// <param name="pTitulo">Titulo del panel</param>
+        /// <param name="pBRss">Objeto para agregar o modificar</param>
+        private void Toggle(String pTitulo = "", BannerRSS pBRss = null)
+        {       
             if (!panelAgregar.Visible)
             {
+                lbAgregarModificar.Text = pTitulo + " fuente RSS";
                 this.Size = new Size(523, 340);
                 panelAgregar.Visible = true;
                 btnAgregarRSS.Enabled = false;
                 btnModificarRSS.Enabled = false;
                 btnEliminarRSS.Enabled = false;
                 this.iBRss = pBRss;
-                if(pBRss != null)
-                {
-
-                }
+                txtDescripcion.Text = pBRss.Descripcion;
+                txtURL.Text = (pBRss.URL==null ? "": pBRss.URL.AbsoluteUri.ToString() );
+                panelAgregar.Focus();
             }
             else
             {
@@ -87,7 +171,8 @@ namespace CarteleriaDigital.GUI
         private void btnAgregarRSS_Click(object sender, EventArgs e)
         {
             iLogger.Info("Inicia insercion RSS");
-            Toggle("Agregar");
+            this.iEventoAgregar = true;//Indica que se desea agregar
+            Toggle("Agregar",new BannerRSS());
         }
 
         private void btnModificarRSS_Click(object sender, EventArgs e)
@@ -95,8 +180,31 @@ namespace CarteleriaDigital.GUI
             if (dgridFuentesRSS.SelectedRows.Count != 0)
             {
                 iLogger.Info("Inicia modificacion RSS");
-                Toggle("Modificar",(BannerRSS)dgridFuentesRSS.SelectedRows[0].DataBoundItem);
-                //dgridFuentesRSS.SelectedRows[0].DataBoundItem;
+                this.iEventoAgregar = false;//Indica que se desea modificar
+                Toggle("Modificar", (BannerRSS)dgridFuentesRSS.SelectedRows[0].DataBoundItem);
+            }
+        }
+
+        private void btnEliminarRSS_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgridFuentesRSS.SelectedRows.Count != 0)
+                {
+                    iBRss = (BannerRSS)dgridFuentesRSS.SelectedRows[0].DataBoundItem;
+                    if (Utilidades.MensajeAdvertencia(this, "ELIMINAR FUENTE RSS", "¿ Desea eliminar la fuente: \n" + iBRss.Descripcion + " -> " +
+                                                        iBRss.URL.AbsoluteUri + " ?", false) == DialogResult.OK)
+                    {
+                        iLogger.Info("Inicia borrado RSS");
+                        iCtrlRSS.Eliminar(iBRss);
+                        this.btnBuscar_Click(null, null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                iLogger.Error(ex.Source + ": " + ex.Message);
+                Utilidades.MensajeError(this, "ERROR", "Sucedio un error inesperado, reintente luego la accion.");
             }
         }
 
@@ -109,7 +217,7 @@ namespace CarteleriaDigital.GUI
                 List<BannerRSS> mConsulta;
                 if (mParametro != "")
                 {
-                    mConsulta = iCtrlRSS.Queryable.Where(brss => (brss.Descripcion.Contains(mParametro) || brss.URL.AbsoluteUri.Contains(mParametro))).ToList<BannerRSS>();
+                    mConsulta = iCtrlRSS.ObtenerPorSimilitudDescripcionOUrl(mParametro); 
                 }
                 else
                 {
@@ -121,9 +229,14 @@ namespace CarteleriaDigital.GUI
             catch (Exception ex)
             {
                 iLogger.Error(ex.Source + ": " + ex.Message);
-            }
-           
+                Utilidades.MensajeError(this, "ERROR", "Sucedio un error inesperado, reintente luego la accion.");
+            }           
         }
 
+        private void FormGestionarRSS_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            iLogger.Info("Cerrando form Gestionar RSS");
+            iLogger.Save();
+        }
     }
 }
