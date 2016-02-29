@@ -13,14 +13,6 @@ namespace CarteleriaDigital.Controladores
         private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
 
         /// <summary>
-        /// Devuelve objeto de consulta
-        /// </summary>
-        public IQueryable<BannerRSS> Queryable
-        {
-            get { return iUnidadDeTrabajo.RepositorioBannerRSS.Queryable; }
-        }
-
-        /// <summary>
         ///     Inserta un banner RSS en el repositorio.
         /// </summary>
         /// <param name="pBanner">Banner RSS a insertar.</param>
@@ -58,6 +50,26 @@ namespace CarteleriaDigital.Controladores
         public List<BannerRSS> ObtenerTodos()
         {
             return iUnidadDeTrabajo.RepositorioBannerRSS.Queryable.ToList();
+        }
+
+        /// <summary>
+        /// Obtiene todos los BannerRSS que contienen en su Descripcion o Url la cadena indicada
+        /// </summary>
+        /// <param name="pCadena">Cadena a contener</param>
+        /// <returns>Lista de BannerRSS</returns>
+        public List<BannerRSS> ObtenerPorSimilitudDescripcionOUrl(string pCadena)
+        {
+            return iUnidadDeTrabajo.RepositorioBannerRSS.Queryable.Where(brss => (brss.Descripcion.Contains(pCadena) == true || brss.URLtexto.Contains(pCadena) == true)).ToList<BannerRSS>();
+        }
+
+        /// <summary>
+        /// Obtiene la existencia del Url dentro de los BannerRSS ya existentes
+        /// </summary>
+        /// <param name="pUrl">Url a buscar</param>
+        /// <returns>Un booleano</returns>
+        public bool ExisteUrl(Uri pUrl)
+        {
+            return iUnidadDeTrabajo.RepositorioBannerRSS.Queryable.Where(brss => (brss.URLtexto == pUrl.AbsoluteUri)).Count() != 0;
         }
     }
 }

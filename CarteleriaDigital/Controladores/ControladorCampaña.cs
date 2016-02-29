@@ -5,20 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using CarteleriaDigital.LogicaAccesoDatos;
 using CarteleriaDigital.LogicaAccesoDatos.Modelo;
+using CarteleriaDigital.Extras;
+
+using System.Windows;
 
 namespace CarteleriaDigital.Controladores
 {
     public class ControladorCampaña
     {
         private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
-
-        /// <summary>
-        /// Devuelve objeto de consulta
-        /// </summary>
-        public IQueryable<Campaña> Queryable
-        {
-            get { return iUnidadDeTrabajo.RepositorioCampaña.Queryable; }
-        }
 
         /// <summary>
         ///     Inserta una campaña en el repositorio.
@@ -75,33 +70,70 @@ namespace CarteleriaDigital.Controladores
         /// </summary>
         /// <param name="pCampaña">Campaña nueva</param>
         /// <returns>Existencia o no de seperposicion (bool)</returns>
-        public bool ExiteCampañaEnHorario(Campaña pCampaña)
+        public bool ExisteCampañaEnHorario(Campaña pCampaña)
         {
-            DateTime mFIni = pCampaña.FechaInicio();
-            DateTime mFFin = pCampaña.FechaFin();
-            TimeSpan mHIni = pCampaña.HoraInicio();
-            TimeSpan mHFin = pCampaña.HoraFin();
+            DateTime mFIni = pCampaña.FechaInicio;
+            DateTime mFFin = pCampaña.FechaFin;
+            TimeSpan mHIni = pCampaña.HoraInicio;
+            TimeSpan mHFin = pCampaña.HoraFin;
 
             var mConsulta = iUnidadDeTrabajo.RepositorioCampaña.Queryable.Where(c => (
-                (   
-                    (mFIni >= c.FechaInicio() && mFFin <= c.FechaFin()) || // Intervalo dentro del otro (includio)
-                    (mFIni < c.FechaInicio() && mFFin <= c.FechaFin()) || // Intervalo que arranca antes y termina dentro
-                    (mFIni > c.FechaInicio() && mFIni <= c.FechaFin() && mFFin > c.FechaFin()) || // Intervalo que arranque dentro y termine por fuera
-                    (mFIni < c.FechaInicio() && mFFin > c.FechaFin()) // Intervalo que contenga al otro
-                ) 
-                    && 
                 (
-                    (mHIni >= c.HoraInicio() && mHFin <= c.HoraFin()) || // Intervalo dentro del otro (includio)
-                    (mHIni < c.HoraInicio() && mHFin <= c.HoraFin()) || // Intervalo que arranca antes y termina dentro
-                    (mHIni > c.HoraInicio() && mHIni <= c.HoraFin() && mHFin > c.HoraFin()) || // Intervalo que arranque dentro y termine por fuera
-                    (mHIni < c.HoraInicio() && mHFin > c.HoraFin()) // Intervalo que contenga al otro 
+                    (mFIni >= c.FechaInicio && mFFin <= c.FechaFin) || // Intervalo dentro del otro (includio)
+                    (mFIni < c.FechaInicio && mFFin <= c.FechaFin) || // Intervalo que arranca antes y termina dentro
+                    (mFIni > c.FechaInicio && mFIni <= c.FechaFin && mFFin > c.FechaFin) || // Intervalo que arranque dentro y termine por fuera
+                    (mFIni < c.FechaInicio && mFFin > c.FechaFin) // Intervalo que contenga al otro
                 )
                     &&
-                (c.Activo == true) //HAY QUE PREGUNTARLO? REVISAR puede que si el banner existe pero esta desactivado no haya drama en que se
-                                    //genere uno en el mismo horario, el drama que si se activa hay que considerar solapamiento al activar
+                (
+                    (mHIni >= c.HoraInicio && mHFin <= c.HoraFin) || // Intervalo dentro del otro (includio)
+                    (mHIni < c.HoraInicio && mHFin <= c.HoraFin) || // Intervalo que arranca antes y termina dentro
+                    (mHIni > c.HoraInicio && mHIni <= c.HoraFin && mHFin > c.HoraFin) || // Intervalo que arranque dentro y termine por fuera
+                    (mHIni < c.HoraInicio && mHFin > c.HoraFin) // Intervalo que contenga al otro 
+                )
+                    &&
+                (c.Activo == true)
             ));
 
             return mConsulta.Count() > 0;
+        }
+
+        /// <summary>
+        /// Devuelve la campaña que debe mostrarse en la fecha/hora indicada
+        /// </summary>
+        /// <param name="pFechaHora">Fecha de interes</param>
+        /// <returns>Una campaña</returns>
+        public Campaña ObtenerCampaña(DateTime pFechaHora)
+        {
+            //Valores para inicializar la campaña auxiliar
+            DateTime mFechaFin = pFechaHora.AddMinutes(1);
+            TimeSpan mHoraInicio = new TimeSpan(pFechaHora.Hour, pFechaHora.Minute, pFechaHora.Second);
+            TimeSpan mHoraFin = new TimeSpan(mFechaFin.Hour, mFechaFin.Minute, mFechaFin.Second);
+
+            Campaña mCampañaAuxiliar = new Campaña
+            {
+                FechaInicio = pFechaHora.Date,
+                HoraInicio = mHoraInicio,
+                FechaFin = mFechaFin.Date,
+                HoraFin = mHoraFin,
+                Intervalo = 0,
+                Nombre = "GO NEWS",
+                ListaImagenes = new List<Imagen>()//Se inicializa vacia, ya q la clase lo reconoce y devuelve una imagen por defecto.
+            };
+
+            //Valores utilizados para la busqueda
+            DateTime mDia = mCampañaAuxiliar.FechaInicio;
+            TimeSpan mHora = mCampañaAuxiliar.HoraInicio;
+
+            var mConsulta = iUnidadDeTrabajo.RepositorioCampaña.Queryable.Where(c => (
+                (c.Activo == true)
+                &&
+                (mDia >= c.FechaInicio && mDia <= c.FechaFin)
+                &&
+                (mHora >= c.HoraInicio && mHora <= c.HoraFin)
+            ));
+
+            return mConsulta.Count() == 1 ? mConsulta.First() : mCampañaAuxiliar;
         }
     }
 }

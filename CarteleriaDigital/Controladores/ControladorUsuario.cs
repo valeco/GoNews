@@ -10,6 +10,25 @@ namespace CarteleriaDigital.Controladores
 {
     public class ControladorUsuario
     {
+        #region Patron_Singleton
+        private static ControladorUsuario iInstancia;
+
+        private ControladorUsuario() { }
+
+        /// <summary>
+        /// Obtiene la instancia del controlador (Singleton)
+        /// </summary>
+        public static ControladorUsuario Instancia
+        {
+            get
+            {
+                if (iInstancia == null)
+                    iInstancia = new ControladorUsuario();
+                return iInstancia;
+            }
+        }
+        #endregion
+
         // Usuario logeado
         private Usuario iUsuario;
         private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
@@ -25,11 +44,31 @@ namespace CarteleriaDigital.Controladores
         }
 
         /// <summary>
+        ///     Modificar un usuario en el repositorio.
+        /// </summary>
+        /// <param name="pUsuario">Usuario a actualizar</param>
+        public void Modificar(Usuario pUsuario)
+        {
+            iUnidadDeTrabajo.RepositorioUsuario.Modificar(pUsuario);
+            iUnidadDeTrabajo.Guardar();
+        }
+
+        /// <summary>
+        ///     Eliminar un usuario en el repositorio.
+        /// </summary>
+        /// <param name="pUsuario">Usuario para borrar</param>
+        public void Eliminar(Usuario pUsuario)
+        {
+            iUnidadDeTrabajo.RepositorioUsuario.Eliminar(pUsuario);
+            iUnidadDeTrabajo.Guardar();
+        }
+
+        /// <summary>
         /// Permite loguear el usurio
         /// </summary>
         /// <param name="pNombreUsuario">nombre de usuario</param>
         /// <param name="pContraseña"></param>
-        /// <returns></returns>
+        /// <returns>Valor de verdad respecto al exito del log in</returns>
         public bool Logear(String pNombreUsuario, String pContraseña)
         {
             var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => ((u.NombreUsuario == pNombreUsuario) && (u.Contraseña == pContraseña)));
@@ -54,25 +93,55 @@ namespace CarteleriaDigital.Controladores
         }
 
         /// <summary>
-        /// Obtiene si existe o no un usuario con este correo
+        /// Obtiene un usuario a partir de un Nombre de Usuario
         /// </summary>
-        /// <param name="pCorreo">Correo que se desea verificar</param>
-        /// <returns></returns>
-        public bool ExisteCorreoUsuario(System.Net.Mail.MailAddress pCorreo)
+        /// <param name="pNombre"></param>
+        /// <returns>Usuario o nulo</returns>
+        public Usuario ObtenerPorNombreUsuario(string pNombre)
         {
-            var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => (u.Email== pCorreo.Address ));
-            return mConsulta.Count() == 1;
+            var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => (u.NombreUsuario == pNombre));
+            return (mConsulta.Count() == 0 ? null : mConsulta.First<Usuario>());
         }
 
         /// <summary>
         /// Obtiene si existe o no un usuario con este nombre de usuario
         /// </summary>
-        /// <param name="pCorreo">Correo que se desea verificar</param>
-        /// <returns></returns>
+        /// <param name="pNombre">Nombre de Usuario que se desea verificar</param>
+        /// <returns>Valor de verdad respecto a la existencia</returns>
         public bool ExisteNombreUsuario(string pNombre)
         {
-            var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => (u.NombreUsuario == pNombre));
+            return !(this.ObtenerPorNombreUsuario(pNombre) == null);
+        }
+
+        /// <summary>
+        /// Obtiene si existe o no un usuario con este correo
+        /// </summary>
+        /// <param name="pCorreo">Correo que se desea verificar</param>
+        /// <returns>Valor de verdad respecto a la existencia</returns>
+        public bool ExisteCorreoUsuario(System.Net.Mail.MailAddress pCorreo)
+        {
+            var mConsulta = iUnidadDeTrabajo.RepositorioUsuario.Queryable.Where(u => (u.EmailTexto == pCorreo.Address));
             return mConsulta.Count() == 1;
+        }
+
+        /// <summary>
+        /// Genera una nueva contraseña aleatoria
+        /// </summary>
+        /// <returns>Nueva contraseña</returns>
+        public string ObtenerNuevaContraseña()
+        {
+            Random mRand = new Random();
+            string mNueva = "";
+
+            for (int i = 0; i < 6; i++) //Longitud de 6 caracteres por ser la longitud minima
+            {
+                //48-57 Digitos 65-90 Letras
+                int mNumOletra = mRand.Next(0, 100);
+                int mMinOmay = mRand.Next(0, 100);
+                string mLetra = ((char)(mNumOletra > 50 ? mRand.Next(48, 57) : mRand.Next(65, 90))).ToString();
+                mNueva += (mMinOmay > 50 ? mLetra.ToLower() : mLetra.ToUpper());
+            }
+            return mNueva;
         }
     }
 }
