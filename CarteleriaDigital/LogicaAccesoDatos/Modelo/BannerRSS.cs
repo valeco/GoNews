@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarteleriaDigital.RSS;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
@@ -16,7 +17,12 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 
         public int BannerRSSId { get; set; }
         public string Descripcion { get; set; }
-        private string URLtexto { get; set; }
+
+        //[Index(IsUnique = true)]
+        //[DataType(DataType.Url)]
+        [Url]
+        //public object URL { get; set; }
+        public string URLtexto { get; set; }
 
         [NotMapped]
         public Uri URL
@@ -24,16 +30,18 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
             get { return (URLtexto == null) ? null : new Uri(URLtexto); }
             set { URLtexto = value.ToString(); }
         }
-
+        //https://msdn.microsoft.com/es-es/library/bb738642(v=vs.100).aspx doc query
+        //https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatype(v=vs.110).aspx Annotations Datatype
         //http://blog.oneunicorn.com/2012/03/26/code-first-data-annotations-on-non-public-properties/
-        //Es necesario para poder mapear una propiedad private
-        public class BannerRSSConfiguration : EntityTypeConfiguration<BannerRSS>
-        {
-            public BannerRSSConfiguration()
-            {
-                Property(brss => brss.URLtexto);
-            }
-        }
+        
+        ////Es necesario para poder mapear una propiedad private
+        //public class BannerRSSConfiguration : EntityTypeConfiguration<BannerRSS>
+        //{
+        //    public BannerRSSConfiguration()
+        //    {
+        //        Property(brss => brss.URLtexto);
+        //    }
+        //}
 
         /// <summary>
         /// Devuelve el proximo texto a mostrar
@@ -51,7 +59,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
                 iContador = 0;
 
             RssItem mItem = this.iListaItems.Count()==0 ?   new RssItem("GO NEWS",
-                                                                        "Publicita tu producto aquí, informate en WWW.goNews.com.ar",
+                                                                        "Publicita tu producto aquí, informate en www.GoNews.com.ar",
                                                                         DateTime.Today,
                                                                         new Uri("www.gonews.com.ar") ):
                                                             this.iListaItems.ElementAt(iContador);

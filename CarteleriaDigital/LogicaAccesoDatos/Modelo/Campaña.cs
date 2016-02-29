@@ -20,8 +20,16 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <returns>Devuelve una instancia de objeto Image</returns>
         public Image ProximaImagen()
         {
-            iContador = (iContador >= this.ListaImagenes.Count()) ? 0 : iContador + 1;
-            return this.ListaImagenes.ElementAt(iContador).ObtenerImagen();
+            if (ListaImagenes.Count() != 0)
+            {
+                iContador = (iContador >= this.ListaImagenes.Count()) ? 0 : iContador + 1;
+                return this.ListaImagenes.ElementAt(iContador).ObtenerImagen();
+            }
+            else
+            {
+                //Se devuelve imagen por defecto en caso que la lista este vacia
+                return global::CarteleriaDigital.Properties.Resources._campaña_gonews;
+            }
         }
     }
 }
