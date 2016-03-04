@@ -41,7 +41,7 @@ namespace CarteleriaDigital.Controladores
         /// <param name="pCampaña">Campaña a eliminar.</param>
         public void Eliminar(Campaña pCampaña)
         {
-            Campaña mCampaña = iUnidadDeTrabajo.RepositorioCampaña.ObtenerPorId(pCampaña.CampañaId);
+            Campaña mCampaña = iUnidadDeTrabajo.RepositorioCampaña.ObtenerPorId(pCampaña.Id);
             iUnidadDeTrabajo.RepositorioCampaña.Eliminar(mCampaña);
             iUnidadDeTrabajo.Guardar();
         }
@@ -66,11 +66,11 @@ namespace CarteleriaDigital.Controladores
         }
 
         /// <summary>
-        ///  Obtiene la existencia de campañas que se superpongan en fecha y horario a la indicada
+        /// Obtiene una lista de campañas que se superponen en fecha y horario con la indicada.
         /// </summary>
-        /// <param name="pCampaña">Campaña nueva</param>
-        /// <returns>Existencia o no de seperposicion (bool)</returns>
-        public bool ExisteCampañaEnHorario(Campaña pCampaña)
+        /// <param name="pCampaña">Campaña nueva.</param>
+        /// <returns>Lista de campañas existentes que se superponen con la nueva.</returns>
+        public List<Campaña> ListaCampañasEnHorario(Campaña pCampaña)
         {
             DateTime mFIni = pCampaña.FechaInicio;
             DateTime mFFin = pCampaña.FechaFin;
@@ -95,7 +95,27 @@ namespace CarteleriaDigital.Controladores
                 (c.Activo == true)
             ));
 
-            return mConsulta.Count() > 0;
+            return mConsulta.ToList();
+        }
+
+        /// <summary>
+        /// Obtiene la cantidad de campañas que se superpongan en fecha y horario al indicado.
+        /// </summary>
+        /// <param name="pCampaña">Campaña nueva.</param>
+        /// <returns>Cantidad de campañas que se superponen.</returns>
+        public int CantidadCampañasEnHorario(Campaña pCampaña)
+        {
+            return ListaCampañasEnHorario(pCampaña).Count;
+        }
+
+        /// <summary>
+        ///  Obtiene la existencia de campañas que se superpongan en fecha y horario a la indicada
+        /// </summary>
+        /// <param name="pCampaña">Campaña nueva</param>
+        /// <returns>Existencia o no de seperposicion (bool)</returns>
+        public bool ExisteCampañaEnHorario(Campaña pCampaña)
+        {
+            return CantidadCampañasEnHorario(pCampaña) > 0;
         }
 
         /// <summary>
@@ -135,5 +155,39 @@ namespace CarteleriaDigital.Controladores
 
             return mConsulta.Count() == 1 ? mConsulta.First() : mCampañaAuxiliar;
         }
+
+        /// <summary>
+        /// Obtiene el resultado de una busqueda amplia (y adaptable)
+        /// </summary>
+        /// <param name="pDesActivo">Cadena "Todos","Activos","Desactivos"</param>
+        /// <param name="pNombre">Nombre de la Campaña</param>
+        /// <param name="pFInicio">Fecha de Inicio</param>
+        /// <param name="pFFin">Fecha de Fin</param>
+        /// <param name="pHInicio">Hora de Inicio</param>
+        /// <param name="pHFin">Hora de Fin</param>
+        /// <returns>Lista de campañas</returns>
+        public List<Campaña> Buscar(string pDesActivo, string pNombre = "", DateTime pFInicio = default(DateTime),
+                                    DateTime pFFin = default(DateTime), TimeSpan pHInicio = default(TimeSpan),
+                                    TimeSpan pHFin = default(TimeSpan) )
+        {
+            return this.iUnidadDeTrabajo.RepositorioCampaña.Queryable.Where(c => (
+                   (pDesActivo == "Todos" ? true : (pDesActivo == "Activos" ? (c.Activo == true) : (c.Activo == false)))
+                   &&
+                   (pNombre == "" ? true : c.Nombre.Contains(pNombre))
+                   &&
+                   (pFInicio == default(DateTime) ? true: (
+                        (c.FechaInicio >= pFInicio && c.FechaInicio <= pFFin) ||
+                        (c.FechaFin >= pFInicio && c.FechaFin <= pFFin) ||
+                        (c.FechaInicio < pFInicio && c.FechaFin > pFFin) // REVISAR. Esto está fuera del intervalo de días. Por qué iría?
+                   ))
+                   &&
+                   (pHInicio == default(TimeSpan) ? true : (
+                        (c.HoraInicio >= pHInicio && c.HoraInicio <= pHFin) ||
+                        (c.HoraFin >= pHInicio && c.HoraFin <= pHFin) ||
+                        (c.HoraInicio < pHInicio && c.HoraFin > pHFin) // REVISAR. Esto está fuera del intervalo de horas. Por qué iría?
+                   ))
+                )).ToList();
+        }
+
     }
 }
