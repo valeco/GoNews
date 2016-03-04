@@ -104,8 +104,8 @@ namespace CarteleriaDigital.Extras
         /// Generar linea al Log de tipo Info
         /// </summary>
         /// <param name="pCadena">Cadena que se quiere persistir</param>
-        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior con el comando con .Save() por el usuario </param>
-        public void Info (string pCadena, bool pPersistirAutomaticamente = true)
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior con el comando con .Save() por el usuario [DEFAULT false]</param>
+        public void Info (string pCadena, bool pPersistirAutomaticamente = false)
         {
             if(pPersistirAutomaticamente)
             { this.WriteAndSave(pCadena); }//Por defecto se guarda como tipo INFO
@@ -117,8 +117,8 @@ namespace CarteleriaDigital.Extras
         /// Generar linea al Log de tipo Error
         /// </summary>
         /// <param name="pCadena">Cadena que se quiere persistir</param>
-        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior luego por el usuario con .Save()</param>
-        public void Error(string pCadena, bool pPersistirAutomaticamente = true)
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior con el comando con .Save() por el usuario [DEFAULT false]</param>
+        public void Error(string pCadena, bool pPersistirAutomaticamente = false)
         {
             if (pPersistirAutomaticamente)
             { this.WriteAndSave(pCadena, TipoEscritura.ERROR); }
@@ -130,8 +130,8 @@ namespace CarteleriaDigital.Extras
         /// Generar linea al Log de tipo Debug, si el Log esta en ModoDebug -> False no se genera.
         /// </summary>
         /// <param name="pCadena">Cadena que se quiere persistir</param>
-        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior luego por el usuario con .Save()</param>
-        public void Debug(string pCadena, bool pPersistirAutomaticamente = true)
+        /// <param name="pPersistirAutomaticamente">Guardado automatico o posterior con el comando con .Save() por el usuario [DEFAULT false]</param>
+        public void Debug(string pCadena, bool pPersistirAutomaticamente = false)
         {
             if (pPersistirAutomaticamente)
             { this.WriteAndSave(pCadena, TipoEscritura.Debug); }

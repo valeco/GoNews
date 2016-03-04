@@ -11,6 +11,4 @@ ComboBox -> comboNombre
 Panel -> panelNombre
 Radio Button -> radioNombre
 DataGridView -> dgridNombre
-
--To Do-
-
+CheckBox -> checkNombre
