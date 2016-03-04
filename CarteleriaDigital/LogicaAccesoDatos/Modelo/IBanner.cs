@@ -12,5 +12,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
     public interface IBanner
     {
         string Proximo();
+
+        int Id();
     }
 }

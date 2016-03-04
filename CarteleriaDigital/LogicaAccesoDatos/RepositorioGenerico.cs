@@ -79,7 +79,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos
         /// <param name="entidadAModificar">Objeto modificado.</param>
         public void Modificar(TEntity entidadAModificar)
         {
-        	dbSet.Attach(entidadAModificar);
+            dbSet.Attach(entidadAModificar);
             iContext.Entry(entidadAModificar).State = EntityState.Modified;
         }
     }

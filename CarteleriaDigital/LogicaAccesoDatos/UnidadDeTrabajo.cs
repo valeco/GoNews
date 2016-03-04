@@ -18,6 +18,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos
         private RepositorioGenerico<Campaña> iRepositorioCampaña;
         private RepositorioGenerico<Banner> iRepositorioBanner;
         private RepositorioGenerico<BannerRSS> iRepositorioBannerRSS;
+        private RepositorioGenerico<BannerTXT> iRepositorioBannerTXT;
 
         public RepositorioGenerico<Usuario> RepositorioUsuario
         {
@@ -82,6 +83,19 @@ namespace CarteleriaDigital.LogicaAccesoDatos
 
         		return this.iRepositorioBannerRSS;
         	}
+        }
+
+        public RepositorioGenerico<BannerTXT> RepositorioBannerTXT
+        {
+            get
+            {
+                if (this.iRepositorioBannerTXT == null)
+                {
+                    this.iRepositorioBannerTXT = new RepositorioGenerico<BannerTXT>(iContext);
+                }
+
+                return this.iRepositorioBannerTXT;
+            }
         }
 
         /// <summary>

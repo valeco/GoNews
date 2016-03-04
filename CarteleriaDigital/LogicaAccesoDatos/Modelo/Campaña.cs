@@ -11,7 +11,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
     {
         int iContador = 0;
 
-        public int CampañaId { get; set; }
+        //public int CampañaId { get; set; }
         public virtual List<Imagen> ListaImagenes { get; set; }
 
         /// <summary>
@@ -31,5 +31,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
                 return global::CarteleriaDigital.Properties.Resources._campaña_gonews;
             }
         }
+
+        public Campaña() {}
     }
 }

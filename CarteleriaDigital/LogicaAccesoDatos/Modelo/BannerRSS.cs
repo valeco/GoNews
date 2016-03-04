@@ -67,6 +67,11 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
             return "[" + mItem.Fecha + "] " + mItem.Titulo + ": " + mItem.Descripcion;
         }
 
+        public int Id ()
+        {
+            return this.BannerRSSId;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -75,5 +80,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         {
             return Descripcion;
         }
+
+        public BannerRSS() { }
     }
 }

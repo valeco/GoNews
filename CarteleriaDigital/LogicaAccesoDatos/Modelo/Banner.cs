@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 
 namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
 {
-    public enum TipoBanner { RSS , TXT }
+    public enum TipoBanner { RSS = 0 , TXT = 1}
 
     public class Banner : Publicidad
     {
-        public int BannerId { get; set; }
         private TipoBanner iTipo { get; set; }
         private IBanner iFuente { get; set; }
+        private int iFuenteId { get; set; }
 
         /// <summary>
         /// Genera una instancia de Banner
@@ -21,8 +24,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <param name="pTipo">Tipo del Banner</param>
         public Banner(IBanner pBanner, TipoBanner pTipo)
         {
-            this.iTipo = pTipo;
-            this.iFuente = pBanner;
+            this.CambiarTipo(pBanner, pTipo);
         }
 
         /// <summary>
@@ -32,8 +34,13 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <param name="pTipo">Tipo del Banner</param>
         public void CambiarTipo(IBanner pBanner, TipoBanner pTipo)
         {
-            this.iTipo = pTipo;
-            this.iFuente = pBanner;
+            if( (pBanner.GetType()==typeof(BannerRSS) && pTipo == TipoBanner.RSS) ||
+                ((pBanner.GetType() == typeof(BannerTXT) && pTipo == TipoBanner.TXT)) )
+            {
+                this.iTipo = pTipo;
+                this.iFuente = pBanner;
+                this.iFuenteId = pBanner.Id();
+            }
         }
 
         /// <summary>
@@ -42,18 +49,68 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <returns></returns>
         public string ProximoTexto()
         {
-            return this.Fuente.Proximo();
+            return (this.Fuente == null)? "": this.Fuente.Proximo();
         }
 
         /// <summary>
         /// Retorna el tipo del que es el banner
         /// </summary>
         /// <returns>Enumerado TipoBanner</returns>
+        [NotMapped]
         public TipoBanner Tipo { get { return this.iTipo; } }
 
         /// <summary>
         /// Retorna la fuente del banner, es decir, el BannerTXT o el BannerRSS correspondiente.
         /// </summary>
-        public IBanner Fuente { get { return this.iFuente; } }
+        [NotMapped]
+        public IBanner Fuente
+        {
+            get {
+                if (this.iFuente == null)
+                    this.CargarFuente();
+                        
+                return this.iFuente;
+            }
+        }
+
+
+        /// <summary>
+        /// Constructor solo apto para utilizar por Entity Frmework
+        /// </summary>
+        public Banner()
+        {   
+                this.CargarFuente();
+        }
+
+        /// <summary>
+        /// Metodo privado utilizado para que se carge la fuente
+        /// </summary>
+        private void CargarFuente()
+        {
+            if (iFuente == null && iFuenteId > 0)
+            {
+                UnidadDeTrabajo UoW = new UnidadDeTrabajo();
+                switch (iTipo)
+                {
+                    case TipoBanner.RSS:
+                        iFuente = UoW.RepositorioBannerRSS.ObtenerPorId(iFuenteId);
+                        break;
+                    case TipoBanner.TXT:
+                        iFuente = UoW.RepositorioBannerTXT.ObtenerPorId(iFuenteId);
+                        break;
+                }
+            }
+        }
+
+        //Es necesario para poder mapear una propiedad private
+        public class BannerConfiguration : EntityTypeConfiguration<Banner>
+        {
+            public BannerConfiguration()
+            {
+                Property(b => b.iFuenteId);
+                Property(b=>b.iTipo);
+            }
+        }
+
     }
 }

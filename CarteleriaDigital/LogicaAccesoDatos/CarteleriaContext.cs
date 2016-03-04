@@ -19,9 +19,16 @@ namespace CarteleriaDigital.LogicaAccesoDatos
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Properties()
+            .Where(p => p.Name == "Id")
+            .Configure(p => p.IsKey());
+
             //Para mapear atributos privados
             //modelBuilder.Configurations.Add( new BannerRSS.BannerRSSConfiguration() );
             //modelBuilder.Configurations.Add( new Usuario.UsuarioConfiguration() );
+            modelBuilder.Configurations.Add(new Banner.BannerConfiguration());
+
+
         }
     }
 }

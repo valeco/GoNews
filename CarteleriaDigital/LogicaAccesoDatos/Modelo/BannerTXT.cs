@@ -15,12 +15,20 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// Obtiene una instancia de BannerTXT
         /// </summary>
         /// <param name="pTexto">Texto asociado al banner</param>
-        public BannerTXT(string pTexto = "GO NEWS: Publicita tu producto aquí, informate en WWW.goNews.com.ar") { this.Texto = pTexto; }
+        public BannerTXT(string pTexto = "GO NEWS: Publicita tu producto aquí, informate en WWW.goNews.com.ar")
+        { this.Texto = pTexto; }
 
         /// <summary>
         /// Devuelve el proximo texto a mostrar
         /// </summary>
         /// <returns>Cadena de texto de una noticia</returns>
         public string Proximo() { return this.Texto; }
+
+        public int Id()
+        {
+            return this.BannerTXTId;
+        }
+
+        public BannerTXT() {}
     }
 }
