@@ -1,18 +1,18 @@
 ﻿##:page_facing_up: Referencias:
-- Form -> `FormNombre`
-- Button -> `btnNombre`
-- PictureBox ->  `pboxNombre`
-- TextBox ->  `txtNombre`
-- Label ->  `lbNombre`
-- DataTimePicker ->  `dtpNombre`
-- ToolTip ->  `ttipNombre`
-- TrackBar ->  `tbarNombre`
-- MaskedTextBox ->  `mtboxNombre`
-- ComboBox ->  `comboNombre`
-- Panel -> `panelNombre`
-- Radio Button -> `radioNombre`
-- DataGridView -> `dgridNombre`
-- CheckBox -> `checkNombre`
+- Form: `FormNombre`
+- Button: `btnNombre`
+- PictureBox:  `pboxNombre`
+- TextBox:  `txtNombre`
+- Label:  `lbNombre`
+- DataTimePicker:  `dtpNombre`
+- ToolTip:  `ttipNombre`
+- TrackBar:  `tbarNombre`
+- MaskedTextBox:  `mtboxNombre`
+- ComboBox:  `comboNombre`
+- Panel: `panelNombre`
+- Radio Button: `radioNombre`
+- DataGridView: `dgridNombre`
+- CheckBox: `checkNombre`
 
 ##:pushpin: To do:
 - [x] Campaña y Banner DEFAULT generada on the fly.
