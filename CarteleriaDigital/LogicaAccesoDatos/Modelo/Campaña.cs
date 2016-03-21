@@ -22,7 +22,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         {
             if (ListaImagenes.Count() != 0)
             {
-                iContador = (iContador >= this.ListaImagenes.Count()) ? 0 : iContador + 1;
+                iContador = (iContador == (this.ListaImagenes.Count() - 1)) ? 0 : iContador + 1;
                 return this.ListaImagenes.ElementAt(iContador).ObtenerImagen();
             }
             else
@@ -32,6 +32,9 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
             }
         }
 
+        /// <summary>
+        /// Obtiene una instancia de Campaña
+        /// </summary>
         public Campaña() {}
     }
 }

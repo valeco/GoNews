@@ -25,7 +25,7 @@ namespace CarteleriaDigital.Controladores
         /// <summary>
         ///     Modificar un banner TXT en el repositorio.
         /// </summary>
-        /// <param name="pBanner">Banner TXT a insertar.</param>
+        /// <param name="pBanner">Banner TXT a modificar.</param>
         public void Modificar(BannerTXT pBannerTXT)
         {
             iUnidadDeTrabajo.RepositorioBannerTXT.Modificar(pBannerTXT);
@@ -47,7 +47,7 @@ namespace CarteleriaDigital.Controladores
         ///     Obtiene un banner del repositorio correspondiente al ID proporcionado.
         /// </summary>
         /// <param name="pBannerId">ID del banner.</param>
-        /// <returns>Una banner.</returns>
+        /// <returns>Un banner.</returns>
         public BannerTXT ObtenerPorId(int pBannerTXTId)
         {
             return iUnidadDeTrabajo.RepositorioBannerTXT.ObtenerPorId(pBannerTXTId);

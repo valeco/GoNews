@@ -18,12 +18,16 @@ namespace CarteleriaDigital.GUI
     {
         EasyLog iLogger;
         ControladorUsuario iCtrlUser;
+        BackgroundWorker iWorker = new BackgroundWorker();
+
 
         public FormEditarUsuario(EasyLog pLogger)
         {
             InitializeComponent();
             iLogger = pLogger;
             iCtrlUser = ControladorUsuario.Instancia;
+            iWorker.DoWork += new DoWorkEventHandler(iWorker_DoWork);
+            iWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(iWorker_RunWorkerCompleted);
             iLogger.Info("Inicializando form Editar Usuario");
         }
 
@@ -49,6 +53,11 @@ namespace CarteleriaDigital.GUI
         private void btnCambiar_Click(object sender, EventArgs e)
         {
             bool mModificarUsuario = false;
+            string mContraNueva = "";
+            /*
+                REVISAR. No conviene mostrarle sólo un mensaje de éxito al final en vez de uno por text box?
+                Si edita todos los text box, el usuario va tener que aceptar 4 message box. xD
+            */
 
             if (txtNombreCompleto.Text != iCtrlUser.UsuarioLogueado.NombreCompleto)
             {
@@ -136,6 +145,7 @@ namespace CarteleriaDigital.GUI
                 }
                 else
                 {
+                    mContraNueva = txtNuevaContraseña.Text;
                     iCtrlUser.UsuarioLogueado.Contraseña = Utilidades.MD5(txtNuevaContraseña.Text);
                     txtNuevaContraseña.Text = "";
                     txtNuevaContraseñaRepetir.Text = "";
@@ -149,7 +159,49 @@ namespace CarteleriaDigital.GUI
             }
 
 
-            if (mModificarUsuario) { iCtrlUser.Modificar(iCtrlUser.UsuarioLogueado); }
+            if (mModificarUsuario)
+            {
+                iCtrlUser.Modificar(iCtrlUser.UsuarioLogueado);
+                if (!iWorker.IsBusy)//Se fija si el Worker esta siendo utilizado
+                {
+                    Dictionary<string, string> dic = new Dictionary<string, string>();
+                    dic.Add("nombreCompleto", iCtrlUser.UsuarioLogueado.NombreCompleto);
+                    dic.Add("nombreUsuario", iCtrlUser.UsuarioLogueado.NombreUsuario);
+                    dic.Add("contraseña", mContraNueva);
+                    dic.Add("email", iCtrlUser.UsuarioLogueado.Email.Address);
+
+                    btnCambiar.Text = "Enviando Email";
+                    btnCambiar.Enabled = false;
+
+                    iWorker.RunWorkerAsync(dic);//Llamando al background worker
+                }
+            }
+        }
+
+        private void iWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Dictionary<string, string> dic = (Dictionary<string, string>)e.Argument;
+            Utilidades.EnviarCorreo(new MailAddress(dic["email"]), "Registro de Usuario - GO NEWS",
+                                    "<b>ACA HTML</b>", true);
+            //REVISAR falta html de tablita con buenos colores y los datos
+            e.Result = true;
+        }
+
+        private void iWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!e.Cancelled && e.Error == null && ((bool)e.Result) == true)
+            {
+                btnCambiar.Enabled = true;
+                btnCambiar.Text = "Actualizado";
+                btnCambiar.Enabled = false;
+                Utilidades.Esperar(3000);
+                btnCambiar.Enabled = true;
+                btnCambiar.Text = "ACEPTAR";
+            }
+            else
+            {
+                //Mensaje de que no se puedo enviar el correo REVISAR
+            }
         }
 
         private void FormEditarUsuario_FormClosing(object sender, FormClosingEventArgs e)

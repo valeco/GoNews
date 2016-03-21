@@ -8,22 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarteleriaDigital.Extras;
+using CarteleriaDigital.Controladores;
+using CarteleriaDigital.LogicaAccesoDatos.Modelo;
 
 namespace CarteleriaDigital.GUI
 {
     public partial class FormSolicitarID : Form
     {
-        private bool iEliminar;
+        bool iEliminar;
+        string iTipo;
+        EasyLog iLogger;
+        ControladorUsuario iCtrlUser = ControladorUsuario.Instancia;
 
-        public FormSolicitarID(String pTipo, bool pEliminar)
+        public FormSolicitarID(EasyLog pLogger, String pTipo, bool pEliminar)
         {
             InitializeComponent();
 
-            this.iEliminar = pEliminar;
-
+            iEliminar = pEliminar;
+            iTipo = pTipo;
+            iLogger = pLogger;
             lbTitulo.Text = (pEliminar ? "Eliminar " : "Modificar ") + pTipo;
             txtId.Text = "ID " + (pTipo == "campaña" ? "de la " : "del ") + pTipo;
             btnConfirmar.Text = (pEliminar ? "ELIMINAR " : "MODIFICAR ");
+
+            iLogger.Info("Inicializacion finalizada form Solicitar ID " + pTipo + " " + (pEliminar ? "Eliminar " : "Modificar "));
         }
 
         private void pboxMinimizar_Click(object sender, EventArgs e)
@@ -36,7 +44,7 @@ namespace CarteleriaDigital.GUI
             Close();
         }
 
-        private void btnEliminar_MouseEnter(object sender, EventArgs e)
+        private void btnConfirmar_MouseEnter(object sender, EventArgs e)
         {
             if (iEliminar)
             {
@@ -45,7 +53,7 @@ namespace CarteleriaDigital.GUI
             }
         }
 
-        private void btnEliminar_MouseLeave(object sender, EventArgs e)
+        private void btnConfirmar_MouseLeave(object sender, EventArgs e)
         {
             if (iEliminar)
             {
@@ -57,6 +65,73 @@ namespace CarteleriaDigital.GUI
         private void FormSolicitarID_Load(object sender, EventArgs e)
         {
             Utilidades.AllTextBoxPlaceHolder(this);
+            iLogger.Info("Load finalizado form Solicitar ID " + iTipo + " " + (iEliminar ? "Eliminar " : "Modificar "));
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            int mId;
+
+            if (txtId.Text == "")
+            {
+                Utilidades.MensajeError(this, "¡Error!", "Debes ingresar el ID de " + (iTipo == "campaña" ? "alguna campaña." : "algún banner."));
+                txtId.Focus();
+            }
+            else if (int.TryParse(txtId.Text, out mId) && mId > 0)
+            {
+                bool mExiste;
+
+                mExiste = (iTipo == "campaña") ? (new ControladorCampaña()).ExisteConId(mId) : (new ControladorBanner()).ExisteConId(mId);
+
+                if (mExiste)
+                {
+                    if (!iEliminar)
+                    {
+                        iLogger.Debug("Modificar " + iTipo +" con ID: " + mId.ToString());
+                        Form mForm = (iTipo == "campaña") ? (Form)( new FormAgregarModificarCampaña(iLogger, mId) ):
+                                                            (Form)( new FormAgregarModificarBanner(iLogger, mId) );
+                        this.Visible = false;
+                        mForm.ShowDialog();
+                        this.Close();
+                    }
+                    else // Si se va a eliminar.
+                    {
+                        iLogger.Debug("Eliminar " + iTipo + " con ID: " + mId.ToString());
+                        Publicidad mPublicidad = (iTipo == "campaña")?(Publicidad)(new ControladorCampaña()).ObtenerPorId(mId):
+                                                                     (Publicidad)(new ControladorBanner()).ObtenerPorId(mId);
+
+                        string mMensaje = "¿Está seguro que desea eliminar "+ ((iTipo == "campaña") ? "la campaña" : "el banner") + " siguiente?"
+                                          + "\nID: " + mPublicidad.Id
+                                          + "\nNombre: " + mPublicidad.Nombre;
+
+                        if (Utilidades.MensajeAdvertencia(this, "¡Atención!", mMensaje, false) == DialogResult.OK)
+                        {
+                            if (iTipo == "campaña")
+                                (new ControladorCampaña()).Eliminar((Campaña)mPublicidad);
+                            else
+                                (new ControladorBanner()).Eliminar((Banner)mPublicidad);
+                            Utilidades.MensajeExito(this, "Perfecto!", "Se elimino con exito " + ((iTipo == "campaña") ? "la campaña" : "el banner") + ".");
+                            this.Close();
+                        }
+                    }
+                }
+                else // Si no se encontró ningún banner o campaña con ese ID.
+                {
+                    Utilidades.MensajeError(this, "¡Error!", "El ID ingresado no corresponde a " + (iTipo == "campaña" ? "ninguna campaña." : "ningún banner" ));
+                    txtId.Focus();
+                }
+            }
+            else
+            {
+                Utilidades.MensajeError(this, "¡Error!", "El ID debe ser un número mayor a cero.");
+                txtId.Focus();
+            }
+        }
+
+        private void FormSolicitarID_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            iLogger.Info("Cerrando form SolicitarID");
+            iLogger.Save();
         }
     }
 }

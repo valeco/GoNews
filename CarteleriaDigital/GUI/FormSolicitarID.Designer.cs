@@ -77,10 +77,11 @@
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(110, 30);
             this.btnConfirmar.TabIndex = 21;
-            this.btnConfirmar.Text = "ELIMINAR";
+            this.btnConfirmar.Text = "<param>";
             this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.MouseEnter += new System.EventHandler(this.btnEliminar_MouseEnter);
-            this.btnConfirmar.MouseLeave += new System.EventHandler(this.btnEliminar_MouseLeave);
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            this.btnConfirmar.MouseEnter += new System.EventHandler(this.btnConfirmar_MouseEnter);
+            this.btnConfirmar.MouseLeave += new System.EventHandler(this.btnConfirmar_MouseLeave);
             // 
             // pboxMinimizar
             // 
@@ -118,6 +119,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSolicitarID";
             this.Text = "Eliminar camapaña";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSolicitarID_FormClosing);
             this.Load += new System.EventHandler(this.FormSolicitarID_Load);
             this.panelID.ResumeLayout(false);
             this.panelID.PerformLayout();

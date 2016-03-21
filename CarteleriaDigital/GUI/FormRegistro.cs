@@ -18,14 +18,43 @@ namespace CarteleriaDigital.GUI
     {
         EasyLog iLogger;
         ControladorUsuario iCtrlUser;
+        BackgroundWorker iWorker = new BackgroundWorker();
 
         public FormRegistro(EasyLog pLogger)
         {
             InitializeComponent();
             iLogger = pLogger;
             iCtrlUser = ControladorUsuario.Instancia;
+            iWorker.DoWork += new DoWorkEventHandler(iWorker_DoWork);
+            iWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(iWorker_RunWorkerCompleted);
             iLogger.Info("Inicializado form Registro Usuario");
         }
+
+        private void iWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Dictionary<string, string> dic = (Dictionary<string, string>)e.Argument;
+            Utilidades.EnviarCorreo(new MailAddress(dic["email"]), "Registro de Usuario - GO NEWS",
+                                    "<b>ACA HTML</b>", true);
+            //REVISAR falta html de tablita con buenos colores y los datos
+            e.Result = true;
+        }
+
+        private void iWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if( !e.Cancelled && e.Error == null && ((bool) e.Result) == true)
+            {
+                btnRegistrar.Enabled = true;
+                btnRegistrar.Text = "Reg. Completo";
+                btnRegistrar.Enabled = false;
+                Utilidades.Esperar(5000);
+                this.Close();
+            }
+            else
+            {
+                //Mensaje de que no se puedo enviar el correo REVISAR
+            }
+        }
+
 
         private void pboxCerrar_Click(object sender, EventArgs e)
         {
@@ -114,7 +143,21 @@ namespace CarteleriaDigital.GUI
                                             );
                         //REVISAR Enviar email con BackgWorker al email del usuario
                         //http://www.codeproject.com/Articles/841751/MultiThreading-Using-a-Background-Worker-Csharp
-                        this.Close();
+
+                        if (! iWorker.IsBusy)//Se fija si el Worker esta siendo utilizado
+                        {
+                            Dictionary<string, string> dic = new Dictionary<string, string>();
+                            dic.Add("nombreCompleto", txtNombreCompleto.Text);
+                            dic.Add("nombreUsuario", txtNombreUsuario.Text);
+                            dic.Add("contraseña", txtContraseña.Text);
+                            dic.Add("email", mEmail.Address);
+
+                            btnRegistrar.Text = "Enviando Email";
+                            btnRegistrar.Enabled = false;
+
+                            iWorker.RunWorkerAsync(dic);//Llamando al background worker
+                        }
+
                     }                    
                 }
                 catch (FormatException exf)

@@ -77,7 +77,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <summary>
         /// Constructor solo apto para utilizar por Entity Frmework
         /// </summary>
-        public Banner()
+        protected Banner()
         {   
                 this.CargarFuente();
         }

@@ -57,6 +57,16 @@ namespace CarteleriaDigital.Controladores
         }
 
         /// <summary>
+        ///     Obtiene la existencia de la campaña en el repositorio, correspondiente al ID proporcionado.
+        /// </summary>
+        /// <param name="pCampañaId">ID de la campaña.</param>
+        /// <returns>Un booleano</returns>
+        public bool ExisteConId(int pCampañaId)
+        {
+            return (this.ObtenerPorId(pCampañaId) != null);
+        }
+
+        /// <summary>
         ///     Obtiene una lista de todas las campañas del repositorio.
         /// </summary>
         /// <returns>Una lista de campañas.</returns>
@@ -80,15 +90,15 @@ namespace CarteleriaDigital.Controladores
             var mConsulta = iUnidadDeTrabajo.RepositorioCampaña.Queryable.Where(c => (
                 (
                     (mFIni >= c.FechaInicio && mFFin <= c.FechaFin) || // Intervalo dentro del otro (includio)
-                    (mFIni < c.FechaInicio && mFFin <= c.FechaFin) || // Intervalo que arranca antes y termina dentro
-                    (mFIni > c.FechaInicio && mFIni <= c.FechaFin && mFFin > c.FechaFin) || // Intervalo que arranque dentro y termine por fuera
+                    (mFIni < c.FechaInicio && mFFin >= c.FechaInicio && mFFin <= c.FechaFin) || // Intervalo que arranca antes y termina dentro
+                    (mFIni >= c.FechaInicio && mFIni <= c.FechaFin && mFFin > c.FechaFin) || // Intervalo que arranque dentro y termine por fuera
                     (mFIni < c.FechaInicio && mFFin > c.FechaFin) // Intervalo que contenga al otro
                 )
                     &&
                 (
                     (mHIni >= c.HoraInicio && mHFin <= c.HoraFin) || // Intervalo dentro del otro (includio)
-                    (mHIni < c.HoraInicio && mHFin <= c.HoraFin) || // Intervalo que arranca antes y termina dentro
-                    (mHIni > c.HoraInicio && mHIni <= c.HoraFin && mHFin > c.HoraFin) || // Intervalo que arranque dentro y termine por fuera
+                    (mHIni < c.HoraInicio && mHFin >= c.HoraInicio && mHFin <= c.HoraFin) || // Intervalo que arranca antes y termina dentro
+                    (mHIni >= c.HoraInicio && mHIni <= c.HoraFin && mHFin > c.HoraFin) || // Intervalo que arranque dentro y termine por fuera
                     (mHIni < c.HoraInicio && mHFin > c.HoraFin) // Intervalo que contenga al otro 
                 )
                     &&
@@ -178,13 +188,13 @@ namespace CarteleriaDigital.Controladores
                    (pFInicio == default(DateTime) ? true: (
                         (c.FechaInicio >= pFInicio && c.FechaInicio <= pFFin) ||
                         (c.FechaFin >= pFInicio && c.FechaFin <= pFFin) ||
-                        (c.FechaInicio < pFInicio && c.FechaFin > pFFin) // REVISAR. Esto está fuera del intervalo de días. Por qué iría?
+                        (c.FechaInicio < pFInicio && c.FechaFin > pFFin)
                    ))
                    &&
                    (pHInicio == default(TimeSpan) ? true : (
                         (c.HoraInicio >= pHInicio && c.HoraInicio <= pHFin) ||
                         (c.HoraFin >= pHInicio && c.HoraFin <= pHFin) ||
-                        (c.HoraInicio < pHInicio && c.HoraFin > pHFin) // REVISAR. Esto está fuera del intervalo de horas. Por qué iría?
+                        (c.HoraInicio < pHInicio && c.HoraFin > pHFin)
                    ))
                 )).ToList();
         }

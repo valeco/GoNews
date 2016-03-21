@@ -30,6 +30,9 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
             set { EmailTexto = value.ToString(); }
         }
 
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
         public Usuario()
         {
             if (ListaCampaña == null)

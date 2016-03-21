@@ -42,11 +42,23 @@
             this.panelFuenteRSS = new System.Windows.Forms.Panel();
             this.comboFuenteRSS = new System.Windows.Forms.ComboBox();
             this.lbFuenteRSS = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.panelIntervalo = new System.Windows.Forms.Panel();
             this.lbValorIntervalo = new System.Windows.Forms.Label();
             this.tbarIntervalo = new System.Windows.Forms.TrackBar();
             this.lbIntervalo = new System.Windows.Forms.Label();
+            this.panelHora = new System.Windows.Forms.Panel();
+            this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraInicio = new System.Windows.Forms.DateTimePicker();
+            this.lbHoraFin = new System.Windows.Forms.Label();
+            this.lbHoraInicio = new System.Windows.Forms.Label();
+            this.lbHorario = new System.Windows.Forms.Label();
+            this.panelFecha = new System.Windows.Forms.Panel();
+            this.lbFechaFin = new System.Windows.Forms.Label();
+            this.lbFechaInicio = new System.Windows.Forms.Label();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.lbDias = new System.Windows.Forms.Label();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
             this.panelTipo.SuspendLayout();
@@ -54,6 +66,8 @@
             this.panelFuenteRSS.SuspendLayout();
             this.panelIntervalo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).BeginInit();
+            this.panelHora.SuspendLayout();
+            this.panelFecha.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTitulo
@@ -63,9 +77,9 @@
             this.lbTitulo.ForeColor = System.Drawing.Color.White;
             this.lbTitulo.Location = new System.Drawing.Point(12, 12);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(134, 20);
+            this.lbTitulo.Size = new System.Drawing.Size(140, 20);
             this.lbTitulo.TabIndex = 18;
-            this.lbTitulo.Text = "Agregar banner";
+            this.lbTitulo.Text = "<param> banner";
             // 
             // pboxMinimizar
             // 
@@ -155,9 +169,9 @@
             this.panelTextoFijo.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelTextoFijo.Controls.Add(this.txtTextoFijo);
             this.panelTextoFijo.Controls.Add(this.lbTextoFijo);
-            this.panelTextoFijo.Location = new System.Drawing.Point(272, 76);
+            this.panelTextoFijo.Location = new System.Drawing.Point(272, 44);
             this.panelTextoFijo.Name = "panelTextoFijo";
-            this.panelTextoFijo.Size = new System.Drawing.Size(254, 242);
+            this.panelTextoFijo.Size = new System.Drawing.Size(254, 305);
             this.panelTextoFijo.TabIndex = 3;
             // 
             // txtTextoFijo
@@ -168,7 +182,7 @@
             this.txtTextoFijo.Multiline = true;
             this.txtTextoFijo.Name = "txtTextoFijo";
             this.txtTextoFijo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTextoFijo.Size = new System.Drawing.Size(227, 193);
+            this.txtTextoFijo.Size = new System.Drawing.Size(227, 255);
             this.txtTextoFijo.TabIndex = 4;
             this.txtTextoFijo.Text = "Escribe aquí el texto que deseas mostrar. Puedes ingresar saltos de líneas, pero " +
     "en pantalla se verá el texto en una sola línea.";
@@ -189,13 +203,14 @@
             this.panelFuenteRSS.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelFuenteRSS.Controls.Add(this.comboFuenteRSS);
             this.panelFuenteRSS.Controls.Add(this.lbFuenteRSS);
-            this.panelFuenteRSS.Location = new System.Drawing.Point(12, 245);
+            this.panelFuenteRSS.Location = new System.Drawing.Point(272, 355);
             this.panelFuenteRSS.Name = "panelFuenteRSS";
             this.panelFuenteRSS.Size = new System.Drawing.Size(254, 73);
             this.panelFuenteRSS.TabIndex = 4;
             // 
             // comboFuenteRSS
             // 
+            this.comboFuenteRSS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboFuenteRSS.Enabled = false;
             this.comboFuenteRSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboFuenteRSS.FormattingEnabled = true;
@@ -203,7 +218,6 @@
             this.comboFuenteRSS.Name = "comboFuenteRSS";
             this.comboFuenteRSS.Size = new System.Drawing.Size(227, 24);
             this.comboFuenteRSS.TabIndex = 5;
-            this.comboFuenteRSS.Text = "Seleccionar fuente RSS...";
             // 
             // lbFuenteRSS
             // 
@@ -216,16 +230,17 @@
             this.lbFuenteRSS.TabIndex = 22;
             this.lbFuenteRSS.Text = "Fuente RSS:";
             // 
-            // btnAgregar
+            // btnAceptar
             // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.Location = new System.Drawing.Point(426, 324);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(100, 30);
-            this.btnAgregar.TabIndex = 5;
-            this.btnAgregar.Text = "AGREGAR";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.Color.Black;
+            this.btnAceptar.Location = new System.Drawing.Point(426, 434);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(100, 30);
+            this.btnAceptar.TabIndex = 5;
+            this.btnAceptar.Text = "ACEPTAR";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // panelIntervalo
             // 
@@ -254,6 +269,7 @@
             // 
             this.tbarIntervalo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbarIntervalo.Enabled = false;
             this.tbarIntervalo.Location = new System.Drawing.Point(13, 50);
             this.tbarIntervalo.Maximum = 20;
             this.tbarIntervalo.Minimum = 1;
@@ -262,6 +278,7 @@
             this.tbarIntervalo.TabIndex = 2;
             this.tbarIntervalo.Value = 5;
             this.tbarIntervalo.Scroll += new System.EventHandler(this.tbarIntervalo_Scroll);
+            this.tbarIntervalo.ValueChanged += new System.EventHandler(this.tbarIntervalo_ValueChanged);
             // 
             // lbIntervalo
             // 
@@ -274,15 +291,157 @@
             this.lbIntervalo.TabIndex = 21;
             this.lbIntervalo.Text = "Intervalo de transición\r\nentre textos:";
             // 
+            // panelHora
+            // 
+            this.panelHora.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelHora.Controls.Add(this.dtpHoraFin);
+            this.panelHora.Controls.Add(this.dtpHoraInicio);
+            this.panelHora.Controls.Add(this.lbHoraFin);
+            this.panelHora.Controls.Add(this.lbHoraInicio);
+            this.panelHora.Controls.Add(this.lbHorario);
+            this.panelHora.Location = new System.Drawing.Point(12, 339);
+            this.panelHora.Name = "panelHora";
+            this.panelHora.Size = new System.Drawing.Size(254, 89);
+            this.panelHora.TabIndex = 23;
+            // 
+            // dtpHoraFin
+            // 
+            this.dtpHoraFin.CustomFormat = "HH:mm";
+            this.dtpHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraFin.Location = new System.Drawing.Point(131, 51);
+            this.dtpHoraFin.Name = "dtpHoraFin";
+            this.dtpHoraFin.ShowUpDown = true;
+            this.dtpHoraFin.Size = new System.Drawing.Size(110, 24);
+            this.dtpHoraFin.TabIndex = 6;
+            this.dtpHoraFin.Value = new System.DateTime(2016, 2, 5, 23, 59, 0, 0);
+            // 
+            // dtpHoraInicio
+            // 
+            this.dtpHoraInicio.CustomFormat = "HH:mm";
+            this.dtpHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraInicio.Location = new System.Drawing.Point(13, 51);
+            this.dtpHoraInicio.Name = "dtpHoraInicio";
+            this.dtpHoraInicio.ShowUpDown = true;
+            this.dtpHoraInicio.Size = new System.Drawing.Size(110, 24);
+            this.dtpHoraInicio.TabIndex = 5;
+            this.dtpHoraInicio.Value = new System.DateTime(2016, 2, 5, 0, 0, 0, 0);
+            this.dtpHoraInicio.ValueChanged += new System.EventHandler(this.dtpHoraInicio_ValueChanged);
+            // 
+            // lbHoraFin
+            // 
+            this.lbHoraFin.AutoSize = true;
+            this.lbHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHoraFin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbHoraFin.Location = new System.Drawing.Point(128, 35);
+            this.lbHoraFin.Name = "lbHoraFin";
+            this.lbHoraFin.Size = new System.Drawing.Size(52, 13);
+            this.lbHoraFin.TabIndex = 25;
+            this.lbHoraFin.Text = "HASTA:";
+            // 
+            // lbHoraInicio
+            // 
+            this.lbHoraInicio.AutoSize = true;
+            this.lbHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHoraInicio.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbHoraInicio.Location = new System.Drawing.Point(10, 35);
+            this.lbHoraInicio.Name = "lbHoraInicio";
+            this.lbHoraInicio.Size = new System.Drawing.Size(53, 13);
+            this.lbHoraInicio.TabIndex = 24;
+            this.lbHoraInicio.Text = "DESDE:";
+            // 
+            // lbHorario
+            // 
+            this.lbHorario.AutoSize = true;
+            this.lbHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHorario.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.lbHorario.Location = new System.Drawing.Point(10, 12);
+            this.lbHorario.Name = "lbHorario";
+            this.lbHorario.Size = new System.Drawing.Size(149, 16);
+            this.lbHorario.TabIndex = 22;
+            this.lbHorario.Text = "Horario de la campaña:";
+            // 
+            // panelFecha
+            // 
+            this.panelFecha.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelFecha.Controls.Add(this.lbFechaFin);
+            this.panelFecha.Controls.Add(this.lbFechaInicio);
+            this.panelFecha.Controls.Add(this.dtpFechaFin);
+            this.panelFecha.Controls.Add(this.lbDias);
+            this.panelFecha.Controls.Add(this.dtpFechaInicio);
+            this.panelFecha.Location = new System.Drawing.Point(12, 245);
+            this.panelFecha.Name = "panelFecha";
+            this.panelFecha.Size = new System.Drawing.Size(254, 89);
+            this.panelFecha.TabIndex = 22;
+            // 
+            // lbFechaFin
+            // 
+            this.lbFechaFin.AutoSize = true;
+            this.lbFechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFechaFin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbFechaFin.Location = new System.Drawing.Point(128, 35);
+            this.lbFechaFin.Name = "lbFechaFin";
+            this.lbFechaFin.Size = new System.Drawing.Size(52, 13);
+            this.lbFechaFin.TabIndex = 25;
+            this.lbFechaFin.Text = "HASTA:";
+            // 
+            // lbFechaInicio
+            // 
+            this.lbFechaInicio.AutoSize = true;
+            this.lbFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFechaInicio.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbFechaInicio.Location = new System.Drawing.Point(10, 35);
+            this.lbFechaInicio.Name = "lbFechaInicio";
+            this.lbFechaInicio.Size = new System.Drawing.Size(53, 13);
+            this.lbFechaInicio.TabIndex = 24;
+            this.lbFechaInicio.Text = "DESDE:";
+            // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFin.Location = new System.Drawing.Point(131, 51);
+            this.dtpFechaFin.MinDate = new System.DateTime(2016, 2, 5, 0, 12, 35, 0);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(110, 24);
+            this.dtpFechaFin.TabIndex = 4;
+            this.dtpFechaFin.Value = new System.DateTime(2016, 2, 5, 0, 12, 35, 0);
+            // 
+            // lbDias
+            // 
+            this.lbDias.AutoSize = true;
+            this.lbDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDias.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.lbDias.Location = new System.Drawing.Point(10, 12);
+            this.lbDias.Name = "lbDias";
+            this.lbDias.Size = new System.Drawing.Size(132, 16);
+            this.lbDias.TabIndex = 22;
+            this.lbDias.Text = "Días de la campaña:";
+            // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(13, 51);
+            this.dtpFechaInicio.MinDate = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(110, 24);
+            this.dtpFechaInicio.TabIndex = 3;
+            this.dtpFechaInicio.Value = new System.DateTime(2016, 2, 5, 0, 12, 35, 0);
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechaInicio_ValueChanged);
+            // 
             // FormAgregarModificarBanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(538, 365);
-            this.Controls.Add(this.panelIntervalo);
-            this.Controls.Add(this.btnAgregar);
+            this.ClientSize = new System.Drawing.Size(538, 477);
+            this.Controls.Add(this.panelHora);
+            this.Controls.Add(this.panelFecha);
             this.Controls.Add(this.panelFuenteRSS);
+            this.Controls.Add(this.panelIntervalo);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panelTextoFijo);
             this.Controls.Add(this.panelTipo);
             this.Controls.Add(this.txtNombreBanner);
@@ -293,6 +452,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAgregarModificarBanner";
             this.Text = "Agregar banner";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAgregarModificarBanner_FormClosing);
             this.Load += new System.EventHandler(this.FormAgregarModificarBanner_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
@@ -305,6 +465,10 @@
             this.panelIntervalo.ResumeLayout(false);
             this.panelIntervalo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).EndInit();
+            this.panelHora.ResumeLayout(false);
+            this.panelHora.PerformLayout();
+            this.panelFecha.ResumeLayout(false);
+            this.panelFecha.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,10 +490,22 @@
         private System.Windows.Forms.Panel panelFuenteRSS;
         private System.Windows.Forms.Label lbFuenteRSS;
         private System.Windows.Forms.ComboBox comboFuenteRSS;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Panel panelIntervalo;
         private System.Windows.Forms.Label lbValorIntervalo;
         private System.Windows.Forms.TrackBar tbarIntervalo;
         private System.Windows.Forms.Label lbIntervalo;
+        private System.Windows.Forms.Panel panelHora;
+        private System.Windows.Forms.DateTimePicker dtpHoraFin;
+        private System.Windows.Forms.DateTimePicker dtpHoraInicio;
+        private System.Windows.Forms.Label lbHoraFin;
+        private System.Windows.Forms.Label lbHoraInicio;
+        private System.Windows.Forms.Label lbHorario;
+        private System.Windows.Forms.Panel panelFecha;
+        private System.Windows.Forms.Label lbFechaFin;
+        private System.Windows.Forms.Label lbFechaInicio;
+        private System.Windows.Forms.DateTimePicker dtpFechaFin;
+        private System.Windows.Forms.Label lbDias;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicio;
     }
 }

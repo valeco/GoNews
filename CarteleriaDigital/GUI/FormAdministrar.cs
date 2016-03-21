@@ -45,14 +45,15 @@ namespace CarteleriaDigital.GUI
 
         private void btnAgregarCampaña_Click(object sender, EventArgs e)
         {
-            var mForm = new FormAgregarModificarCampaña();
+            var mForm = new FormAgregarModificarCampaña(iLogger, 0);
 
             mForm.ShowDialog();
         }
 
         private void btnEliminarCampaña_Click(object sender, EventArgs e)
         {
-            var mForm = new FormSolicitarID("campaña", true);
+            iLogger.Info("Inicializando form Solicitar ID campaña");
+            var mForm = new FormSolicitarID(iLogger, "campaña", true);
 
             mForm.ShowDialog();
         }
@@ -69,42 +70,49 @@ namespace CarteleriaDigital.GUI
 
         private void btnAgregarBanner_Click(object sender, EventArgs e)
         {
-            var mForm = new FormAgregarModificarBanner(this.iLogger, null);
+            iLogger.Info("Abriendo form Agregar Banner");
+            var mForm = new FormAgregarModificarBanner(this.iLogger, 0);
 
             mForm.ShowDialog();
         }
 
         private void btnEliminarBanner_Click(object sender, EventArgs e)
         {
-            var mForm = new FormSolicitarID("banner", true);
+            iLogger.Info("Abriendo form Solicitar ID Banner");
+            var mForm = new FormSolicitarID(iLogger, "banner", true);
 
             mForm.ShowDialog();
         }
 
         private void btnModificarCampaña_Click(object sender, EventArgs e)
         {
-            var mForm = new FormSolicitarID("campaña", false);
+            iLogger.Info("Abriendo form Solicitar ID CAMPAÑA");
+            var mForm = new FormSolicitarID(iLogger, "campaña", false);
+
 
             mForm.ShowDialog();
         }
 
         private void btnModificarBanner_Click(object sender, EventArgs e)
         {
-            var mForm = new FormSolicitarID("banner", false);
+            iLogger.Info("Abriendo form Solicitar ID Banner");
+            var mForm = new FormSolicitarID(iLogger, "banner", false);
 
             mForm.ShowDialog();
         }
 
         private void btnBuscarCampaña_Click(object sender, EventArgs e)
         {
-            var mForm = new FormBuscar("campaña");
+            iLogger.Info("Abriendo form Buscar CAMPAÑA");
+            var mForm = new FormBuscar(iLogger, "campaña");
 
             mForm.ShowDialog();
         }
 
         private void btnBuscarBanner_Click(object sender, EventArgs e)
         {
-            var mForm = new FormBuscar("banner");
+            iLogger.Info("Abriendo form Buscar BANNER");
+            var mForm = new FormBuscar(iLogger, "banner");
 
             mForm.ShowDialog();
         }

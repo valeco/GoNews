@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbMarquesina = new System.Windows.Forms.Label();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.lbOlvideContraseña = new System.Windows.Forms.LinkLabel();
@@ -39,6 +40,8 @@
             this.pboxLogin = new System.Windows.Forms.PictureBox();
             this.pboxCerrar = new System.Windows.Forms.PictureBox();
             this.pboxSlide = new System.Windows.Forms.PictureBox();
+            this.timerCampaña = new System.Windows.Forms.Timer(this.components);
+            this.timerBanner = new System.Windows.Forms.Timer(this.components);
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).BeginInit();
@@ -55,10 +58,9 @@
             this.lbMarquesina.ForeColor = System.Drawing.Color.White;
             this.lbMarquesina.Location = new System.Drawing.Point(10, 270);
             this.lbMarquesina.Name = "lbMarquesina";
-            this.lbMarquesina.Size = new System.Drawing.Size(1112, 20);
+            this.lbMarquesina.Size = new System.Drawing.Size(590, 20);
             this.lbMarquesina.TabIndex = 1;
-            this.lbMarquesina.Text = "Luego de que el ministro de Hacienda, Alfonso Prat Gay, y el jefe de Gabinete, Ma" +
-    "rcos Peña, anunciaran que el gobierno nacional había...";
+            this.lbMarquesina.Text = "GO NEWS: Publicita tu producto aquí, informate en www.GoNews.com.ar";
             // 
             // panelLogin
             // 
@@ -172,6 +174,14 @@
             this.pboxSlide.TabIndex = 0;
             this.pboxSlide.TabStop = false;
             // 
+            // timerCampaña
+            // 
+            this.timerCampaña.Tick += new System.EventHandler(this.timerCampaña_Tick);
+            // 
+            // timerBanner
+            // 
+            this.timerBanner.Tick += new System.EventHandler(this.timerBanner_Tick);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,7 +209,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -215,6 +224,8 @@
         private System.Windows.Forms.PictureBox pboxCerrar;
         private System.Windows.Forms.PictureBox pboxLogin;
         private System.Windows.Forms.PictureBox pboxMinimizar;
+        private System.Windows.Forms.Timer timerCampaña;
+        private System.Windows.Forms.Timer timerBanner;
     }
 }
 

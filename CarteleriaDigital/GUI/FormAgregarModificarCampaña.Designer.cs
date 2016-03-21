@@ -47,17 +47,23 @@
             this.lbHoraFin = new System.Windows.Forms.Label();
             this.lbHoraInicio = new System.Windows.Forms.Label();
             this.lbHorario = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCargarImagenes = new System.Windows.Forms.Button();
             this.pboxMinimizar = new System.Windows.Forms.PictureBox();
             this.pboxCerrar = new System.Windows.Forms.PictureBox();
             this.galeria = new CarteleriaDigital.GUI.GaleriaImagenes();
+            this.btnEliminarPrioridad = new System.Windows.Forms.Button();
+            this.btnQuitarCompletamente = new System.Windows.Forms.Button();
+            this.btnBajarPrioridad = new System.Windows.Forms.Button();
+            this.btnSubirPrioridad = new System.Windows.Forms.Button();
+            this.dgridPrioridades = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).BeginInit();
             this.panelIntervalo.SuspendLayout();
             this.panelFecha.SuspendLayout();
             this.panelHora.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridPrioridades)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTitulo
@@ -81,6 +87,7 @@
             this.dtpFechaInicio.Size = new System.Drawing.Size(110, 24);
             this.dtpFechaInicio.TabIndex = 3;
             this.dtpFechaInicio.Value = new System.DateTime(2016, 2, 5, 0, 12, 35, 0);
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechaInicio_ValueChanged);
             // 
             // tbarIntervalo
             // 
@@ -88,12 +95,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbarIntervalo.Location = new System.Drawing.Point(13, 50);
             this.tbarIntervalo.Maximum = 20;
-            this.tbarIntervalo.Minimum = 1;
+            this.tbarIntervalo.Minimum = 3;
             this.tbarIntervalo.Name = "tbarIntervalo";
             this.tbarIntervalo.Size = new System.Drawing.Size(227, 45);
             this.tbarIntervalo.TabIndex = 2;
             this.tbarIntervalo.Value = 5;
             this.tbarIntervalo.Scroll += new System.EventHandler(this.tbarIntervalo_Scroll);
+            this.tbarIntervalo.ValueChanged += new System.EventHandler(this.tbarIntervalo_ValueChanged);
             // 
             // txtNombreCampaña
             // 
@@ -233,6 +241,7 @@
             this.dtpHoraInicio.Size = new System.Drawing.Size(110, 24);
             this.dtpHoraInicio.TabIndex = 5;
             this.dtpHoraInicio.Value = new System.DateTime(2016, 2, 5, 0, 0, 0, 0);
+            this.dtpHoraInicio.ValueChanged += new System.EventHandler(this.dtpHoraInicio_ValueChanged);
             // 
             // lbHoraFin
             // 
@@ -267,16 +276,17 @@
             this.lbHorario.TabIndex = 22;
             this.lbHorario.Text = "Horario de la campaña:";
             // 
-            // btnAgregar
+            // btnAceptar
             // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.Location = new System.Drawing.Point(573, 359);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(100, 30);
-            this.btnAgregar.TabIndex = 7;
-            this.btnAgregar.Text = "AGREGAR";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.Color.Black;
+            this.btnAceptar.Location = new System.Drawing.Point(573, 359);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(100, 30);
+            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.Text = "ACEPTAR";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCargarImagenes
             // 
@@ -292,12 +302,13 @@
             this.btnCargarImagenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCargarImagenes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCargarImagenes.UseVisualStyleBackColor = true;
+            this.btnCargarImagenes.Click += new System.EventHandler(this.btnCargarImagenes_Click);
             // 
             // pboxMinimizar
             // 
             this.pboxMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pboxMinimizar.Image = global::CarteleriaDigital.Properties.Resources._pboxMinimizar;
-            this.pboxMinimizar.Location = new System.Drawing.Point(628, 12);
+            this.pboxMinimizar.Location = new System.Drawing.Point(837, 12);
             this.pboxMinimizar.Name = "pboxMinimizar";
             this.pboxMinimizar.Size = new System.Drawing.Size(20, 20);
             this.pboxMinimizar.TabIndex = 16;
@@ -308,7 +319,7 @@
             // 
             this.pboxCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pboxCerrar.Image = global::CarteleriaDigital.Properties.Resources._pboxCerrar;
-            this.pboxCerrar.Location = new System.Drawing.Point(653, 12);
+            this.pboxCerrar.Location = new System.Drawing.Point(862, 12);
             this.pboxCerrar.Name = "pboxCerrar";
             this.pboxCerrar.Size = new System.Drawing.Size(20, 20);
             this.pboxCerrar.TabIndex = 15;
@@ -320,25 +331,95 @@
             this.galeria.AltoImagenes = 100;
             this.galeria.AnchoImagenes = 150;
             this.galeria.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.galeria.ColorAlSeleccionar = System.Drawing.Color.Firebrick;
             this.galeria.Directorio = null;
             this.galeria.ListaImagenes = ((System.Collections.Generic.List<string>)(resources.GetObject("galeria.ListaImagenes")));
             this.galeria.Location = new System.Drawing.Point(272, 76);
             this.galeria.MargenXImagenes = 10;
             this.galeria.MargenYImagenes = 10;
             this.galeria.Name = "galeria";
+            this.galeria.ShowDeleteButtons = false;
             this.galeria.ShowLabels = false;
-            this.galeria.Size = new System.Drawing.Size(398, 277);
+            this.galeria.Size = new System.Drawing.Size(400, 277);
             this.galeria.TabIndex = 1;
+            // 
+            // btnEliminarPrioridad
+            // 
+            this.btnEliminarPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnEliminar;
+            this.btnEliminarPrioridad.Location = new System.Drawing.Point(681, 354);
+            this.btnEliminarPrioridad.Name = "btnEliminarPrioridad";
+            this.btnEliminarPrioridad.Size = new System.Drawing.Size(40, 30);
+            this.btnEliminarPrioridad.TabIndex = 24;
+            this.btnEliminarPrioridad.UseVisualStyleBackColor = true;
+            this.btnEliminarPrioridad.Click += new System.EventHandler(this.btnEliminarPrioridad_Click);
+            // 
+            // btnQuitarCompletamente
+            // 
+            this.btnQuitarCompletamente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarCompletamente.ForeColor = System.Drawing.Color.Black;
+            this.btnQuitarCompletamente.Image = global::CarteleriaDigital.Properties.Resources._btnRemover;
+            this.btnQuitarCompletamente.Location = new System.Drawing.Point(837, 354);
+            this.btnQuitarCompletamente.Name = "btnQuitarCompletamente";
+            this.btnQuitarCompletamente.Size = new System.Drawing.Size(40, 30);
+            this.btnQuitarCompletamente.TabIndex = 27;
+            this.btnQuitarCompletamente.UseVisualStyleBackColor = true;
+            this.btnQuitarCompletamente.Click += new System.EventHandler(this.btnQuitarCompletamente_Click);
+            // 
+            // btnBajarPrioridad
+            // 
+            this.btnBajarPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBajarPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.btnBajarPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnBajar;
+            this.btnBajarPrioridad.Location = new System.Drawing.Point(791, 354);
+            this.btnBajarPrioridad.Name = "btnBajarPrioridad";
+            this.btnBajarPrioridad.Size = new System.Drawing.Size(40, 30);
+            this.btnBajarPrioridad.TabIndex = 26;
+            this.btnBajarPrioridad.UseVisualStyleBackColor = true;
+            this.btnBajarPrioridad.Click += new System.EventHandler(this.btnBajarPrioridad_Click);
+            // 
+            // btnSubirPrioridad
+            // 
+            this.btnSubirPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.btnSubirPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnSubir;
+            this.btnSubirPrioridad.Location = new System.Drawing.Point(732, 354);
+            this.btnSubirPrioridad.Name = "btnSubirPrioridad";
+            this.btnSubirPrioridad.Size = new System.Drawing.Size(40, 30);
+            this.btnSubirPrioridad.TabIndex = 25;
+            this.btnSubirPrioridad.UseVisualStyleBackColor = true;
+            this.btnSubirPrioridad.Click += new System.EventHandler(this.btnSubirPrioridad_Click);
+            // 
+            // dgridPrioridades
+            // 
+            this.dgridPrioridades.AllowUserToAddRows = false;
+            this.dgridPrioridades.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgridPrioridades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridPrioridades.Location = new System.Drawing.Point(679, 76);
+            this.dgridPrioridades.MultiSelect = false;
+            this.dgridPrioridades.Name = "dgridPrioridades";
+            this.dgridPrioridades.ReadOnly = true;
+            this.dgridPrioridades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgridPrioridades.Size = new System.Drawing.Size(203, 277);
+            this.dgridPrioridades.TabIndex = 23;
+            this.dgridPrioridades.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgridPrioridades_MouseClick);
+            this.dgridPrioridades.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgridPrioridades_MouseDoubleClick);
             // 
             // FormAgregarModificarCampaña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(685, 398);
+            this.ClientSize = new System.Drawing.Size(894, 399);
+            this.Controls.Add(this.btnEliminarPrioridad);
+            this.Controls.Add(this.btnQuitarCompletamente);
+            this.Controls.Add(this.btnBajarPrioridad);
+            this.Controls.Add(this.btnSubirPrioridad);
+            this.Controls.Add(this.dgridPrioridades);
             this.Controls.Add(this.btnCargarImagenes);
             this.Controls.Add(this.galeria);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panelHora);
             this.Controls.Add(this.panelFecha);
             this.Controls.Add(this.panelIntervalo);
@@ -349,6 +430,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAgregarModificarCampaña";
             this.Text = "Agregar campaña";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAgregarModificarCampaña_FormClosing);
             this.Load += new System.EventHandler(this.FormAgregarModificarCampaña_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).EndInit();
             this.panelIntervalo.ResumeLayout(false);
@@ -359,6 +441,7 @@
             this.panelHora.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridPrioridades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,8 +469,13 @@
         private System.Windows.Forms.Label lbHorario;
         private System.Windows.Forms.DateTimePicker dtpHoraFin;
         private System.Windows.Forms.DateTimePicker dtpHoraInicio;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAceptar;
         private GaleriaImagenes galeria;
         private System.Windows.Forms.Button btnCargarImagenes;
+        private System.Windows.Forms.Button btnEliminarPrioridad;
+        private System.Windows.Forms.Button btnQuitarCompletamente;
+        private System.Windows.Forms.Button btnBajarPrioridad;
+        private System.Windows.Forms.Button btnSubirPrioridad;
+        private System.Windows.Forms.DataGridView dgridPrioridades;
     }
 }

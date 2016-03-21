@@ -37,9 +37,8 @@ namespace CarteleriaDigital.GUI
             //Configurando grilla
             dgridFuentesRSS.RowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
             dgridFuentesRSS.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
-            dgridFuentesRSS.Columns["URLtexto"].Visible = false;
-
             dgridFuentesRSS.DataSource = iCtrlRSS.ObtenerTodos();
+            dgridFuentesRSS.Columns["URLtexto"].Visible = false;
 
             iLogger.Info("Load finalizado de form Gestionar RSS");
         }
@@ -93,6 +92,7 @@ namespace CarteleriaDigital.GUI
                         btnBuscar_Click(null, null);
                         Toggle();//Ocultamos panel
                         iLogger.Info("Finaliza " + (iEventoAgregar ? "insercion" : "modificacion") + " RSS");
+                        Utilidades.MensajeExito(this, "¡Perfecto!", "Banner " + (iEventoAgregar ? "insertado" : "modificado") + " correctamente.");
                     }
                 }
                 catch (NotInternetAvailable ex)

@@ -1,0 +1,65 @@
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\bin\Debug\Ejemplos.exe.config
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\bin\Debug\Ejemplos.exe
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\bin\Debug\Ejemplos.pdb
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\obj\Debug\Ejemplos.GaleriaImagenes.resources
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\obj\Debug\Ejemplos.Properties.Resources.resources
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\obj\Debug\CarteleriaDigital.csproj.GenerateResource.Cache
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\obj\Debug\Ejemplos.exe
+C:\Users\Luciano\Documents\Visual Studio 2015\Projects\Ejemplos\Ejemplos\obj\Debug\Ejemplos.pdb
+C:\Users\Costa\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\Ejemplos.exe.config
+C:\Users\Costa\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\Ejemplos.exe
+C:\Users\Costa\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\Ejemplos.pdb
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.csproj.GenerateResource.Cache
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.Prueba.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\CarteleriaDigital.exe.config
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\CarteleriaDigital.exe.config
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\CarteleriaDigital.exe
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\CarteleriaDigital.pdb
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.Properties.Resources.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.exe
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.pdb
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.dll
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.xml
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormAdministrar.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormAgregarModificarBanner.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormAgregarModificarCampaña.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormBuscar.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormEditarUsuario.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormGestionarRSS.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormOlvideContraseña.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormPrincipal.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormRegistro.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormSolicitarID.resources
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.GaleriaImagenes.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.exe
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.pdb
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.csprojResolveAssemblyReference.cache
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormAdministrar.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormAgregarModificarBanner.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormAgregarModificarCampaña.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormBuscar.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormEditarUsuario.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormGestionarRSS.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormOlvideContraseña.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormPrincipal.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormRegistro.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.FormSolicitarID.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.GUI.GaleriaImagenes.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.Properties.Resources.resources
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.csproj.GenerateResource.Cache
+C:\Users\Luciano\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\obj\Debug\CarteleriaDigital.csprojResolveAssemblyReference.cache
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\CarteleriaDigital.exe
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\CarteleriaDigital.pdb
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.dll
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\mscorlib.dll
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.xml
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\es\mscorlib.resources.dll
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\normidna.nlp
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\normnfc.nlp
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\normnfd.nlp
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\normnfkc.nlp
+C:\Users\Vale\Dropbox\TallerProgramacionProyecto\CarteleriaDigital\CarteleriaDigital\bin\Debug\normnfkd.nlp

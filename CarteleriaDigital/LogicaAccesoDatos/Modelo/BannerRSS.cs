@@ -49,14 +49,16 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <returns>Cadena de texto de una noticia</returns>
         public string Proximo()
         {
-            if (this.iListaItems.Count() == 0 || this.iListaItems == null)
+            if (this.iListaItems == null || this.iListaItems.Count() == 0)
             {
                 this.iListaItems = RSS.RSS.Feed(this.URL);
                 this.iContador = 0;
             }
 
-            if (this.iContador >= this.iListaItems.Count())
+            if (this.iContador == this.iListaItems.Count()-1)
                 iContador = 0;
+            else
+                iContador++;
 
             RssItem mItem = this.iListaItems.Count()==0 ?   new RssItem("GO NEWS",
                                                                         "Publicita tu producto aquí, informate en www.GoNews.com.ar",
@@ -81,6 +83,9 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
             return Descripcion;
         }
 
+        /// <summary>
+        /// Obtiene una instancia de la clase BannerRSS
+        /// </summary>
         public BannerRSS() { }
     }
 }

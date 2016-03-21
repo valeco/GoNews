@@ -18,6 +18,8 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            System.GC.Collect();
+            System.GC.WaitForPendingFinalizers();
         }
 
         #region Component Designer generated code
@@ -34,6 +36,7 @@
             // 
             this.Name = "GaleriaImagenes";
             this.Size = new System.Drawing.Size(212, 174);
+            this.Load += new System.EventHandler(this.GaleriaImagenes_Load);
             this.Resize += new System.EventHandler(this.GaleriaImagenes_Resize);
             this.ResumeLayout(false);
 

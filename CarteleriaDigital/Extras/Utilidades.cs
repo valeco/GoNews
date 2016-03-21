@@ -101,12 +101,30 @@ namespace CarteleriaDigital.Extras
                 FileInfo archivo = new FileInfo(archivoRuta);
                 if (archivo.Exists)
                 {
-                    string nuevaRutaArchivo = pDirectorioDestino + DateTime.Now.Ticks.ToString() + archivo.Extension;
+                    string nuevaRutaArchivo = pDirectorioDestino + Path.GetRandomFileName().Replace(".","") + DateTime.Now.Ticks.ToString() + archivo.Extension;
                     File.Copy(archivo.FullName, nuevaRutaArchivo);
+                    mListaArchivosCopiados.Add(nuevaRutaArchivo);
                 }
             }
 
             return mListaArchivosCopiados;
+        }
+
+        /// <summary>
+        /// Elimina todos los archivos de la lista con sus rutas absolutas dadas
+        /// </summary>
+        /// <param name="pListaArchivos">Lista de archivos(sus rutas absolutas)</param>
+        public static void EliminarArchivos( List<string> pListaArchivos)
+        {
+            foreach (string archivoRuta in pListaArchivos)
+            {
+                //FileInfo archivo = new FileInfo(archivoRuta);
+                if (Microsoft.VisualBasic.FileIO.FileSystem.FileExists(archivoRuta))
+                {
+                    //File.Delete(archivo.FullName);
+                    Microsoft.VisualBasic.FileSystem.Kill(archivoRuta);
+                }
+            }
         }
 
         /// <summary>
@@ -143,8 +161,8 @@ namespace CarteleriaDigital.Extras
             flags |= dirmap[(angulo % 360) / 45];
 
             bool ok = AnimateWindow(pCtrl.Handle, msec, flags);
-            if (!ok)
-                throw new Exception("Animacion fallida");
+            //if (!ok)
+                //throw new Exception("Animacion fallida");REVISAR
             pCtrl.Visible = !pCtrl.Visible;
         }
 
@@ -187,7 +205,8 @@ namespace CarteleriaDigital.Extras
         /// <exception cref="System.FormatException">Lanzado cuando el formato deseado no es compatible con los datos introducidos por el usuario</exception>
         public static T InputBox <T>(string pTitulo, string pMensaje, string pValorPorDefecto)
         {
-            return (T) Convert.ChangeType( Microsoft.VisualBasic.Interaction.InputBox(pMensaje,pTitulo,pValorPorDefecto) ,typeof(T) );
+            var mResultado = Microsoft.VisualBasic.Interaction.InputBox(pMensaje, pTitulo, pValorPorDefecto);
+            return (mResultado!="")? (T) Convert.ChangeType( mResultado ,typeof(T) ) : default(T);
         }
 
         /// <summary>

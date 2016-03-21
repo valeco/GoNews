@@ -15,8 +15,8 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// Obtiene una instancia de BannerTXT
         /// </summary>
         /// <param name="pTexto">Texto asociado al banner</param>
-        public BannerTXT(string pTexto = "GO NEWS: Publicita tu producto aquí, informate en WWW.goNews.com.ar")
-        { this.Texto = pTexto; }
+        public BannerTXT(string pTexto)
+        { this.Texto = pTexto != string.Empty? pTexto: "GO NEWS: Publicita tu producto aquí, informate en WWW.goNews.com.ar"; }
 
         /// <summary>
         /// Devuelve el proximo texto a mostrar
@@ -29,6 +29,9 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
             return this.BannerTXTId;
         }
 
-        public BannerTXT() {}
+        /// <summary>
+        /// Constructor solo valido para ser utilizado por EF
+        /// </summary>
+        protected BannerTXT() {}
     }
 }

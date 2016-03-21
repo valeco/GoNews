@@ -72,7 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\ControladorBannerRSS.cs" />
+    <Compile Include="Controladores\ControladorBannerTXT.cs" />
+    <Compile Include="Controladores\ControladorImagen.cs" />
     <Compile Include="Controladores\ControladorUsuario.cs" />
+    <Compile Include="Extras\ComboItem.cs" />
+    <Compile Include="Extras\EscrituraArchivoTexto.cs" />
+    <Compile Include="Extras\LecturaArchivoTexto.cs" />
     <Compile Include="GUI\FormAdministrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +218,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Referencias.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -231,9 +237,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagenes\_campaña_gonews.jpg" />
-    <Content Include="Referencias.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Imagenes\_btnBajar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\_btnRemover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\_btnSubir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DropTables.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

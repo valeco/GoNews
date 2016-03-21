@@ -88,19 +88,18 @@ namespace CarteleriaDigital.Controladores
                 (
                     (mFIni >= b.FechaInicio && mFFin <= b.FechaFin) || // Intervalo dentro del otro (includio)
                     (mFIni < b.FechaInicio && mFFin >= b.FechaInicio && mFFin <= b.FechaFin) || // Intervalo que arranca antes y termina dentro
-                    (mFIni >= b.FechaInicio && mFIni <= b.FechaFin && mFFin > b.FechaFin) || // Intervalo que arranque dentro y termine despues
+                    (mFIni >= b.FechaInicio && mFIni <= b.FechaFin && mFFin > b.FechaFin) || // Intervalo que arranque dentro y termine por fuera
                     (mFIni < b.FechaInicio && mFFin > b.FechaFin) // Intervalo que contenga al otro
                 )
                     &&
                 (
                     (mHIni >= b.HoraInicio && mHFin <= b.HoraFin) || // Intervalo dentro del otro (includio)
                     (mHIni < b.HoraInicio && mHFin >= b.HoraInicio && mHFin <= b.HoraFin) || // Intervalo que arranca antes y termina dentro
-                    (mHIni >= b.HoraInicio && mHIni <= b.HoraFin && mHFin > b.HoraFin) || // Intervalo que arranque dentro y termine despues
+                    (mHIni >= b.HoraInicio && mHIni <= b.HoraFin && mHFin > b.HoraFin) || // Intervalo que arranque dentro y termine por fuera
                     (mHIni < b.HoraInicio && mHFin > b.HoraFin) // Intervalo que contenga al otro 
                 )
                     &&
-                (b.Activo == true) //HAY QUE PREGUNTARLO? REVISAR puede que si el banner existe pero esta desactivado no haya drama en que se
-                                   //genere uno en el mismo horario, el drama que si se activa hay que considerar solapamiento al activar
+                (b.Activo == true)
             ));
 
             return mConsulta.ToList();
@@ -133,12 +132,12 @@ namespace CarteleriaDigital.Controladores
         /// <returns>Un banner</returns>
         public Banner ObtenerBanner(DateTime pFechaHora)
         {
-            Banner mBannerAuxiliar = new Banner(new BannerTXT(), TipoBanner.TXT)//Por defecto BannerTXT tiene un texto promocional de GoNews
+            Banner mBannerAuxiliar = new Banner(new BannerTXT(""), TipoBanner.TXT)//Por defecto BannerTXT tiene un texto promocional de GoNews
             {
                 FechaInicio = pFechaHora.Date,
-                FechaFin = pFechaHora.Date.AddMinutes(1),
+                FechaFin = pFechaHora.Date,
                 HoraInicio = new TimeSpan(pFechaHora.Hour, pFechaHora.Minute, pFechaHora.Second),
-                HoraFin = new TimeSpan(pFechaHora.Hour, pFechaHora.Minute, pFechaHora.Second),
+                HoraFin = new TimeSpan(pFechaHora.Hour, pFechaHora.Minute + 1, pFechaHora.Second),
                 Intervalo = 0,
                 Nombre = "GO NEWS Campaña Default",
             };
