@@ -21,9 +21,6 @@ Manual de usuario de GoNews
     - Eliminar banner
     - Buscar banner
 3. [Preguntas frecuentes](#3-preguntas-frecuentes)
-  - ¿Puedo utilizar la aplicación sin conexión a internet?
-  - Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
-  - En lugar de eliminar, ¿puedo desactivar una campaña o banner?
 4. [Créditos](#4-créditos)
 
 ## 1. ¿Qué es GoNews?
@@ -80,7 +77,7 @@ Ingrese su *nombre de usuario* y *contraseña* y luego presione el botón `Entra
 
 > Siga las siguientes instrucciones si desea **cambiar su contraseña**.
 
-En el **panel de administración**, presione el botón con la imagen de un lápiz que se encuentra junto a su nombre y email. Se mostrará un formulario con sus datos.
+En el **panel de administración**, presione el botón con la imagen de un lápiz :pencil2: que se encuentra junto a su nombre y email. Se mostrará un formulario con sus datos.
 
 ![Formulario para editar los datos del usuario](/imagenes/form_modificarusuario.jpg)
 
@@ -94,7 +91,7 @@ En el **panel de administración**, presione el botón con la imagen de un engra
 
 ![Formulario para editar los datos del usuario](/imagenes/form_modificarusuario.jpg)
 
-Para agregar una nueva fuente RSS, presione el botón con el símbolo de adición (`+`) y se mostrarán un formulario en la parte de inferior.
+Para agregar una nueva fuente RSS, presione el botón con el símbolo de adición :heavy_plus_sign: (`+`) y se mostrará un formulario en la parte de inferior.
 
 ![Agregando una nueva fuente RSS](/imagenes/form_gestionarrss_agregar.jpg)
 
@@ -106,17 +103,17 @@ Ingrese el nombre y la URL correspondientes a la fuente RSS externa que desea ag
 
 > Antes de agregar una nueva campaña, asegúrese que el horario no esté ocupado por otra utilizando el **buscador de campañas**.
 
-En el **panel de administración**, presione el botón con el símbolo de adición (`+`) ubicado dentro del recuadro `CAMPAÑAS`. Se mostrará una nueva ventana.
+En el **panel de administración**, presione el botón con el símbolo de adición :heavy_plus_sign: (`+`) ubicado dentro del recuadro `CAMPAÑAS`. Se mostrará una nueva ventana.
 
 ![Agregando nueva campaña](/imagenes/form_agregarcampaña.jpg)
 
-En dicha ventana, ingrese los datos correspondiente a la nueva campaña, procurando no ingresar un horario ocupado por otra (durante los mismos días). Seleccione el intervalo de tiempo que desea que duren las imágenes en pantalla.
+En dicha ventana, ingrese los datos correspondiente a la nueva campaña, procurando *no ingresar un horario ocupado* por otra (en los días elegidos). Seleccione el **intervalo** de tiempo que desea que duren las imágenes en pantalla.
 
-Presione el botón `Cargar imágenes...`, seleccione todas las imágenes que desea mostrar durante la campaña y presione el botón `Aceptar`. Una vez cargadas, puede asignar prioridades a cada una de las imágenes simplemente haciendo doble click en ellas.
+Presione el botón `Cargar imágenes...`, seleccione todas las imágenes que desea mostrar durante la campaña y presione el botón `Aceptar`. Una vez cargadas, puede **asignar prioridades** a cada una de las imágenes simplemente haciendo *doble click* en ellas.
 
-Posteriormente, podría **cambiar el orden de prioridad** de alguna imagen seleccionándola en la grilla ubicada a la derecha y oprimiendo los botones de `Subir prioridad` (flecha hacia arriba) o `Bajar prioridad` (flecha hacia abajo) que se encuentran debajo de ella.
+Posteriormente, podría **cambiar el orden de prioridad** de alguna imagen seleccionándola en la grilla ubicada a la derecha y oprimiendo los botones de `Subir prioridad` :arrow_up: (flecha hacia arriba) o `Bajar prioridad` :arrow_down: (flecha hacia abajo) que se encuentran debajo de ella.
 
-Si deseara **quitar una imagen** de la campaña, selecciónela en dicha grilla y presione el botón `Eliminar imagen`.
+Si deseara **quitar una imagen** de la campaña, selecciónela en dicha grilla y presione el botón `Eliminar imagen` (bote de basura).
 
 Para finalizar, presione el botón `ACEPTAR` ubicado en la parte inferior izquierda. La campaña quedará entonces guardada.
 
@@ -124,7 +121,7 @@ Para finalizar, presione el botón `ACEPTAR` ubicado en la parte inferior izquie
 
 > Para modificar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
 
-En el **panel de administración**, presione el botón con la imagen de un lápiz ubicado dentro del recuadro `CAMPAÑAS`. Aparecerá una nueva ventana solicitándole el ID de la campaña que desea modificar. Ingrese el ID correspondiente y presione el botón `MODIFICAR`.
+En el **panel de administración**, presione el botón con la imagen de un lápiz :pencil2: ubicado dentro del recuadro `CAMPAÑAS`. Aparecerá una nueva ventana solicitándole el ID de la campaña que desea modificar. Ingrese el ID correspondiente y presione el botón `MODIFICAR`.
 
 ![Modificando una campaña](/imagenes/form_modificarcampaña.jpg)
 
@@ -136,25 +133,25 @@ Una vez hecho los cambios, presione el botón `ACEPTAR` y los mismos quedarán a
 
 > Para eliminar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
 
-En el **panel de administración**, presione el botón con la imagen de un tacho de basura ubicado dentro del recuadro `CAMPAÑAS`. Aparecerá una nueva ventana solicitándole el ID de la campaña que desea modificar. Ingrese el ID correspondiente y presione el botón `ELIMINAR`.
+En el **panel de administración**, presione el botón con la imagen de un bote de basura ubicado dentro del recuadro `CAMPAÑAS`. Aparecerá una nueva ventana solicitándole el ID de la campaña que desea modificar. Ingrese el ID correspondiente y presione el botón `ELIMINAR`.
 
 ![Eliminando una campaña](/imagenes/form_eliminarcampaña.jpg)
 
-Deberá confirmar la eliminación de la campaña aceptando la ventana que se le presenterá. Una vez hecho, la campaña quedará completamente eliminada.
+Deberá confirmar la eliminación de la campaña **aceptando la ventana** que se le presenterá. Una vez hecho, la campaña quedará completamente eliminada.
 
 #### Buscar campaña
 
 > Desde el **panel de búsqueda** es posible activar y desactivar campañas.
 
-En el **panel de administración**, presione el botón con la imagen de una lupa ubicado dentro del recuadro `CAMPAÑAS`. Se mostrará una nueva ventana.
+En el **panel de administración**, presione el botón con la imagen de una lupa :mag: ubicado dentro del recuadro `CAMPAÑAS`. Se mostrará una nueva ventana.
 
 ![Buscando una campaña](/imagenes/form_buscarcampaña.jpg)
 
-Allí podrá ingresar los datos por los cuales filtrar la búsqueda: el nombre de la campaña, la fecha y/o el horario en la que es publicitada. Simplemente ingrese los que considere pertinentes y oprima el botón `BUSCAR`.
+Allí podrá ingresar los datos por los cuales filtrar la búsqueda: el *nombre* de la campaña, la *fecha* y/o el *horario* en la que es publicitada. Simplemente ingrese los que considere pertinentes y oprima el botón `BUSCAR`.
 
-En la grilla inferior se mostrarán los resultados obtenidos de la consulta.
+En la grilla inferior se mostrarán los **resultados** obtenidos de la consulta.
 
-Puede **activar y desactivar campañas** haciendo doble click sobre las filas correspondiente a las mismas en la grilla. Las campañas inactivas no serán mostradas en la pantalla principal.
+Puede **activar y desactivar campañas** haciendo doble click sobre las filas correspondiente a las mismas en la grilla. Las campañas inactivas no serán mostradas en la *pantalla principal*.
 
 ### Gestionar banners
 
@@ -162,11 +159,11 @@ Puede **activar y desactivar campañas** haciendo doble click sobre las filas co
 
 > Antes de agregar un nuevo banner, asegúrese que el horario no esté ocupado por otro utilizando el **buscador de banners**.
 
-En el **panel de administración**, presione el botón con el símbolo de adición (`+`) ubicado dentro del recuadro `BANNERS`. Se mostrará una nueva ventana.
+En el **panel de administración**, presione el botón con el símbolo de adición :heavy_plus_sign: (`+`) ubicado dentro del recuadro `BANNERS`. Se mostrará una nueva ventana.
 
 ![Agregando nuevo banner](/imagenes/form_agregarbanner.jpg)
 
-En dicha ventana, ingrese los datos correspondiente al nuevo banner, procurando no ingresar un horario ocupado por otro (durante los mismos días). Escoja el tipo de banner de que desea.
+En dicha ventana, ingrese los datos correspondiente al nuevo banner, procurando **no ingresar un horario ocupado** por otro (en los días elegidos). Escoja el **tipo de banner** de que desea.
 
 En caso de elegir una *fuente RSS*, seleccione el intervalo de tiempo que desea que duren en pantalla las distintas noticias/artículos. En cambio, si decide mostrar un *texto fijo*, ingréselo en el campo de texto que se encuentra a la derecha.
 
@@ -176,7 +173,7 @@ Una vez completado estos pasos, presione el botón `ACEPTAR` para finalizar y el
 
 > Para modificar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
 
-En el **panel de administración**, presione el botón con la imagen de un lápiz ubicado dentro del recuadro `BANNERS`. Aparecerá una nueva ventana solicitándole el ID del banner que desea modificar. Ingrese el ID correspondiente y presione el botón `MODIFICAR`.
+En el **panel de administración**, presione el botón con la imagen de un lápiz :pencil2: ubicado dentro del recuadro `BANNERS`. Aparecerá una nueva ventana solicitándole el ID del banner que desea modificar. Ingrese el ID correspondiente y presione el botón `MODIFICAR`.
 
 ![Modificando un banner](/imagenes/form_modificarbanner.jpg)
 
@@ -188,17 +185,17 @@ Una vez hecho los cambios, presione el botón `ACEPTAR` y los mismos quedarán a
 
 > Para eliminar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
 
-En el **panel de administración**, presione el botón con la imagen de un tacho de basura ubicado dentro del recuadro `BANNERS`. Aparecerá una nueva ventana solicitándole el ID del banner que desea modificar. Ingrese el ID correspondiente y presione el botón `ELIMINAR`.
+En el **panel de administración**, presione el botón con la imagen de un bote de basura ubicado dentro del recuadro `BANNERS`. Aparecerá una nueva ventana solicitándole el ID del banner que desea modificar. Ingrese el ID correspondiente y presione el botón `ELIMINAR`.
 
 ![Eliminando un banner](/imagenes/form_eliminarbanner.jpg)
 
-Deberá confirmar la eliminación del banner aceptando la ventana que se le presenterá. Una vez hecho, el banner quedará completamente eliminado.
+Deberá confirmar la eliminación del banner **aceptando la ventana** que se le presenterá. Una vez hecho, el banner quedará completamente eliminado.
 
 #### Buscar banner
 
 > Desde el **panel de búsqueda** es posible activar y desactivar banners.
 
-En el **panel de administración**, presione el botón con la imagen de una lupa ubicado dentro del recuadro `BANNERS`. Se mostrará una nueva ventana.
+En el **panel de administración**, presione el botón con la imagen de una lupa :mag: ubicado dentro del recuadro `BANNERS`. Se mostrará una nueva ventana.
 
 ![Buscando un banner](/imagenes/form_buscarbanner.jpg)
 
@@ -221,6 +218,10 @@ Si, se seguirá mostrando. Una vez creada la campaña, todas las imágenes carga
 ### En lugar de eliminar, ¿puedo desactivar una campaña o banner?
 
 Sí, simplemente busque la campaña o banner en su respectivo **panel de búsqueda** y haga doble click sobre su correspondiente fila en la grilla.
+
+### ¿Puedo recuperar una campaña o banner eliminado?
+
+No, no es posible recuperar aquella campaña o banner que ha sido eliminado.
 
 ## 4. Créditos
 
