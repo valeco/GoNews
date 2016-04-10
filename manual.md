@@ -3,28 +3,28 @@ Manual de usuario de GoNews
 
 ## Índice
 
-1. ¿Qué es GoNews?
-2. Cómo usar el programa
-  1. Registrar usuario
-  2. Recuperar contraseña
-  3. Acceder al panel de administración
-  4. Editar datos del usuario
-  5. Gestionar fuentes RSS
-  6. Gestionar campañas
-    1. Agregar campaña
-    2. Modificar campaña
-    3. Eliminar campaña
-    4. Buscar campaña
-  7. Gestionar banners
-    1. Agregar banner
-    2. Modificar banner
-    3. Eliminar banner
-    4. Buscar banner
-3. Preguntas frecuentes
-  1. ¿Puedo utilizar la aplicación sin conexión a internet?
-  2. Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
-  3. En lugar de eliminar, ¿puedo desactivar una campaña o banner?
-4. Créditos
+1. [¿Qué es GoNews?](#1-qué-es-gonews)
+2. [Cómo usar el programa](#2-cómo-usar-el-programa)
+  - Registrar usuario
+  - Recuperar contraseña
+  - Acceder al panel de administración
+  - Editar datos del usuario
+  - Gestionar fuentes RSS
+  - Gestionar campañas
+    - Agregar campaña
+    - Modificar campaña
+    - Eliminar campaña
+    - Buscar campaña
+  - Gestionar banners
+    - Agregar banner
+    - Modificar banner
+    - Eliminar banner
+    - Buscar banner
+3. [Preguntas frecuentes](#3-preguntas-frecuentes)
+  - ¿Puedo utilizar la aplicación sin conexión a internet?
+  - Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
+  - En lugar de eliminar, ¿puedo desactivar una campaña o banner?
+4. [Créditos](#4-créditos)
 
 ## 1. ¿Qué es GoNews?
 
@@ -40,7 +40,7 @@ GoNews posee sistema de usuarios, asegurando que sólo personal autorizado utili
 
 En las siguientes secciones se detalla paso a paso el uso de las diferentes funcionalidades de la aplicación.
 
-### 2.1. Registrar usuario
+### Registrar usuario
 
 > Para administrar la aplicación es necesario estar registrado y haber iniciado sesión.
 
@@ -52,7 +52,7 @@ Complete con sus datos el formulario que aparecerá en pantalla y a continuació
 
 ![Formulario de registro](/imagenes/form_registrarse.jpg)
 
-### 2.2. Recuperar contraseña
+### Recuperar contraseña
 
 > En caso de que no recuerde su contraseña, puede solicitar que le sea enviada al email que utilizó para registrarse.
 
@@ -60,21 +60,23 @@ En la **pantalla principal**, presione el botón `LOGIN` situado en la parte inf
 
 ![Panel para iniciar sesión](/imagenes/panel_login.jpg)
 
-Ingrese el usuario y el email correspondientes a su cuenta en el formulario que aparecerá en pantalla y a continuación presione el botón `RECUPERAR`. Si los datos ingresados son correctos, en los minutos siguientes recibirá un mensaje a su email con la contraseña.
+Ingrese el usuario y el email correspondientes a su cuenta en el formulario que aparecerá en pantalla y a continuación presione el botón `RECUPERAR`. Si los datos ingresados son correctos, en los minutos siguientes recibirá un mensaje en su email con la contraseña.
 
 ![Formulario de registro](/imagenes/form_olvidecontraseña.jpg)
 
-### 2.3. Acceder al panel de administración
+### Acceder al panel de administración
 
-> En el **panel de administración** se encuentran todas funcionalidades y se realizan las configuraciones de la aplicación.
+> En el **panel de administración** da acceso a todas funcionalidades y configuraciones de la aplicación.
 
 En la **pantalla principal**, presione el botón `LOGIN` situado en la parte inferior derecha. Se mostrará el panel para inciar sesión.
+
+![Panel para iniciar sesión](/imagenes/panel_login.jpg)
 
 Ingrese su *nombre de usuario* y *contraseña* y luego presione el botón `Entrar`. Si los datos ingresados son correctos, aparecerá en pantalla el **panel de administración**.
 
 ![Panel de administración](/imagenes/form_administrar.jpg)
 
-### 2.4. Editar datos del usuario
+### Editar datos del usuario
 
 > Siga las siguientes instrucciones si desea **cambiar su contraseña**.
 
@@ -84,7 +86,7 @@ En el **panel de administración**, presione el botón con la imagen de un lápi
 
 Reescriba todos los datos que desee modificar e ingrese su nueva contraseña por segunda vez en caso de haberla cambiado. Luego, presione el botón `ACEPTAR` para confirmar los cambios.
 
-### 2.5. Gestionar fuentes RSS
+### Gestionar fuentes RSS
 
 > En este apartado se indicará cómo agregar, modificar y eliminar fuentes RSS externas para utilizar en los banners.
 
@@ -98,9 +100,9 @@ Para agregar una nueva fuente RSS, presione el botón con el símbolo de adició
 
 Ingrese el nombre y la URL correspondientes a la fuente RSS externa que desea agregar y presione el botón `AGREGAR`. La fuente RSS quedará guardada para su posterior uso.
 
-### 2.6. Gestionar campañas
+### Gestionar campañas
 
-#### 2.6.1. Agregar campaña
+#### Agregar campaña
 
 > Antes de agregar una nueva campaña, asegúrese que el horario no esté ocupado por otra utilizando el **buscador de campañas**.
 
@@ -118,7 +120,7 @@ Si deseara **quitar una imagen** de la campaña, selecciónela en dicha grilla y
 
 Para finalizar, presione el botón `ACEPTAR` ubicado en la parte inferior izquierda. La campaña quedará entonces guardada.
 
-#### 2.6.2. Modificar campaña
+#### Modificar campaña
 
 > Para modificar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
 
@@ -130,7 +132,7 @@ La ventana que se mostrará será similar a utilizada para **agregar campañas**
 
 Una vez hecho los cambios, presione el botón `ACEPTAR` y los mismos quedarán aplicados a la campaña.
 
-#### 2.6.3. Eliminar campaña
+#### Eliminar campaña
 
 > Para eliminar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
 
@@ -140,7 +142,7 @@ En el **panel de administración**, presione el botón con la imagen de un tacho
 
 Deberá confirmar la eliminación de la campaña aceptando la ventana que se le presenterá. Una vez hecho, la campaña quedará completamente eliminada.
 
-#### 2.6.4. Buscar campaña
+#### Buscar campaña
 
 > Desde el **panel de búsqueda** es posible activar y desactivar campañas.
 
@@ -154,9 +156,9 @@ En la grilla inferior se mostrarán los resultados obtenidos de la consulta.
 
 Puede **activar y desactivar campañas** haciendo doble click sobre las filas correspondiente a las mismas en la grilla. Las campañas inactivas no serán mostradas en la pantalla principal.
 
-### 2.7. Gestionar banners
+### Gestionar banners
 
-#### 2.7.1. Agregar banner
+#### Agregar banner
 
 > Antes de agregar un nuevo banner, asegúrese que el horario no esté ocupado por otro utilizando el **buscador de banners**.
 
@@ -170,7 +172,7 @@ En caso de elegir una *fuente RSS*, seleccione el intervalo de tiempo que desea 
 
 Una vez completado estos pasos, presione el botón `ACEPTAR` para finalizar y el banner se guardará. Éste será presentado mediante la marquesina ubicada en la parte inferior de la pantalla principal en su respectiva fecha y horario.
 
-#### 2.7.2. Modificar banner
+#### Modificar banner
 
 > Para modificar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
 
@@ -182,7 +184,7 @@ La ventana que se mostrará será similar a utilizada para **agregar banners**. 
 
 Una vez hecho los cambios, presione el botón `ACEPTAR` y los mismos quedarán aplicados al banner.
 
-#### 2.7.3. Eliminar banner
+#### Eliminar banner
 
 > Para eliminar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
 
@@ -192,7 +194,7 @@ En el **panel de administración**, presione el botón con la imagen de un tacho
 
 Deberá confirmar la eliminación del banner aceptando la ventana que se le presenterá. Una vez hecho, el banner quedará completamente eliminado.
 
-#### 2.7.4. Buscar banner
+#### Buscar banner
 
 > Desde el **panel de búsqueda** es posible activar y desactivar banners.
 
