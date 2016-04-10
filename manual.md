@@ -5,21 +5,21 @@ Manual de usuario de GoNews
 
 1. [¿Qué es GoNews?](#1-qué-es-gonews)
 2. [Cómo usar el programa](#2-cómo-usar-el-programa)
-  - Registrar usuario
-  - Recuperar contraseña
-  - Acceder al panel de administración
-  - Editar datos del usuario
-  - Gestionar fuentes RSS
-  - Gestionar campañas
-    - Agregar campaña
-    - Modificar campaña
-    - Eliminar campaña
-    - Buscar campaña
-  - Gestionar banners
-    - Agregar banner
-    - Modificar banner
-    - Eliminar banner
-    - Buscar banner
+  - [Registrar usuario](#registrar-usuario)
+  - [Recuperar contraseña](#recuperar-contraseña)
+  - [Acceder al panel de administración](#acceder-al-panel-de-administración)
+  - [Editar datos del usuario](#editar-datos-del-usuario)
+  - [Gestionar fuentes RSS](#gestionar-fuentes-rss)
+  - [Gestionar campañas](#gestionar-campañas)
+    - [Agregar campaña](#agregar-campaña)
+    - [Modificar campaña](#modificar-campaña)
+    - [Eliminar campaña](#eliminar-campaña)
+    - [Buscar campaña](#buscar-campaña)
+  - [Gestionar banners](#gestionar-banners)
+    - [Agregar banner](#agregar-banner)
+    - [Modificar banner](#modificar-banner)
+    - [Eliminar banner](#eliminar-banner)
+    - [Buscar banner](#buscar-banner)
 3. [Preguntas frecuentes](#3-preguntas-frecuentes)
 4. [Créditos](#4-créditos)
 
