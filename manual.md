@@ -207,19 +207,19 @@ Puede **activar y desactivar banners** haciendo doble click sobre las filas corr
 
 ## 3. Preguntas frecuentes
 
-### ¿Puedo utilizar la aplicación sin conexión a internet?
+#### :question: ¿Puedo utilizar la aplicación sin conexión a internet?
 
 No, pues la aplicación requiere conexión a internet para consultar las fuentes RSS externas y, de ser necesario, para recuperar la contraseña del usuario.
 
-### Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
+#### :question: Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
 
 Si, se seguirá mostrando. Una vez creada la campaña, todas las imágenes cargadas serán copiadas a una carpeta dentro del directorio donde se encuentra instalado GoNews.
 
-### En lugar de eliminar, ¿puedo desactivar una campaña o banner?
+#### :question: En lugar de eliminar, ¿puedo desactivar una campaña o banner?
 
 Sí, simplemente busque la campaña o banner en su respectivo **panel de búsqueda** y haga doble click sobre su correspondiente fila en la grilla.
 
-### ¿Puedo recuperar una campaña o banner eliminado?
+#### :question: ¿Puedo recuperar una campaña o banner eliminado?
 
 No, no es posible recuperar aquella campaña o banner que ha sido eliminado.
 
