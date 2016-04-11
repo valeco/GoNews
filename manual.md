@@ -39,7 +39,7 @@ En las siguientes secciones se detalla paso a paso el uso de las diferentes func
 
 ### Registrar usuario
 
-> Para administrar la aplicación es necesario estar registrado y haber iniciado sesión.
+> :bulb: Para administrar la aplicación es necesario estar registrado y haber iniciado sesión.
 
 En la **pantalla principal**, presione el botón `LOGIN` situado en la parte inferior derecha. Se mostrará el panel para inciar sesión. Haga click en el vínculo `Registrarse` allí ubicado.
 
@@ -51,7 +51,7 @@ Complete con sus datos el formulario que aparecerá en pantalla y a continuació
 
 ### Recuperar contraseña
 
-> En caso de que no recuerde su contraseña, puede solicitar que le sea enviada al email que utilizó para registrarse.
+> :bulb: En caso de que no recuerde su contraseña, puede solicitar que le sea enviada al email que utilizó para registrarse.
 
 En la **pantalla principal**, presione el botón `LOGIN` situado en la parte inferior derecha. Se mostrará el panel para inciar sesión. Haga click en el vínculo `Olvidé mi contraseña` allí ubicado.
 
@@ -63,7 +63,7 @@ Ingrese el usuario y el email correspondientes a su cuenta en el formulario que 
 
 ### Acceder al panel de administración
 
-> En el **panel de administración** da acceso a todas funcionalidades y configuraciones de la aplicación.
+> :bulb: En el **panel de administración** da acceso a todas funcionalidades y configuraciones de la aplicación.
 
 En la **pantalla principal**, presione el botón `LOGIN` situado en la parte inferior derecha. Se mostrará el panel para inciar sesión.
 
@@ -75,7 +75,7 @@ Ingrese su *nombre de usuario* y *contraseña* y luego presione el botón `Entra
 
 ### Editar datos del usuario
 
-> Siga las siguientes instrucciones si desea **cambiar su contraseña**.
+> :bulb: Siga las siguientes instrucciones si desea **cambiar su contraseña**.
 
 En el **panel de administración**, presione el botón con la imagen de un lápiz :pencil2: que se encuentra junto a su nombre y email. Se mostrará un formulario con sus datos.
 
@@ -85,13 +85,13 @@ Reescriba todos los datos que desee modificar e ingrese su nueva contraseña por
 
 ### Gestionar fuentes RSS
 
-> En este apartado se indicará cómo agregar, modificar y eliminar fuentes RSS externas para utilizar en los banners.
+> :bulb: En este apartado se indicará cómo agregar, modificar y eliminar fuentes RSS externas para utilizar en los banners.
 
 En el **panel de administración**, presione el botón con la imagen de un engranaje que se encuentra junto al texto `Gestionar fuentes RSS`. Aparecerá una nueva ventana que le permitirá agregar nuevas fuentes externas, además de modificar y eliminar las ya existentes.
 
 ![Formulario para editar los datos del usuario](/imagenes/form_modificarusuario.jpg)
 
-Para agregar una nueva fuente RSS, presione el botón con el símbolo de adición :heavy_plus_sign: (`+`) y se mostrará un formulario en la parte de inferior.
+Para agregar una nueva fuente RSS, presione el botón `Agregar fuente RSS` :heavy_plus_sign: (símbolo de adición) y se mostrará un formulario en la parte de inferior.
 
 ![Agregando una nueva fuente RSS](/imagenes/form_gestionarrss_agregar.jpg)
 
@@ -101,7 +101,7 @@ Ingrese el nombre y la URL correspondientes a la fuente RSS externa que desea ag
 
 #### Agregar campaña
 
-> Antes de agregar una nueva campaña, asegúrese que el horario no esté ocupado por otra utilizando el **buscador de campañas**.
+> :exclamation: Antes de agregar una nueva campaña, asegúrese que el horario no esté ocupado por otra utilizando el **buscador de campañas**.
 
 En el **panel de administración**, presione el botón `Agregar campaña` :heavy_plus_sign: (símbolo de adición) ubicado dentro del recuadro `CAMPAÑAS`. Se mostrará una nueva ventana.
 
@@ -119,7 +119,7 @@ Para finalizar, presione el botón `ACEPTAR` ubicado en la parte inferior izquie
 
 #### Modificar campaña
 
-> Para modificar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
+> :exclamation: Para modificar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
 
 En el **panel de administración**, presione el botón `Modificar campaña` :pencil2: (lápiz) ubicado dentro del recuadro `CAMPAÑAS`. Aparecerá una nueva ventana solicitándole el ID de la campaña que desea modificar. Ingrese el ID correspondiente y presione el botón `MODIFICAR`.
 
@@ -131,7 +131,8 @@ Una vez hecho los cambios, presione el botón `ACEPTAR` y los mismos quedarán a
 
 #### Eliminar campaña
 
-> Para eliminar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
+> :exclamation: Para eliminar una campaña deberá conocer el ID de la misma. Para ello puede utilizar el **buscador de campañas**.
+> :warning: No se podrán recuperar campañas eliminadas.
 
 En el **panel de administración**, presione el botón `Eliminar campaña` (bote de basura) ubicado dentro del recuadro `CAMPAÑAS`. Aparecerá una nueva ventana solicitándole el ID de la campaña que desea modificar. Ingrese el ID correspondiente y presione el botón `ELIMINAR`.
 
@@ -141,7 +142,7 @@ Deberá confirmar la eliminación de la campaña **aceptando la ventana** que se
 
 #### Buscar campaña
 
-> Desde el **panel de búsqueda** es posible activar y desactivar campañas.
+> :bulb: Desde el **panel de búsqueda** es posible activar y desactivar campañas.
 
 En el **panel de administración**, presione el botón `Buscar campaña` :mag: ubicado dentro del recuadro `CAMPAÑAS`. Se mostrará una nueva ventana.
 
@@ -157,7 +158,7 @@ Puede **activar y desactivar campañas** haciendo *doble click* sobre las filas 
 
 #### Agregar banner
 
-> Antes de agregar un nuevo banner, asegúrese que el horario no esté ocupado por otro utilizando el **buscador de banners**.
+> :exclamation: Antes de agregar un nuevo banner, asegúrese que el horario no esté ocupado por otro utilizando el **buscador de banners**.
 
 En el **panel de administración**, presione el botón `Agregar campaña` :heavy_plus_sign: (símbolo de adición) ubicado dentro del recuadro `BANNERS`. Se mostrará una nueva ventana.
 
@@ -171,7 +172,7 @@ Una vez completado estos pasos, presione el botón `ACEPTAR` para finalizar y el
 
 #### Modificar banner
 
-> Para modificar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
+> :exclamation: Para modificar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
 
 En el **panel de administración**, presione el botón `Modificar banner` :pencil2: (lápiz) ubicado dentro del recuadro `BANNERS`. Aparecerá una nueva ventana solicitándole el ID del banner que desea modificar. Ingrese el ID correspondiente y presione el botón `MODIFICAR`.
 
@@ -183,7 +184,8 @@ Una vez hecho los cambios, presione el botón `ACEPTAR` y los mismos quedarán a
 
 #### Eliminar banner
 
-> Para eliminar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
+> :exclamation: Para eliminar un banner deberá conocer el ID del mismo. Para ello puede utilizar el **buscador de banners**.
+> :warning: No se podrán recuperar banners eliminados.
 
 En el **panel de administración**, presione el botón `Eliminar banner` (bote de basura) ubicado dentro del recuadro `BANNERS`. Aparecerá una nueva ventana solicitándole el ID del banner que desea modificar. Ingrese el ID correspondiente y presione el botón `ELIMINAR`.
 
@@ -193,7 +195,7 @@ Deberá confirmar la eliminación del banner **aceptando la ventana** que se le 
 
 #### Buscar banner
 
-> Desde el **panel de búsqueda** es posible activar y desactivar banners.
+> :bulb: Desde el **panel de búsqueda** es posible activar y desactivar banners.
 
 En el **panel de administración**, presione el botón `Buscar banner` :mag: (lupa) ubicado dentro del recuadro `BANNERS`. Se mostrará una nueva ventana.
 
@@ -207,19 +209,19 @@ Puede **activar y desactivar banners** haciendo *doble click* sobre las filas co
 
 ## 3. Preguntas frecuentes
 
-#### :question: ¿Puedo utilizar la aplicación sin conexión a internet?
+#### :interrobang: ¿Puedo utilizar la aplicación sin conexión a internet?
 
 No, pues la aplicación requiere conexión a internet para consultar las fuentes RSS externas y, de ser necesario, para recuperar la contraseña del usuario.
 
-#### :question: Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
+#### :interrobang: Si cambio de directorio alguna imagen de una campaña, ¿se seguirá mostrando?
 
 Si, se seguirá mostrando. Una vez creada la campaña, todas las imágenes cargadas serán copiadas a una carpeta dentro del directorio donde se encuentra instalado GoNews.
 
-#### :question: En lugar de eliminar, ¿puedo desactivar una campaña o banner?
+#### :interrobang: En lugar de eliminar, ¿puedo desactivar una campaña o banner?
 
 Sí, simplemente busque la campaña o banner en su respectivo **panel de búsqueda** y haga *doble click* sobre su correspondiente fila en la grilla.
 
-#### :question: ¿Puedo recuperar una campaña o banner eliminado?
+#### :interrobang: ¿Puedo recuperar una campaña o banner eliminado?
 
 No, no es posible recuperar aquella campaña o banner que ha sido eliminado.
 
