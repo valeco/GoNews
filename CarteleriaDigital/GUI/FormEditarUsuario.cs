@@ -54,23 +54,19 @@ namespace CarteleriaDigital.GUI
         {
             bool mModificarUsuario = false;
             string mContraNueva = "";
-            /*
-                REVISAR. No conviene mostrarle sólo un mensaje de éxito al final en vez de uno por text box?
-                Si edita todos los text box, el usuario va tener que aceptar 4 message box. xD
-            */
 
             if (txtNombreCompleto.Text != iCtrlUser.UsuarioLogueado.NombreCompleto)
             {
                 if (txtNombreCompleto.Text == "")
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El Nombre Completo no debe estar vacio para ser cambiado");
+                    Utilidades.MensajeError(this, "¡Atención!", "El Nombre Completo no debe estar vacio para ser cambiado");
                     txtNombreCompleto.Text = iCtrlUser.UsuarioLogueado.NombreCompleto;
                 }
                 else
                 {
                     iCtrlUser.UsuarioLogueado.NombreCompleto = txtNombreCompleto.Text;
                     mModificarUsuario = true;
-                    Utilidades.MensajeExito(this, "EXITO", "El Nombre Completo se cambio satisfactoriamente");
+                    Utilidades.MensajeExito(this, "¡Éxito!", "El Nombre Completo se cambio satisfactoriamente");
                 }
             }
 
@@ -78,23 +74,23 @@ namespace CarteleriaDigital.GUI
             {
                 if (txtNombreUsuario.Text == "")
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El Nombre de Usuario no debe estar vacio para ser cambiado");
+                    Utilidades.MensajeError(this, "¡Atención!", "El campo nombre de usuario no debe estar vacío.");
                     txtNombreUsuario.Text = iCtrlUser.UsuarioLogueado.NombreUsuario;
                 }
                 else if (!(txtNombreUsuario.Text.Length >= 4 && txtNombreUsuario.Text.Length <= 15))
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El NUEVO Nombre de Usuario debe tener\nuna longitud de 4-15 caracteres.");
+                    Utilidades.MensajeError(this, "¡Atención!", "El nuevo nombre de usuario debe tener\nuna longitud de 4-15 caracteres.");
                     txtNombreUsuario.Text = iCtrlUser.UsuarioLogueado.NombreUsuario;
                 }
                 else if (iCtrlUser.ExisteNombreUsuario(txtNombreUsuario.Text))
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El NUEVO Nombre de Usuario ya esta en uso!");
+                    Utilidades.MensajeError(this, "¡Atención!", "El nuevo nombre de usuario ya está en uso.");
                 }
                 else
                 {
                     iCtrlUser.UsuarioLogueado.NombreUsuario = txtNombreUsuario.Text;
                     mModificarUsuario = true;
-                    Utilidades.MensajeExito(this, "EXITO", "El Nombre de Usuario se cambio satisfactoriamente");
+                    Utilidades.MensajeExito(this, "¡Éxito!", "El nombre de usuario se cambió satisfactoriamente.");
                 }
             }
 
@@ -102,12 +98,12 @@ namespace CarteleriaDigital.GUI
             {
                 if (txtEmail.Text == "")
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El Email no debe estar vacio para ser cambiado");
+                    Utilidades.MensajeError(this, "¡Atención!", "El campo email no debe estar vacío.");
                     txtEmail.Text = iCtrlUser.UsuarioLogueado.Email.Address;
                 }
                 else if (iCtrlUser.ExisteCorreoUsuario(new MailAddress(txtEmail.Text)))
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El Email indicado ya tiene un usuario asociado!");
+                    Utilidades.MensajeError(this, "¡Atención!", "El email indicado ya tiene un usuario asociado.");
                     txtEmail.Focus();
                 }
                 else
@@ -117,18 +113,18 @@ namespace CarteleriaDigital.GUI
                         MailAddress mEmail = new MailAddress(txtEmail.Text);
                         iCtrlUser.UsuarioLogueado.Email = mEmail;
                         mModificarUsuario = true;
-                        Utilidades.MensajeExito(this, "EXITO", "El Email se cambio satisfactoriamente");
+                        Utilidades.MensajeExito(this, "¡Éxito!", "El email se cambió satisfactoriamente.");
                     }
                     catch (FormatException exf)
                     {
-                        Utilidades.MensajeError(this, "ATENCION", "El Email no tiene el formato requerido");
-                        iLogger.Debug(exf.Source + " Formato del email no valido -> " + txtEmail.Text);
+                        Utilidades.MensajeError(this, "¡Atención!", "El email no tiene el formato requerido.");
+                        iLogger.Debug(exf.Source + " Formato del email no válido -> " + txtEmail.Text);
                         txtEmail.Focus();
                     }
                     catch (Exception ex)
                     {
                         iLogger.Error(ex.Source + ": " + ex.Message);
-                        Utilidades.MensajeError(this, "ERROR", "Sucedio un error inesperado, reintente luego la accion.");
+                        Utilidades.MensajeError(this, "¡Error!", "Sucedió un error inesperado, reintente luego.");
                     }
                 }
             }
@@ -137,11 +133,11 @@ namespace CarteleriaDigital.GUI
             {
                 if (txtNuevaContraseña.Text != txtNuevaContraseñaRepetir.Text)
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "La contraseña y su repeticion deben ser iguales");
+                    Utilidades.MensajeError(this, "¡Atención!", "Las contraseñas deben ser iguales.");
                 }
                 else if (!(txtNuevaContraseña.Text.Length >= 6 && txtNuevaContraseñaRepetir.Text.Length >= 6))
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "La contraseña y su repeticion\ndeben tener 6 o mas caracteres de longitud");
+                    Utilidades.MensajeError(this, "¡Atención!", "La contraseña debe tener 6 o más caracteres de longitud.");
                 }
                 else
                 {
@@ -150,15 +146,15 @@ namespace CarteleriaDigital.GUI
                     txtNuevaContraseña.Text = "";
                     txtNuevaContraseñaRepetir.Text = "";
                     mModificarUsuario = true;
-                    Utilidades.MensajeExito(this, "EXITO", "La contraseña se modifico satisfactoriamente");
+                    Utilidades.MensajeExito(this, "¡Éxito!", "La contraseña se modificó satisfactoriamente.");
                 }
             }
             else if (txtNuevaContraseña.Text != "" || txtNuevaContraseñaRepetir.Text != "")
             {
-                Utilidades.MensajeError(this, "ATENCION", "La contraseña y su repeticion no deben estar vacias para cambiarla");
+                Utilidades.MensajeError(this, "¡Atención!", "Repita la nueva contraseña en los dos campos correspondientes.");
             }
 
-
+            //Si se modifico el password
             if (mModificarUsuario)
             {
                 iCtrlUser.Modificar(iCtrlUser.UsuarioLogueado);
@@ -170,7 +166,7 @@ namespace CarteleriaDigital.GUI
                     dic.Add("contraseña", mContraNueva);
                     dic.Add("email", iCtrlUser.UsuarioLogueado.Email.Address);
 
-                    btnCambiar.Text = "Enviando Email";
+                    btnCambiar.Text = "ENVIANDO...";
                     btnCambiar.Enabled = false;
 
                     iWorker.RunWorkerAsync(dic);//Llamando al background worker
@@ -181,9 +177,7 @@ namespace CarteleriaDigital.GUI
         private void iWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Dictionary<string, string> dic = (Dictionary<string, string>)e.Argument;
-            Utilidades.EnviarCorreo(new MailAddress(dic["email"]), "Registro de Usuario - GO NEWS",
-                                    "<b>ACA HTML</b>", true);
-            //REVISAR falta html de tablita con buenos colores y los datos
+            Utilidades.EnviarCorreo(new MailAddress(dic["email"]), "Cambio de contraseña - Go News", "<div style = 'padding:20px;font-family: Arial, sans-serif; background-color: #eee;'><div style = 'text-align: center'><img src ='https://raw.githubusercontent.com/valeco/GoNews/master/CarteleriaDigital/Imagenes/_logo.png' alt = 'Logo de GoNews' style = 'width: 150px; height: 150px;'></div><h1 style = 'color: steelblue;'>Cambio de contraseña</h1><p style='color:black;'> Hola <em> "+dic["nombreCompleto"]+"</em>.</p><p style='color:black;'> La contraseña de tu cuenta en GoNews ha sido modificada. Tu nueva contraseña es <strong>" + dic["contraseña"] + "</strong>.</p style='color:black;'><p style='color:black;'>¡Que tengas un buen día!</p></div>", true);
             e.Result = true;
         }
 
@@ -192,16 +186,18 @@ namespace CarteleriaDigital.GUI
             if (!e.Cancelled && e.Error == null && ((bool)e.Result) == true)
             {
                 btnCambiar.Enabled = true;
-                btnCambiar.Text = "Actualizado";
+                btnCambiar.Text = "ACTUALIZADO";
                 btnCambiar.Enabled = false;
                 Utilidades.Esperar(3000);
-                btnCambiar.Enabled = true;
-                btnCambiar.Text = "ACEPTAR";
+
             }
             else
             {
-                //Mensaje de que no se puedo enviar el correo REVISAR
+                //Mensaje de que no se puedo enviar el correo
+                Utilidades.MensajeAdvertencia(this, "Error inesperado", "Se actualizo con éxito su contraseña,\n aunque no pudimos enviarle un email notificandole.");
             }
+            btnCambiar.Enabled = true;
+            btnCambiar.Text = "ACEPTAR";
         }
 
         private void FormEditarUsuario_FormClosing(object sender, FormClosingEventArgs e)

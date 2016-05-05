@@ -52,13 +52,13 @@ namespace CarteleriaDigital.GUI
                 }
                 else
                 {
-                    Utilidades.MensajeAdvertencia(this, "ATENCION", "Esta imagen ya tiene una prioridad asignada ("+mPrioridad.ToString()+").");
+                    Utilidades.MensajeAdvertencia(this, "¡Atención!", "Esta imagen ya tiene una prioridad asignada ("+mPrioridad.ToString()+").");
                     dgridPrioridades.Rows[mIndice].Selected = true;
                 }
             }
             catch (FormatException)
             {
-                Utilidades.MensajeAdvertencia(this, "ATENCION", "El valor ingresado no es un numero entero mayor a 0 (cero).");
+                Utilidades.MensajeAdvertencia(this, "¡Atención!", "El valor ingresado no es un numero entero mayor a 0 (cero).");
             }
             catch (Exception ex)
             {
@@ -353,7 +353,7 @@ namespace CarteleriaDigital.GUI
             }
             catch (OutOfMemoryException)
             {
-                Utilidades.MensajeError(this,"ATENCION","No es posible cargar mas imagenes, ya que no hay espacio en memoria suficiente");
+                Utilidades.MensajeError(this,"¡Atención!","No es posible cargar mas imagenes, ya que no hay espacio en memoria suficiente");
             }
         }
 

@@ -17,6 +17,10 @@ namespace CarteleriaDigital.GUI
     {
         EasyLog iLogger;
         string iTipoBusqueda;
+        //VER
+        ControladorCampaña CtrlCampaña;
+        ControladorBanner CtrlBanner;
+        //VER
 
         public FormBuscar(EasyLog pLogger, String pTipo)
         {
@@ -24,8 +28,14 @@ namespace CarteleriaDigital.GUI
             iLogger = pLogger;
             lbTitulo.Text = "Buscar " + pTipo;
             txtNombre.Text = "Ingrese el nombre " + (pTipo == "campaña" ? "de la " : "del ") + pTipo + " o parte de él...";
-            lbInfo.Text = "Haciendo doble click sobre la fila, Activa / Inactiva los " + pTipo;
+            lbInfo.Text = "Haciendo doble click sobre la fila, activas o desactivas" + (pTipo == "campaña" ? "la campaña." : "el banner.");
             iTipoBusqueda = pTipo;
+            //VER
+            if (pTipo == "campaña")
+                CtrlCampaña = new ControladorCampaña();
+            else
+                CtrlBanner = new ControladorBanner();
+            //VER
             iLogger.Info("Inicializacion finalizada Buscar");
         }
 
@@ -88,7 +98,8 @@ namespace CarteleriaDigital.GUI
             {
                 List<Publicidad> mConsulta;
                 ushort mElementos;
-
+                //VER
+                /*
                 mConsulta = (iTipoBusqueda == "campaña") ?
                     (new ControladorCampaña()).Buscar(  comboDesActivo.Text, txtNombre.Text,
                                                         (checkDias.Checked ? dtpFechaInicio.Value : default(DateTime)),
@@ -96,13 +107,27 @@ namespace CarteleriaDigital.GUI
                                                         (checkHorario.Checked ? dtpHoraInicio.Value.TimeOfDay : default(TimeSpan)),
                                                         (checkHorario.Checked ? dtpHoraFin.Value.TimeOfDay : default(TimeSpan))
                                                         ).ToList<Publicidad>():
-                    (new ControladorBanner()).Buscar(comboDesActivo.Text, txtNombre.Text,
+                    (new ControladorBanner()).Buscar(   comboDesActivo.Text, txtNombre.Text,
                                                         (checkDias.Checked ? dtpFechaInicio.Value : default(DateTime)),
                                                         (checkDias.Checked ? dtpFechaFin.Value : default(DateTime)),
                                                         (checkHorario.Checked ? dtpHoraInicio.Value.TimeOfDay : default(TimeSpan)),
                                                         (checkHorario.Checked ? dtpHoraFin.Value.TimeOfDay : default(TimeSpan))
                                                         ).ToList<Publicidad>();
-                            
+                                                        */
+                mConsulta = (iTipoBusqueda == "campaña") ?
+                                    CtrlCampaña.Buscar  (comboDesActivo.Text, txtNombre.Text,
+                                                        (checkDias.Checked ? dtpFechaInicio.Value : default(DateTime)),
+                                                        (checkDias.Checked ? dtpFechaFin.Value : default(DateTime)),
+                                                        (checkHorario.Checked ? dtpHoraInicio.Value.TimeOfDay : default(TimeSpan)),
+                                                        (checkHorario.Checked ? dtpHoraFin.Value.TimeOfDay : default(TimeSpan))
+                                                        ).ToList<Publicidad>() :
+                                    CtrlBanner.Buscar   (comboDesActivo.Text, txtNombre.Text,
+                                                        (checkDias.Checked ? dtpFechaInicio.Value : default(DateTime)),
+                                                        (checkDias.Checked ? dtpFechaFin.Value : default(DateTime)),
+                                                        (checkHorario.Checked ? dtpHoraInicio.Value.TimeOfDay : default(TimeSpan)),
+                                                        (checkHorario.Checked ? dtpHoraFin.Value.TimeOfDay : default(TimeSpan))
+                                                        ).ToList<Publicidad>();
+                //VER
                 mElementos = (ushort)mConsulta.Count();
                 dgridResultados.DataSource = mConsulta;
                 dgridResultados.Columns["Intervalo"].Visible = false;
@@ -132,6 +157,8 @@ namespace CarteleriaDigital.GUI
 
                 try
                 {
+                    //VER
+                    /*
                     Publicidad mAmodificar = (Publicidad)dgridResultados.SelectedRows[0].DataBoundItem;
                     List<Publicidad> mListaSolapamientos = (iTipoBusqueda == "campaña") ?
                                                         (new ControladorCampaña()).ListaCampañasEnHorario((Campaña)mAmodificar).ToList<Publicidad>() :
@@ -143,10 +170,17 @@ namespace CarteleriaDigital.GUI
                     else
                     {
                         mAmodificar = (iTipoBusqueda == "campaña") ?
-                                      (new ControladorBanner()).ObtenerPorId(mAmodificar.Id) :
-                                      (new ControladorBanner()).ObtenerPorId(mAmodificar.Id);
+                                      (Publicidad) (new ControladorCampaña()).ObtenerPorId(mAmodificar.Id):
+                                      (Publicidad) (new ControladorBanner()).ObtenerPorId(mAmodificar.Id);
+
                         mAmodificar.Activo = !mAmodificar.Activo;
-                        (new ControladorBanner()).Modificar((Banner)mAmodificar);
+
+                        if (iTipoBusqueda == "campaña")
+                            (new ControladorCampaña()).Modificar((Campaña)mAmodificar);
+                        else                            
+                            (new ControladorBanner()).Modificar((Banner)mAmodificar);
+
+                        
 
                         mDesActivo = mAmodificar.Activo;
                         mId = mAmodificar.Id;
@@ -158,6 +192,39 @@ namespace CarteleriaDigital.GUI
                                                                     + "\n" + "Nombre -> " + mNombre);
                         btnBuscar_Click(null, null);
                     }
+                    */
+                    Publicidad mAmodificar = (Publicidad)dgridResultados.SelectedRows[0].DataBoundItem;
+                    List<Publicidad> mListaSolapamientos = (iTipoBusqueda == "campaña") ?
+                                                        CtrlCampaña.ListaCampañasEnHorario((Campaña)mAmodificar).ToList<Publicidad>() :
+                                                        CtrlBanner.ListaBannersEnHorario((Banner)mAmodificar).ToList<Publicidad>();
+                    int mSolapamientos = mListaSolapamientos.Count;
+
+                    if (mSolapamientos > 1 || (mSolapamientos == 1 && mAmodificar.Id != mListaSolapamientos.ElementAt(0).Id))
+                        Utilidades.MensajeError(this, "¡Atención!", "Existe otr" + ((iTipoBusqueda == "campaña") ? "a campaña" : "o banner") + " en ese horario.");
+                    else
+                    {
+                        mAmodificar = (iTipoBusqueda == "campaña") ?
+                                      (Publicidad)CtrlCampaña.ObtenerPorId(mAmodificar.Id) :
+                                      (Publicidad)CtrlBanner.ObtenerPorId(mAmodificar.Id);
+
+                        mAmodificar.Activo = !mAmodificar.Activo;
+
+                        if (iTipoBusqueda == "campaña")
+                            CtrlCampaña.Modificar((Campaña)mAmodificar);
+                        else
+                            CtrlBanner.Modificar((Banner)mAmodificar);
+
+                        mDesActivo = mAmodificar.Activo;
+                        mId = mAmodificar.Id;
+                        mNombre = mAmodificar.Nombre;
+
+                        Utilidades.MensajeExito(this, "¡Perfecto!", "Se " + (mDesActivo ? "activó" : "desactivó") + " con éxito "
+                                                                    + (iTipoBusqueda == "campaña" ? "la campaña" : "el banner")
+                                                                    + "\n" + "ID -> " + mId
+                                                                    + "\n" + "Nombre -> " + mNombre);
+                        btnBuscar_Click(null, null);
+                    }
+                    //VER
                 }
                 catch (Exception ex)
                 {

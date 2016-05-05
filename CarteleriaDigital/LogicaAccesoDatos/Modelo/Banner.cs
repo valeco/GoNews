@@ -89,7 +89,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         {
             if (iFuente == null && iFuenteId > 0)
             {
-                UnidadDeTrabajo UoW = new UnidadDeTrabajo();
+                UnidadDeTrabajo UoW = UnidadDeTrabajo.Instancia;
                 switch (iTipo)
                 {
                     case TipoBanner.RSS:

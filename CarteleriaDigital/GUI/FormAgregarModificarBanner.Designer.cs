@@ -271,8 +271,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbarIntervalo.Enabled = false;
             this.tbarIntervalo.Location = new System.Drawing.Point(13, 50);
-            this.tbarIntervalo.Maximum = 20;
-            this.tbarIntervalo.Minimum = 1;
+            this.tbarIntervalo.Maximum = 30;
+            this.tbarIntervalo.Minimum = 5;
             this.tbarIntervalo.Name = "tbarIntervalo";
             this.tbarIntervalo.Size = new System.Drawing.Size(227, 45);
             this.tbarIntervalo.TabIndex = 2;

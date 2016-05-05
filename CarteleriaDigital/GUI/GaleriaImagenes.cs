@@ -148,66 +148,72 @@ namespace CarteleriaDigital.GUI
         }
 
         private void DibujarPictureBox(string _filename, string _displayname)
-        {
-            PictureBox Pic1 = new PictureBox();
-            Pic1.Location = new System.Drawing.Point(XLocation + XMargen, YLocation + YMargen);        
-           
-            Pic1.Name = "PictureBox" + i;
-            i ++;
-            Pic1.Size = new System.Drawing.Size(PicWidth, PicHeight);
-            Pic1.TabIndex = 0;
-            Pic1.TabStop = false;
-            Pic1.BorderStyle = BorderStyle.None;
-            this.ttip.SetToolTip(Pic1, _filename);
-            Pic1.MouseEnter += Pic1_MouseEnter;
-            Pic1.MouseLeave += Pic1_MouseLeave;
-            Pic1.Click += Pic1_Click;
-            Pic1.Image = Image.FromFile(_filename);
-            Pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Controls.Add(Pic1);
-
-            Label lb = new Label();
-            //Label en el que se muetra el nombre
-            lb.Visible = labels;
-            lb.Name = "Label" + Pic1.Name;
-            lb.Text = _displayname;
-            lb.BackColor = this.BackColor;
-            lb.Location = new System.Drawing.Point(XLocation + XMargen, YLocation + YMargen + Pic1.Height);
-            lb.Click += Lb_Click;
-            this.Controls.Add(lb);
-
-            //Label en el que se guarda la ruta
-            Label lbFullName = new Label();
-            lbFullName.Location = new System.Drawing.Point(XLocation + XMargen, YLocation + YMargen + Pic1.Height);
-            lbFullName.Text = _filename;
-            lbFullName.Visible = false;
-            lbFullName.Name = "LabelFull" + Pic1.Name;
-            this.Controls.Add(lbFullName);
-
-            if (btnEliminar)
+        {try
             {
-                //Boton para eliminar la imagen de la grilla
-                Button btn = new Button();
-                btn.Name = "btn" + Pic1.Name;
-                btn.Location = new System.Drawing.Point(XLocation + XMargen + 2, YLocation + YMargen + 2);
-                btn.Width = 15;
-                btn.Height = 15;
-                btn.Font = new Font(this.Font.Name,6,FontStyle.Bold);
-                btn.TextAlign = ContentAlignment.TopCenter;
-                btn.Text = "X";
-                btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderSize = 0;
-                btn.Click += btn_Click;
-                this.Controls.Add(btn);
-                btn.BringToFront();
-                btn.Visible = true;
+                PictureBox Pic1 = new PictureBox();
+                Pic1.Location = new System.Drawing.Point(XLocation + XMargen, YLocation + YMargen);
+
+                Pic1.Name = "PictureBox" + i;
+                i++;
+                Pic1.Size = new System.Drawing.Size(PicWidth, PicHeight);
+                Pic1.TabIndex = 0;
+                Pic1.TabStop = false;
+                Pic1.BorderStyle = BorderStyle.None;
+                this.ttip.SetToolTip(Pic1, _filename);
+                Pic1.MouseEnter += Pic1_MouseEnter;
+                Pic1.MouseLeave += Pic1_MouseLeave;
+                Pic1.Click += Pic1_Click;
+                Pic1.Image = Image.FromFile(_filename);
+                Pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+                this.Controls.Add(Pic1);
+
+                Label lb = new Label();
+                //Label en el que se muetra el nombre
+                lb.Visible = labels;
+                lb.Name = "Label" + Pic1.Name;
+                lb.Text = _displayname;
+                lb.BackColor = this.BackColor;
+                lb.Location = new System.Drawing.Point(XLocation + XMargen, YLocation + YMargen + Pic1.Height);
+                lb.Click += Lb_Click;
+                this.Controls.Add(lb);
+
+                //Label en el que se guarda la ruta
+                Label lbFullName = new Label();
+                lbFullName.Location = new System.Drawing.Point(XLocation + XMargen, YLocation + YMargen + Pic1.Height);
+                lbFullName.Text = _filename;
+                lbFullName.Visible = false;
+                lbFullName.Name = "LabelFull" + Pic1.Name;
+                this.Controls.Add(lbFullName);
+
+                if (btnEliminar)
+                {
+                    //Boton para eliminar la imagen de la grilla
+                    Button btn = new Button();
+                    btn.Name = "btn" + Pic1.Name;
+                    btn.Location = new System.Drawing.Point(XLocation + XMargen + 2, YLocation + YMargen + 2);
+                    btn.Width = 15;
+                    btn.Height = 15;
+                    btn.Font = new Font(this.Font.Name, 6, FontStyle.Bold);
+                    btn.TextAlign = ContentAlignment.TopCenter;
+                    btn.Text = "X";
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.Click += btn_Click;
+                    this.Controls.Add(btn);
+                    btn.BringToFront();
+                    btn.Visible = true;
+                }
+
+                XLocation = XLocation + XMargen + PicWidth;
+                if ((XLocation + XMargen + PicWidth) >= CtrlWidth)
+                {
+                    XLocation = 0;
+                    YLocation = YLocation + YMargen + PicHeight + (labels ? lb.Height : 0);
+                }
             }
-
-            XLocation = XLocation + XMargen + PicWidth;
-            if ((XLocation + XMargen + PicWidth) >= CtrlWidth)
+            catch(Exception)
             {
-                XLocation = 0;
-                YLocation = YLocation + YMargen + PicHeight + (labels?lb.Height:0);
+                //REVISAR
             }
         }
 

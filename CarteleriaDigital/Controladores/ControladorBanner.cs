@@ -10,7 +10,7 @@ namespace CarteleriaDigital.Controladores
 {
     public class ControladorBanner
     {
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
+        private UnidadDeTrabajo iUnidadDeTrabajo = UnidadDeTrabajo.Instancia;
 
         /// <summary>
         ///     Inserta un banner en el repositorio.
@@ -139,7 +139,7 @@ namespace CarteleriaDigital.Controladores
                 HoraInicio = new TimeSpan(pFechaHora.Hour, pFechaHora.Minute, pFechaHora.Second),
                 HoraFin = new TimeSpan(pFechaHora.Hour, pFechaHora.Minute + 1, pFechaHora.Second),
                 Intervalo = 0,
-                Nombre = "GO NEWS Campaña Default",
+                Nombre = "Go News Campaña Default",
             };
             DateTime mDia = mBannerAuxiliar.FechaInicio;
             TimeSpan mHora = mBannerAuxiliar.HoraInicio;

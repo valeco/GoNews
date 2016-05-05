@@ -10,7 +10,7 @@ namespace CarteleriaDigital.Controladores
 {
     public class ControladorImagen
     {
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
+        private UnidadDeTrabajo iUnidadDeTrabajo = UnidadDeTrabajo.Instancia;
 
         /// <summary>
         ///     Inserta una imagen en el repositorio.

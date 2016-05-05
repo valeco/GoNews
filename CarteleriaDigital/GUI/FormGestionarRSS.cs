@@ -50,22 +50,22 @@ namespace CarteleriaDigital.GUI
 
             if (txtDescripcion.Text == "")
             {
-                Utilidades.MensajeError(this, "ATENCION", "La descripcion no debe estar vacia");
+                Utilidades.MensajeError(this, "¡Atención!", "La descripcion no debe estar vacia");
                 txtDescripcion.Focus();
             }
             else if (txtURL.Text == "")
             {
-                Utilidades.MensajeError(this, "ATENCION", "El URL no debe estar vacio");
+                Utilidades.MensajeError(this, "¡Atención!", "El URL no debe estar vacio");
                 txtURL.Focus();
             }
             else if (!mUrlValido)
             {
-                Utilidades.MensajeError(this, "ATENCION", "El URL debe tener un formato valido");
+                Utilidades.MensajeError(this, "¡Atención!", "El URL debe tener un formato valido");
                 txtURL.Focus();
             }
             else if ( (iEventoAgregar && iCtrlRSS.ExisteUrl(mUrl)) || (!iEventoAgregar && iBRss.URL != mUrl && iCtrlRSS.ExisteUrl(mUrl)) )
             {
-                Utilidades.MensajeError(this, "ATENCION", "El URL indicado ya esta siendo usado");
+                Utilidades.MensajeError(this, "¡Atención!", "El URL indicado ya esta siendo usado");
                 string mBusquedaAnterior = txtBuscar.Text;
                 txtBuscar.Text = mUrl.AbsoluteUri;
                 btnBuscar_Click(null, null);
@@ -77,7 +77,7 @@ namespace CarteleriaDigital.GUI
                 {
                     if (RSS.RSS.Feed(mUrl).Count() == 0)
                     {
-                        Utilidades.MensajeError(this, "ATENCION", "El el url indicado NO devuelve informacion");
+                        Utilidades.MensajeError(this, "¡Atención!", "El el url indicado NO devuelve informacion");
                         txtURL.Focus();
                     }
                     else
@@ -98,24 +98,24 @@ namespace CarteleriaDigital.GUI
                 catch (NotInternetAvailable ex)
                 {
                     iLogger.Debug(mUrl.AbsolutePath + " " + ex.Message);
-                    Utilidades.MensajeAdvertencia(this, "ATENCION", "No es posible verificar que el url indicado devuelve informacion,\nal NO tener acceso a Internet.");
+                    Utilidades.MensajeAdvertencia(this, "¡Atención!", "No es posible verificar que el url indicado devuelve informacion,\nal NO tener acceso a Internet.");
                 }
                 catch (System.Xml.XmlException exXML)
                 {
                     iLogger.Debug(mUrl.AbsolutePath + " " + exXML.Message);
-                    Utilidades.MensajeAdvertencia(this, "ATENCION", "El url brindado no devuelve informacion en el formato esperado (XML).");
+                    Utilidades.MensajeAdvertencia(this, "¡Atención!", "El url brindado no devuelve informacion en el formato esperado (XML).");
                 }
                 catch (Exception ex)
                 {
                     if (ex.Source == "System" && ex.Message == "The remote server returned an error: (404) Not Found.")
                     {
                         iLogger.Debug(mUrl.AbsolutePath + " " + ex.Message);
-                        Utilidades.MensajeAdvertencia(this, "ATENCION", "El url brindado no existe.");
+                        Utilidades.MensajeAdvertencia(this, "¡Atención!", "El url brindado no existe.");
                     }
                     else
                     {
                         iLogger.Error(ex.Source + ": " + ex.Message);
-                        Utilidades.MensajeError(this, "ERROR", "Sucedió algo inesperado, reintente luego la acción.");
+                        Utilidades.MensajeError(this, "¡Error!", "Sucedió algo inesperado, reintente luego la acción.");
                     }
                 }
             }
@@ -204,7 +204,7 @@ namespace CarteleriaDigital.GUI
             catch (Exception ex)
             {
                 iLogger.Error(ex.Source + ": " + ex.Message);
-                Utilidades.MensajeError(this, "ERROR", "Sucedio un error inesperado, reintente luego la accion.");
+                Utilidades.MensajeError(this, "¡Error!", "Sucedio un error inesperado, reintente luego la accion.");
             }
         }
 
@@ -229,7 +229,7 @@ namespace CarteleriaDigital.GUI
             catch (Exception ex)
             {
                 iLogger.Error(ex.Source + ": " + ex.Message);
-                Utilidades.MensajeError(this, "ERROR", "Sucedio un error inesperado, reintente luego la accion.");
+                Utilidades.MensajeError(this, "¡Error!", "Sucedio un error inesperado, reintente luego la accion.");
             }           
         }
 

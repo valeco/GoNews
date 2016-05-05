@@ -249,6 +249,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DropTables.sql" />
+    <None Include="Resources\_btnSubir.png" />
+    <None Include="Resources\_btnRemover.png" />
+    <None Include="Resources\_btnBorrar.png" />
+    <None Include="Resources\_btnBajar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

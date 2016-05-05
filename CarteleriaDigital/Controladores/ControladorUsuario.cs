@@ -31,7 +31,7 @@ namespace CarteleriaDigital.Controladores
 
         // Usuario logeado
         private Usuario iUsuario;
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
+        private UnidadDeTrabajo iUnidadDeTrabajo = UnidadDeTrabajo.Instancia;
 
         /// <summary>
         ///     Inserta un usuario en el repositorio.

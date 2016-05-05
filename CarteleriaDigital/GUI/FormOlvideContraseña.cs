@@ -33,9 +33,8 @@ namespace CarteleriaDigital.GUI
         private void iWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Dictionary<string, string> dic = (Dictionary<string, string>)e.Argument;
-            Utilidades.EnviarCorreo(new MailAddress(dic["email"]), "Recuperacion de COntraseña - GO NEWS",
-                                    "<b>ACA HTML</b>", true);
-            //REVISAR falta html de tablita con buenos colores y los datos
+            Utilidades.EnviarCorreo(new MailAddress(dic["email"]), "Recuperar contraseña - Go News",
+                                    "<div style = 'padding:20px;font-family: Arial, sans-serif; background-color: #eee;'><div style = 'text-align: center'><img src ='https://raw.githubusercontent.com/valeco/GoNews/master/CarteleriaDigital/Imagenes/_logo.png' alt = 'Logo de GoNews' style = 'width: 150px; height: 150px;'></div><h1 style = 'color: steelblue;'>Recuperar contraseña</h1><p style='color:black;'> Hola <em> "+dic["nombreCompleto"]+"</em>.</p><p style='color:black;'> Tu contraseña actual es <strong>"+dic["contraseña"]+"</strong>.</p style='color:black;'><p style='color:black;'>Por cuestiones de seguridad, te recomendamos que la cambies inmediatamente.</p><p style='color:black;'>¡Que tengas un buen día!</p></div>", true);
             e.Result = true;
         }
 
@@ -46,14 +45,15 @@ namespace CarteleriaDigital.GUI
                 btnRecuperar.Enabled = true;
                 btnRecuperar.Text = "Recuperado !";
                 btnRecuperar.Enabled = false;
-                Utilidades.Esperar(5000);
-                this.Close();
+                Utilidades.Esperar(3500);
             }
             else
             {
-                //Mensaje de que no se puedo enviar el correo REVISAR
-                this.Close();
+                //Mensaje de que no se puedo enviar el correo
+                Utilidades.MensajeAdvertencia(this, "Error inesperado", "Se genero con éxito su nueva contraseña, aunque no pudimos enviarsela por email.\n"+
+                                                    "Debera reintentarlo luego.");
             }
+            this.Close();
         }
 
         private void pboxMinimizar_Click(object sender, EventArgs e)
@@ -77,17 +77,17 @@ namespace CarteleriaDigital.GUI
 
             if (txtNombreUsuario.Text == "")
             {
-                Utilidades.MensajeError(this, "ATENCION", "El Nombre Usuario no debe estar vacio");
+                Utilidades.MensajeError(this, "¡Atención!", "El Nombre Usuario no debe estar vacio");
                 txtNombreUsuario.Focus();
             }
             else if (!(txtNombreUsuario.Text.Length >= 4 && txtNombreUsuario.Text.Length <= 15))
             {
-                Utilidades.MensajeError(this, "ATENCION", "El Nombre de Usuario debe tener una longitud\nde 4-15 caracteres.");
+                Utilidades.MensajeError(this, "¡Atención!", "El Nombre de Usuario debe tener una longitud\nde 4-15 caracteres.");
                 txtNombreUsuario.Focus();
             }
             else if (txtEmail.Text == "")
             {
-                Utilidades.MensajeError(this, "ATENCION", "El Email no debe estar vacio");
+                Utilidades.MensajeError(this, "¡Atención!", "El Email no debe estar vacio");
                 txtEmail.Focus();
             }
             else
@@ -98,7 +98,7 @@ namespace CarteleriaDigital.GUI
 
                     if ( ! iCtrlUser.ExisteNombreUsuario(txtNombreUsuario.Text) || ! iCtrlUser.ExisteCorreoUsuario(mEmail))
                     {
-                        Utilidades.MensajeError(this, "ATENCION", "El Nombre de Usuario o Correo indicado NO existen!");
+                        Utilidades.MensajeError(this, "¡Atención!", "El Nombre de Usuario o Correo indicado NO existen!");
                         txtNombreUsuario.Focus();
                     }
                     else
@@ -115,7 +115,7 @@ namespace CarteleriaDigital.GUI
                             Dictionary<string, string> dic = new Dictionary<string, string>();
                             dic.Add("nombreCompleto", mUser.NombreCompleto);
                             dic.Add("nombreUsuario", txtNombreUsuario.Text);
-                            dic.Add("contraseñaNueva", mContraseñaNueva);
+                            dic.Add("contraseña", mContraseñaNueva);
                             dic.Add("email", mEmail.Address);
 
                             btnRecuperar.Text = "Enviando Email";
@@ -128,14 +128,14 @@ namespace CarteleriaDigital.GUI
                 }
                 catch (FormatException exf)
                 {
-                    Utilidades.MensajeError(this, "ATENCION", "El Email no tiene el formato requerido");
+                    Utilidades.MensajeError(this, "¡Atención!", "El Email no tiene el formato requerido");
                     iLogger.Debug(exf.Source + " Formato del email no valido -> " + txtEmail.Text);
                     txtEmail.Focus();
                 }
                 catch (Exception ex)
                 {
                     iLogger.Error(ex.Source + ": " + ex.Message);
-                    Utilidades.MensajeError(this, "ERROR", "Sucedio un error inesperado, reintente luego la accion.");
+                    Utilidades.MensajeError(this, "¡Error!", "Sucedio un error inesperado, reintente luego la accion.");
                 }
 
             }

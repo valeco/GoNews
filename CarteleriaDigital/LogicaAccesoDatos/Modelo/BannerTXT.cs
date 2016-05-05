@@ -16,7 +16,7 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// </summary>
         /// <param name="pTexto">Texto asociado al banner</param>
         public BannerTXT(string pTexto)
-        { this.Texto = pTexto != string.Empty? pTexto: "GO NEWS: Publicita tu producto aquí, informate en WWW.goNews.com.ar"; }
+        { this.Texto = pTexto != string.Empty? pTexto: "Go News: Publicita tu producto aquí, informate en www.GoNews.com.ar"; }
 
         /// <summary>
         /// Devuelve el proximo texto a mostrar

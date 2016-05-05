@@ -102,9 +102,9 @@
             // 
             this.btnCambiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambiar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCambiar.Location = new System.Drawing.Point(122, 308);
+            this.btnCambiar.Location = new System.Drawing.Point(113, 308);
             this.btnCambiar.Name = "btnCambiar";
-            this.btnCambiar.Size = new System.Drawing.Size(100, 30);
+            this.btnCambiar.Size = new System.Drawing.Size(109, 30);
             this.btnCambiar.TabIndex = 22;
             this.btnCambiar.Text = "ACEPTAR";
             this.btnCambiar.UseVisualStyleBackColor = true;

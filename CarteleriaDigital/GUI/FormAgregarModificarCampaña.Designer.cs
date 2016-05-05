@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAgregarModificarCampaña));
             this.lbTitulo = new System.Windows.Forms.Label();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
@@ -48,22 +49,23 @@
             this.lbHoraInicio = new System.Windows.Forms.Label();
             this.lbHorario = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnCargarImagenes = new System.Windows.Forms.Button();
-            this.pboxMinimizar = new System.Windows.Forms.PictureBox();
-            this.pboxCerrar = new System.Windows.Forms.PictureBox();
             this.galeria = new CarteleriaDigital.GUI.GaleriaImagenes();
+            this.dgridPrioridades = new System.Windows.Forms.DataGridView();
             this.btnEliminarPrioridad = new System.Windows.Forms.Button();
             this.btnQuitarCompletamente = new System.Windows.Forms.Button();
             this.btnBajarPrioridad = new System.Windows.Forms.Button();
             this.btnSubirPrioridad = new System.Windows.Forms.Button();
-            this.dgridPrioridades = new System.Windows.Forms.DataGridView();
+            this.btnCargarImagenes = new System.Windows.Forms.Button();
+            this.pboxMinimizar = new System.Windows.Forms.PictureBox();
+            this.pboxCerrar = new System.Windows.Forms.PictureBox();
+            this.ttipBotones = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tbarIntervalo)).BeginInit();
             this.panelIntervalo.SuspendLayout();
             this.panelFecha.SuspendLayout();
             this.panelHora.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridPrioridades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridPrioridades)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTitulo
@@ -288,6 +290,90 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // galeria
+            // 
+            this.galeria.AltoImagenes = 100;
+            this.galeria.AnchoImagenes = 150;
+            this.galeria.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.galeria.ColorAlSeleccionar = System.Drawing.Color.Firebrick;
+            this.galeria.Directorio = null;
+            this.galeria.ListaImagenes = ((System.Collections.Generic.List<string>)(resources.GetObject("galeria.ListaImagenes")));
+            this.galeria.Location = new System.Drawing.Point(272, 76);
+            this.galeria.MargenXImagenes = 10;
+            this.galeria.MargenYImagenes = 10;
+            this.galeria.Name = "galeria";
+            this.galeria.ShowDeleteButtons = false;
+            this.galeria.ShowLabels = false;
+            this.galeria.Size = new System.Drawing.Size(400, 277);
+            this.galeria.TabIndex = 1;
+            // 
+            // dgridPrioridades
+            // 
+            this.dgridPrioridades.AllowUserToAddRows = false;
+            this.dgridPrioridades.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgridPrioridades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridPrioridades.Location = new System.Drawing.Point(679, 76);
+            this.dgridPrioridades.MultiSelect = false;
+            this.dgridPrioridades.Name = "dgridPrioridades";
+            this.dgridPrioridades.ReadOnly = true;
+            this.dgridPrioridades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgridPrioridades.Size = new System.Drawing.Size(203, 277);
+            this.dgridPrioridades.TabIndex = 23;
+            this.dgridPrioridades.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgridPrioridades_MouseClick);
+            this.dgridPrioridades.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgridPrioridades_MouseDoubleClick);
+            // 
+            // btnEliminarPrioridad
+            // 
+            this.btnEliminarPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnBorrar;
+            this.btnEliminarPrioridad.Location = new System.Drawing.Point(744, 359);
+            this.btnEliminarPrioridad.Name = "btnEliminarPrioridad";
+            this.btnEliminarPrioridad.Size = new System.Drawing.Size(30, 30);
+            this.btnEliminarPrioridad.TabIndex = 24;
+            this.ttipBotones.SetToolTip(this.btnEliminarPrioridad, "Eliminar prioridad de la imagen seleccionada.");
+            this.btnEliminarPrioridad.UseVisualStyleBackColor = true;
+            this.btnEliminarPrioridad.Click += new System.EventHandler(this.btnEliminarPrioridad_Click);
+            // 
+            // btnQuitarCompletamente
+            // 
+            this.btnQuitarCompletamente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarCompletamente.ForeColor = System.Drawing.Color.Black;
+            this.btnQuitarCompletamente.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitarCompletamente.Image")));
+            this.btnQuitarCompletamente.Location = new System.Drawing.Point(852, 359);
+            this.btnQuitarCompletamente.Name = "btnQuitarCompletamente";
+            this.btnQuitarCompletamente.Size = new System.Drawing.Size(30, 30);
+            this.btnQuitarCompletamente.TabIndex = 27;
+            this.ttipBotones.SetToolTip(this.btnQuitarCompletamente, "Quitar imagen de la campaña.");
+            this.btnQuitarCompletamente.UseVisualStyleBackColor = true;
+            this.btnQuitarCompletamente.Click += new System.EventHandler(this.btnQuitarCompletamente_Click);
+            // 
+            // btnBajarPrioridad
+            // 
+            this.btnBajarPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBajarPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.btnBajarPrioridad.Image = ((System.Drawing.Image)(resources.GetObject("btnBajarPrioridad.Image")));
+            this.btnBajarPrioridad.Location = new System.Drawing.Point(816, 359);
+            this.btnBajarPrioridad.Name = "btnBajarPrioridad";
+            this.btnBajarPrioridad.Size = new System.Drawing.Size(30, 30);
+            this.btnBajarPrioridad.TabIndex = 26;
+            this.ttipBotones.SetToolTip(this.btnBajarPrioridad, "Bajar la prioridad de la imagen seleccionada.");
+            this.btnBajarPrioridad.UseVisualStyleBackColor = true;
+            this.btnBajarPrioridad.Click += new System.EventHandler(this.btnBajarPrioridad_Click);
+            // 
+            // btnSubirPrioridad
+            // 
+            this.btnSubirPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.btnSubirPrioridad.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirPrioridad.Image")));
+            this.btnSubirPrioridad.Location = new System.Drawing.Point(780, 359);
+            this.btnSubirPrioridad.Name = "btnSubirPrioridad";
+            this.btnSubirPrioridad.Size = new System.Drawing.Size(30, 30);
+            this.btnSubirPrioridad.TabIndex = 25;
+            this.ttipBotones.SetToolTip(this.btnSubirPrioridad, "Subir la prioridad de la imagen seleccionada.");
+            this.btnSubirPrioridad.UseVisualStyleBackColor = true;
+            this.btnSubirPrioridad.Click += new System.EventHandler(this.btnSubirPrioridad_Click);
+            // 
             // btnCargarImagenes
             // 
             this.btnCargarImagenes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -301,6 +387,7 @@
             this.btnCargarImagenes.Text = "Cargar imágenes...";
             this.btnCargarImagenes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCargarImagenes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttipBotones.SetToolTip(this.btnCargarImagenes, "Cargar imágenes que serán utilizadas en la campaña.");
             this.btnCargarImagenes.UseVisualStyleBackColor = true;
             this.btnCargarImagenes.Click += new System.EventHandler(this.btnCargarImagenes_Click);
             // 
@@ -325,86 +412,6 @@
             this.pboxCerrar.TabIndex = 15;
             this.pboxCerrar.TabStop = false;
             this.pboxCerrar.Click += new System.EventHandler(this.pboxCerrar_Click);
-            // 
-            // galeria
-            // 
-            this.galeria.AltoImagenes = 100;
-            this.galeria.AnchoImagenes = 150;
-            this.galeria.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.galeria.ColorAlSeleccionar = System.Drawing.Color.Firebrick;
-            this.galeria.Directorio = null;
-            this.galeria.ListaImagenes = ((System.Collections.Generic.List<string>)(resources.GetObject("galeria.ListaImagenes")));
-            this.galeria.Location = new System.Drawing.Point(272, 76);
-            this.galeria.MargenXImagenes = 10;
-            this.galeria.MargenYImagenes = 10;
-            this.galeria.Name = "galeria";
-            this.galeria.ShowDeleteButtons = false;
-            this.galeria.ShowLabels = false;
-            this.galeria.Size = new System.Drawing.Size(400, 277);
-            this.galeria.TabIndex = 1;
-            // 
-            // btnEliminarPrioridad
-            // 
-            this.btnEliminarPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarPrioridad.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnEliminar;
-            this.btnEliminarPrioridad.Location = new System.Drawing.Point(681, 354);
-            this.btnEliminarPrioridad.Name = "btnEliminarPrioridad";
-            this.btnEliminarPrioridad.Size = new System.Drawing.Size(40, 30);
-            this.btnEliminarPrioridad.TabIndex = 24;
-            this.btnEliminarPrioridad.UseVisualStyleBackColor = true;
-            this.btnEliminarPrioridad.Click += new System.EventHandler(this.btnEliminarPrioridad_Click);
-            // 
-            // btnQuitarCompletamente
-            // 
-            this.btnQuitarCompletamente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitarCompletamente.ForeColor = System.Drawing.Color.Black;
-            this.btnQuitarCompletamente.Image = global::CarteleriaDigital.Properties.Resources._btnRemover;
-            this.btnQuitarCompletamente.Location = new System.Drawing.Point(837, 354);
-            this.btnQuitarCompletamente.Name = "btnQuitarCompletamente";
-            this.btnQuitarCompletamente.Size = new System.Drawing.Size(40, 30);
-            this.btnQuitarCompletamente.TabIndex = 27;
-            this.btnQuitarCompletamente.UseVisualStyleBackColor = true;
-            this.btnQuitarCompletamente.Click += new System.EventHandler(this.btnQuitarCompletamente_Click);
-            // 
-            // btnBajarPrioridad
-            // 
-            this.btnBajarPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBajarPrioridad.ForeColor = System.Drawing.Color.Black;
-            this.btnBajarPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnBajar;
-            this.btnBajarPrioridad.Location = new System.Drawing.Point(791, 354);
-            this.btnBajarPrioridad.Name = "btnBajarPrioridad";
-            this.btnBajarPrioridad.Size = new System.Drawing.Size(40, 30);
-            this.btnBajarPrioridad.TabIndex = 26;
-            this.btnBajarPrioridad.UseVisualStyleBackColor = true;
-            this.btnBajarPrioridad.Click += new System.EventHandler(this.btnBajarPrioridad_Click);
-            // 
-            // btnSubirPrioridad
-            // 
-            this.btnSubirPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubirPrioridad.ForeColor = System.Drawing.Color.Black;
-            this.btnSubirPrioridad.Image = global::CarteleriaDigital.Properties.Resources._btnSubir;
-            this.btnSubirPrioridad.Location = new System.Drawing.Point(732, 354);
-            this.btnSubirPrioridad.Name = "btnSubirPrioridad";
-            this.btnSubirPrioridad.Size = new System.Drawing.Size(40, 30);
-            this.btnSubirPrioridad.TabIndex = 25;
-            this.btnSubirPrioridad.UseVisualStyleBackColor = true;
-            this.btnSubirPrioridad.Click += new System.EventHandler(this.btnSubirPrioridad_Click);
-            // 
-            // dgridPrioridades
-            // 
-            this.dgridPrioridades.AllowUserToAddRows = false;
-            this.dgridPrioridades.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgridPrioridades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgridPrioridades.Location = new System.Drawing.Point(679, 76);
-            this.dgridPrioridades.MultiSelect = false;
-            this.dgridPrioridades.Name = "dgridPrioridades";
-            this.dgridPrioridades.ReadOnly = true;
-            this.dgridPrioridades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgridPrioridades.Size = new System.Drawing.Size(203, 277);
-            this.dgridPrioridades.TabIndex = 23;
-            this.dgridPrioridades.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgridPrioridades_MouseClick);
-            this.dgridPrioridades.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgridPrioridades_MouseDoubleClick);
             // 
             // FormAgregarModificarCampaña
             // 
@@ -439,9 +446,9 @@
             this.panelFecha.PerformLayout();
             this.panelHora.ResumeLayout(false);
             this.panelHora.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridPrioridades)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridPrioridades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,5 +484,6 @@
         private System.Windows.Forms.Button btnBajarPrioridad;
         private System.Windows.Forms.Button btnSubirPrioridad;
         private System.Windows.Forms.DataGridView dgridPrioridades;
+        private System.Windows.Forms.ToolTip ttipBotones;
     }
 }

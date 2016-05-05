@@ -13,7 +13,7 @@ namespace CarteleriaDigital.Controladores
 {
     public class ControladorCampaña
     {
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
+        private UnidadDeTrabajo iUnidadDeTrabajo = UnidadDeTrabajo.Instancia;
 
         /// <summary>
         ///     Inserta una campaña en el repositorio.
@@ -147,7 +147,7 @@ namespace CarteleriaDigital.Controladores
                 FechaFin = mFechaFin.Date,
                 HoraFin = mHoraFin,
                 Intervalo = 0,
-                Nombre = "GO NEWS",
+                Nombre = "Go News",
                 ListaImagenes = new List<Imagen>()//Se inicializa vacia, ya q la clase lo reconoce y devuelve una imagen por defecto.
             };
 

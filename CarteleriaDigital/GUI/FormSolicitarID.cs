@@ -110,7 +110,7 @@ namespace CarteleriaDigital.GUI
                                 (new ControladorCampaña()).Eliminar((Campaña)mPublicidad);
                             else
                                 (new ControladorBanner()).Eliminar((Banner)mPublicidad);
-                            Utilidades.MensajeExito(this, "Perfecto!", "Se elimino con exito " + ((iTipo == "campaña") ? "la campaña" : "el banner") + ".");
+                            Utilidades.MensajeExito(this, "¡Perfecto!", "Se eliminó con éxito " + ((iTipo == "campaña") ? "la campaña" : "el banner") + ".");
                             this.Close();
                         }
                     }

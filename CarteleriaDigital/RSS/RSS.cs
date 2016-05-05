@@ -15,7 +15,18 @@ namespace CarteleriaDigital.RSS
             /// <returns>Verdadero si hay disponibilidad, Falso en caso contrario</returns>
             private static bool InternetDisponible()
             {
-                return System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+                if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+                    return false;
+                else
+                    try
+                    {
+                        (new System.Net.WebClient()).OpenRead("http://www.google.com");
+                        return true;
+                    } 
+                    catch(Exception)
+                    {
+                        return false;
+                    }
             }
 
             private static TResult GetXmlNodeValue<TResult>(XmlNode pParentNode, String pChildNodeName)
@@ -67,27 +78,35 @@ namespace CarteleriaDigital.RSS
                 if (pUrl == null) { throw new ArgumentNullException("pUrl"); }
 
                 if (!InternetDisponible()) { throw new NotInternetAvailable("Para poder hacer el Feed es indispensable internet."); }
-                XmlTextReader mXmlReader = new XmlTextReader(pUrl.AbsoluteUri);
 
-                XmlDocument mRssXmlDocument = new XmlDocument();
-
-                mRssXmlDocument.Load(mXmlReader);
-
-                List<RssItem> mRssItems = new List<RssItem>();
-
-                foreach (XmlNode bRssXmlItem in mRssXmlDocument.SelectNodes("//channel/item"))
+                try
                 {
-                    mRssItems.Add(new RssItem 
-                        (                    
-                        GetXmlNodeValue<String>(bRssXmlItem, "title"),
-                        GetXmlNodeValue<String>(bRssXmlItem, "description"),
-                        GetXmlNodeValue<DateTime>(bRssXmlItem, "pubDate"),
-                        new Uri(GetXmlNodeValue<String>(bRssXmlItem, "link"))
-                        )
-                    );
-                }
+                    XmlTextReader mXmlReader = new XmlTextReader(pUrl.AbsoluteUri);
 
-                return mRssItems;
+                    XmlDocument mRssXmlDocument = new XmlDocument();
+
+                    mRssXmlDocument.Load(mXmlReader);
+
+                    List<RssItem> mRssItems = new List<RssItem>();
+
+                    foreach (XmlNode bRssXmlItem in mRssXmlDocument.SelectNodes("//channel/item"))
+                    {
+                        mRssItems.Add(new RssItem
+                            (
+                            GetXmlNodeValue<String>(bRssXmlItem, "title"),
+                            GetXmlNodeValue<String>(bRssXmlItem, "description"),
+                            GetXmlNodeValue<DateTime>(bRssXmlItem, "pubDate"),
+                            new Uri(GetXmlNodeValue<String>(bRssXmlItem, "link"))
+                            )
+                        );
+                    }
+
+                    return mRssItems;
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
             }
         #endregion
     }

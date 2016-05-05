@@ -20,6 +20,19 @@ namespace CarteleriaDigital.LogicaAccesoDatos
         private RepositorioGenerico<BannerRSS> iRepositorioBannerRSS;
         private RepositorioGenerico<BannerTXT> iRepositorioBannerTXT;
 
+        //Singleton con Inicializacion Estatica
+        private static readonly UnidadDeTrabajo iInstanciaUoW = new UnidadDeTrabajo();
+
+        private UnidadDeTrabajo() { }
+
+        public static UnidadDeTrabajo Instancia
+        {
+            get
+            {
+                return iInstanciaUoW;
+            }
+        }
+
         public RepositorioGenerico<Usuario> RepositorioUsuario
         {
         	get

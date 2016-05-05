@@ -10,7 +10,7 @@ namespace CarteleriaDigital.Controladores
 {
     public class ControladorBannerTXT
     {
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
+        private UnidadDeTrabajo iUnidadDeTrabajo = UnidadDeTrabajo.Instancia;
 
         /// <summary>
         ///     Inserta un banner TXT en el repositorio.

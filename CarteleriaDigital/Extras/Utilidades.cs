@@ -183,6 +183,18 @@ namespace CarteleriaDigital.Extras
             int anguloEntrada = (new Random()).Next(0, 360);
 
             AnimacionUnica(pPBox,pEfectoSalida,flagSalida,250,anguloSalida);
+
+            if (pImagenSig.Height >= pImagenSig.Width)
+            {
+                pPBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                double porcentaje = (pPBox.Height / (pImagenSig.Height*1.0));
+                int mAnchoNuevo=(int) Math.Truncate(porcentaje * pImagenSig.Width);
+                int mAltoNuevo = pPBox.Height;
+                pImagenSig = (Image)(new Bitmap(pImagenSig, new Size(mAnchoNuevo, mAltoNuevo)));
+            }
+            else
+                pPBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
             pPBox.Image = pImagenSig;
             AnimacionUnica(pPBox, pEfectoEntrada, flagEntrada, 250, anguloEntrada);
         }
@@ -327,12 +339,26 @@ namespace CarteleriaDigital.Extras
         {
             try
             {
-                //Objeto que corresponde al correo
-                System.Net.Mail.MailMessage mCorreo = new System.Net.Mail.MailMessage(  "gonewsnoreply@gmail.com", pDestinatario.Address,
-                                                                                        pAsunto, pMensaje);
+                System.Net.Mail.MailMessage mCorreo;
+                if (htmlMesaje == true)
+                {
+                    //Objeto que corresponde al correo
+                     mCorreo= new System.Net.Mail.MailMessage("gonewsnoreply@gmail.com", pDestinatario.Address,
+                                                                                            pAsunto, "");
+                }
+                else
+                {
+                    mCorreo = new System.Net.Mail.MailMessage("gonewsnoreply@gmail.com", pDestinatario.Address,
+                                                                                           pAsunto, pMensaje);
+                }
+
                 mCorreo.SubjectEncoding = System.Text.Encoding.UTF8;
                 mCorreo.BodyEncoding = System.Text.Encoding.UTF8;
-                mCorreo.IsBodyHtml = htmlMesaje;         
+                mCorreo.IsBodyHtml = htmlMesaje;
+                if (htmlMesaje==true)
+                {
+                    mCorreo.Body = pMensaje;
+                }     
                 mCorreo.Priority = System.Net.Mail.MailPriority.Normal;
 
                 //Objeto de autentificación
@@ -347,9 +373,8 @@ namespace CarteleriaDigital.Extras
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 return false;
             }
         }

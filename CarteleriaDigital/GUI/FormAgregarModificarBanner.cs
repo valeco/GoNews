@@ -81,7 +81,7 @@ namespace CarteleriaDigital.GUI
                 txtTextoFijo.Enabled = false;
                 comboFuenteRSS.Enabled = true;
 
-                tbarIntervalo.Minimum = 1;
+                tbarIntervalo.Minimum = 5;
                 tbarIntervalo.Value = 5;
                 tbarIntervalo.Enabled = true;
             }

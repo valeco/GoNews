@@ -37,14 +37,12 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.pboxMinimizar = new System.Windows.Forms.PictureBox();
-            this.pboxLogin = new System.Windows.Forms.PictureBox();
             this.pboxCerrar = new System.Windows.Forms.PictureBox();
             this.pboxSlide = new System.Windows.Forms.PictureBox();
             this.timerCampaña = new System.Windows.Forms.Timer(this.components);
             this.timerBanner = new System.Windows.Forms.Timer(this.components);
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +56,9 @@
             this.lbMarquesina.ForeColor = System.Drawing.Color.White;
             this.lbMarquesina.Location = new System.Drawing.Point(10, 270);
             this.lbMarquesina.Name = "lbMarquesina";
-            this.lbMarquesina.Size = new System.Drawing.Size(590, 20);
+            this.lbMarquesina.Size = new System.Drawing.Size(578, 20);
             this.lbMarquesina.TabIndex = 1;
-            this.lbMarquesina.Text = "GO NEWS: Publicita tu producto aquí, informate en www.GoNews.com.ar";
+            this.lbMarquesina.Text = "Go News: Publicita tu producto aquí, informate en www.GoNews.com.ar";
             // 
             // panelLogin
             // 
@@ -71,10 +69,11 @@
             this.panelLogin.Controls.Add(this.btnEntrar);
             this.panelLogin.Controls.Add(this.txtContraseña);
             this.panelLogin.Controls.Add(this.txtUsuario);
-            this.panelLogin.Location = new System.Drawing.Point(500, 110);
+            this.panelLogin.Location = new System.Drawing.Point(370, 100);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(120, 150);
             this.panelLogin.TabIndex = 4;
+            this.panelLogin.Visible = false;
             // 
             // lbOlvideContraseña
             // 
@@ -103,7 +102,7 @@
             this.btnEntrar.Location = new System.Drawing.Point(10, 64);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(100, 23);
-            this.btnEntrar.TabIndex = 1;
+            this.btnEntrar.TabIndex = 4;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = true;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
@@ -116,6 +115,7 @@
             this.txtContraseña.Size = new System.Drawing.Size(100, 20);
             this.txtContraseña.TabIndex = 3;
             this.txtContraseña.Text = "Contraseña";
+            this.txtContraseña.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContraseña_KeyDown);
             // 
             // txtUsuario
             // 
@@ -124,6 +124,7 @@
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 2;
             this.txtUsuario.Text = "Usuario";
+            this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
             // 
             // pboxMinimizar
             // 
@@ -134,19 +135,8 @@
             this.pboxMinimizar.Size = new System.Drawing.Size(20, 20);
             this.pboxMinimizar.TabIndex = 7;
             this.pboxMinimizar.TabStop = false;
+            this.pboxMinimizar.Visible = false;
             this.pboxMinimizar.Click += new System.EventHandler(this.pboxMinimizar_Click);
-            // 
-            // pboxLogin
-            // 
-            this.pboxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pboxLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pboxLogin.Image = global::CarteleriaDigital.Properties.Resources._pboxLogin;
-            this.pboxLogin.Location = new System.Drawing.Point(480, 200);
-            this.pboxLogin.Name = "pboxLogin";
-            this.pboxLogin.Size = new System.Drawing.Size(20, 60);
-            this.pboxLogin.TabIndex = 6;
-            this.pboxLogin.TabStop = false;
-            this.pboxLogin.Click += new System.EventHandler(this.pboxLogin_Click);
             // 
             // pboxCerrar
             // 
@@ -157,6 +147,7 @@
             this.pboxCerrar.Size = new System.Drawing.Size(20, 20);
             this.pboxCerrar.TabIndex = 5;
             this.pboxCerrar.TabStop = false;
+            this.pboxCerrar.Visible = false;
             this.pboxCerrar.Click += new System.EventHandler(this.pboxCerrar_Click);
             // 
             // pboxSlide
@@ -173,6 +164,7 @@
             this.pboxSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxSlide.TabIndex = 0;
             this.pboxSlide.TabStop = false;
+            this.pboxSlide.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pboxSlide_MouseMove);
             // 
             // timerCampaña
             // 
@@ -189,7 +181,6 @@
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(500, 300);
             this.Controls.Add(this.pboxMinimizar);
-            this.Controls.Add(this.pboxLogin);
             this.Controls.Add(this.pboxCerrar);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.lbMarquesina);
@@ -204,11 +195,11 @@
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxSlide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -222,7 +213,6 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.PictureBox pboxCerrar;
-        private System.Windows.Forms.PictureBox pboxLogin;
         private System.Windows.Forms.PictureBox pboxMinimizar;
         private System.Windows.Forms.Timer timerCampaña;
         private System.Windows.Forms.Timer timerBanner;

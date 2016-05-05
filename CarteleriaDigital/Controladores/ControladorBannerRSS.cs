@@ -10,7 +10,7 @@ namespace CarteleriaDigital.Controladores
 {
     public class ControladorBannerRSS
     {
-        private UnidadDeTrabajo iUnidadDeTrabajo = new UnidadDeTrabajo();
+        private UnidadDeTrabajo iUnidadDeTrabajo = UnidadDeTrabajo.Instancia;
 
         /// <summary>
         ///     Inserta un banner RSS en el repositorio.

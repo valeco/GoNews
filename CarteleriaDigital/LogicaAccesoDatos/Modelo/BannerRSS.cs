@@ -49,24 +49,35 @@ namespace CarteleriaDigital.LogicaAccesoDatos.Modelo
         /// <returns>Cadena de texto de una noticia</returns>
         public string Proximo()
         {
-            if (this.iListaItems == null || this.iListaItems.Count() == 0)
+            RssItem mItem;
+            RssItem mDefaultItem = new RssItem( "Go News",
+                                                "Publicita tu producto aquí, informate en www.GoNews.com.ar",
+                                                DateTime.Now,
+                                                new Uri("http://www.gonews.com.ar"));
+            try
             {
-                this.iListaItems = RSS.RSS.Feed(this.URL);
-                this.iContador = 0;
+                if (this.iListaItems == null || this.iListaItems.Count() == 0)
+                {
+                    this.iListaItems = RSS.RSS.Feed(this.URL);
+                    this.iContador = 0;
+                }
+
+                if (this.iContador == this.iListaItems.Count() - 1)
+                    iContador = 0;
+                else
+                    iContador++;
+
+                mItem = this.iListaItems.Count() == 0 ? mDefaultItem : this.iListaItems.ElementAt(iContador);
+
+                
+            }
+            catch (NotInternetAvailable)
+            {
+                mItem = mDefaultItem;
             }
 
-            if (this.iContador == this.iListaItems.Count()-1)
-                iContador = 0;
-            else
-                iContador++;
-
-            RssItem mItem = this.iListaItems.Count()==0 ?   new RssItem("GO NEWS",
-                                                                        "Publicita tu producto aquí, informate en www.GoNews.com.ar",
-                                                                        DateTime.Today,
-                                                                        new Uri("www.gonews.com.ar") ):
-                                                            this.iListaItems.ElementAt(iContador);
-
             return "[" + mItem.Fecha + "] " + mItem.Titulo + ": " + mItem.Descripcion;
+                   
         }
 
         public int Id ()

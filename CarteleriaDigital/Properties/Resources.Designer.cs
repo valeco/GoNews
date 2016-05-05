@@ -83,6 +83,16 @@ namespace CarteleriaDigital.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _btnBorrar {
+            get {
+                object obj = ResourceManager.GetObject("_btnBorrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _btnBuscar {
             get {
                 object obj = ResourceManager.GetObject("_btnBuscar", resourceCulture);
